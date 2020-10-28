@@ -1,0 +1,57 @@
+{
+  "name": "info104_2020_2",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/PabloSzx/info104_2020_2#readme",
+  "bugs": {
+    "url": "https://github.com/PabloSzx/info104_2020_2/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloSzx/info104_2020_2.git"
+  },
+  "license": "MIT",
+  "author": "PabloSz",
+  "main": "src/pages/index.js",
+  "scripts": {
+    "build": "next build",
+    "dev": "concurrently --raw \"next -p 4000\" \"wait-on -s 1 http://localhost:4000 && open-cli http://localhost:4000\"",
+    "preinstall": "npx npm-force-resolutions",
+    "postinstall": "patch-package",
+    "start": "next start"
+  },
+  "resolutions": {
+    "node-fetch": "2.6.1"
+  },
+  "dependencies": {
+    "@chakra-ui/core": "^1.0.0-rc.7",
+    "@emotion/core": "^10.0.35",
+    "@emotion/styled": "^10.0.27",
+    "axios": "^0.21.0",
+    "emotion": "^10.0.27",
+    "emotion-server": "^10.0.27",
+    "framer-motion": "^2.9.4",
+    "lodash": "^4.17.20",
+    "mongodb": "^3.6.2",
+    "next": "^10.0.0",
+    "npm-force-resolutions": "0.0.3",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-icons": "^3.11.0"
+  },
+  "devDependencies": {
+    "@emotion/babel-preset-css-prop": "^10.0.27",
+    "@types/concurrently": "^5.2.1",
+    "@types/lodash": "^4.14.162",
+    "@types/mongodb": "^3.5.31",
+    "@types/node": "^14.14.3",
+    "@types/react": "^16.9.53",
+    "@types/react-dom": "^16.9.8",
+    "@types/wait-on": "^4.0.0",
+    "concurrently": "^5.3.0",
+    "open-cli": "^6.0.1",
+    "patch-package": "^6.2.2",
+    "typescript": "^4.0.3",
+    "wait-on": "^5.2.0"
+  }
+}
