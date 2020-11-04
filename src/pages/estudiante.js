@@ -21,7 +21,7 @@ export default function Estudiantes() {
 
   return (
     <Stack padding="20px">
-      {loading && <Pinner />}
+      {loading && <Spinner />}
       {data?.map((estudiante, indice) => {
         return (
           <Text
