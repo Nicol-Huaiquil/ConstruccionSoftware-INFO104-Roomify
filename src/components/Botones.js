@@ -11,30 +11,10 @@ export const Botones = () => {
       alignSelf="center"
     >
       <Flex>
-        <Button
-          colorScheme="red"
-          width="50px"
-          height="50px"
-          type="submit"
-        ></Button>
-        <Button
-          colorScheme="yellow"
-          width="50px"
-          height="50px"
-          type="submit"
-        ></Button>
-        <Button
-          colorScheme="green"
-          width="50px"
-          height="50px"
-          type="submit"
-        ></Button>
-        <Button
-          colorScheme="pink"
-          width="50px"
-          height="50px"
-          type="submit"
-        ></Button>
+        <Button bg="#2980b9" width="50px" height="50px" type="submit"></Button>
+        <Button bg="#ad1fe2" width="50px" height="50px" type="submit"></Button>
+        <Button bg="#1fe25f" width="50px" height="50px" type="submit"></Button>
+        <Button bg="#2980b9" width="50px" height="50px" type="submit"></Button>
       </Flex>
     </Stack>
   );
