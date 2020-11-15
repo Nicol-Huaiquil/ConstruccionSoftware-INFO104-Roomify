@@ -1,4 +1,4 @@
-import { Stack, Text, Sinner } from "@chakra-ui/core";
+import { Stack, Text, Spinner } from "@chakra-ui/core";
 import axios from "axios";
 import { useEffect, useState } from "react";
 

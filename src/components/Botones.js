@@ -1,4 +1,4 @@
-import { Button, Flex, Input, Stack, useToast } from "@chakra-ui/core";
+import { Button, Flex, Stack, useToast } from "@chakra-ui/core";
 import {
   AiOutlineArrowLeft,
   AiOutlineArrowRight,
@@ -65,7 +65,7 @@ export const Botones = () => {
           <AiFillMessage size="30px" color="white" />
         </Button>
         <Button
-          colorScheme="blue"
+          //colorScheme="blue"
           bg="#2980b9"
           width="50px"
           height="50px"
