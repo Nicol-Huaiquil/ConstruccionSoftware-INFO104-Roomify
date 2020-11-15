@@ -7,6 +7,7 @@ import {
 import { BsFillBookmarkFill } from "react-icons/bs";
 
 export const Botones = () => {
+  const toast = useToast();
   return (
     <Stack
       direction="row"
@@ -37,6 +38,12 @@ export const Botones = () => {
           type="submit"
           margin="10px"
           padding="0px"
+          onClick={() => {
+            toast({
+              title: "Perfil guardado",
+              duration: 1000,
+            });
+          }}
         >
           <BsFillBookmarkFill size="30px" color="white" />
         </Button>
@@ -48,6 +55,12 @@ export const Botones = () => {
           type="submit"
           margin="10px"
           padding="0px"
+          onClick={() => {
+            toast({
+              title: "Solicitud de mensaje enviada",
+              duration: 1000,
+            });
+          }}
         >
           <AiFillMessage size="30px" color="white" />
         </Button>
