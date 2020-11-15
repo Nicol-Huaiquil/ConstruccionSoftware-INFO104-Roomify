@@ -19,32 +19,38 @@ export const Botones = () => {
     >
       <Flex>
         <Button
-          colorScheme="blue"
+          //colorScheme="blue"
           bg="#2980b9"
           width="50px"
           height="50px"
           type="submit"
           margin="10px"
-          leftIcon={<AiOutlineArrowLeft size="30px" color="white" />}
-        ></Button>
+          padding="0px"
+        >
+          <AiOutlineArrowLeft size="30px" color="white" />
+        </Button>
         <Button
-          colorScheme="purple"
+          //colorScheme="purple"
           bg="#ad1fe2"
           width="50px"
           height="50px"
           type="submit"
           margin="10px"
-          leftIcon={<BsFillBookmarkFill size="30px" color="white" />}
-        ></Button>
+          padding="0px"
+        >
+          <BsFillBookmarkFill size="30px" color="white" />
+        </Button>
         <Button
-          colorScheme="green"
+          //colorScheme="green"
           bg="#1fe25f"
           width="50px"
           height="50px"
           type="submit"
           margin="10px"
-          leftIcon={<AiFillMessage size="30px" color="white" />}
-        ></Button>
+          padding="0px"
+        >
+          <AiFillMessage size="30px" color="white" />
+        </Button>
         <Button
           colorScheme="blue"
           bg="#2980b9"
@@ -52,8 +58,10 @@ export const Botones = () => {
           height="50px"
           type="submit"
           margin="10px"
-          leftIcon={<AiOutlineArrowRight size="30px" color="white" />}
-        ></Button>
+          padding="0px"
+        >
+          <AiOutlineArrowRight size="30px" color="white" />
+        </Button>
       </Flex>
     </Stack>
   );
