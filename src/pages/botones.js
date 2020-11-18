@@ -1,4 +1,5 @@
 import { Button, Flex, Stack, useToast } from "@chakra-ui/core";
+import { useRouter } from "next/router";
 import {
   AiOutlineArrowLeft,
   AiOutlineArrowRight,
@@ -8,6 +9,7 @@ import { BsFillBookmarkFill } from "react-icons/bs";
 import { Roomify } from "../components/Roomify";
 
 export const Botones = () => {
+  const { push } = useRouter(); //** */
   const toast = useToast();
   return (
     <>
@@ -22,6 +24,10 @@ export const Botones = () => {
               type="submit"
               margin="10px"
               padding="0px"
+              onClick={() => {
+                //** */
+                push("/");
+              }}
             >
               <AiOutlineArrowLeft size="30px" color="white" />
             </Button>
