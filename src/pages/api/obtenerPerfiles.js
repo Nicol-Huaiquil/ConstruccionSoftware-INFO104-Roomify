@@ -1,4 +1,5 @@
 import { NextApiResponse, NextApiRequest } from "next";
+import { dbConnection } from "../../db";
 
 /**
  * @export
@@ -6,10 +7,14 @@ import { NextApiResponse, NextApiRequest } from "next";
  * @param {NextApiResponse} res
  */
 export default async (req, res) => {
-  req.body;
-  let perfil1 = [21, "Isla Teja"];
-  let perfil2 = [20, "Isla Teja"];
-  let perfil3 = [19, "Miraflores"];
-  let perfiles = [perfil1, perfil2, perfil3];
+  const db = await dbConnection;
+  const collection = db.collection("perfiles");
+  await collection.deleteMany({});
+  await collection.insertMany([
+    { id: 1, edad: 21, nombre: "Isla Teja" },
+    { id: 2, edad: 19, nombre: "Isla Teja" },
+    { id: 3, edad: 20, nombre: "Miraflores" },
+  ]);
+  const perfiles = await collection.find({}).toArray();
   res.send(perfiles);
 };

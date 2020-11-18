@@ -10,7 +10,7 @@ export const Endpoint = () => {
   const toast = useToast();
   return (
     <>
-      {apiData ? <Text>{apiData}</Text> : null}
+      {apiData ? <Text>{JSON.stringify(apiData, null, 2)}</Text> : null}
       <Button
         width="200px"
         isLoading={isLoading}
