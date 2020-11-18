@@ -4,8 +4,8 @@ import { ProbandoJavascript } from "../components/ProbandoJavascript";
 import { ProbandoAPI } from "../components/ProbandoAPI";
 import { ProbandoListas } from "../components/ProbandoListas";
 import { ProbandoInput } from "../components/ProbandoInput";
-import { Botones } from "../components/Botones.js";
-import { Endpoint } from "../components/Endpoint.js";
+//import { Botones } from "../components/Botones.js";
+//import { Endpoint } from "../components/Endpoint.js";
 
 export default function IndexPage() {
   return (
@@ -15,8 +15,6 @@ export default function IndexPage() {
       <ProbandoAPI />
       <ProbandoListas />
       <ProbandoInput />
-      <Endpoint />
-      <Botones />
     </Stack>
   );
 }
