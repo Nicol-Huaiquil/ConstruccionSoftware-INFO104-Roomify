@@ -2,7 +2,7 @@ import { Button, Text, useToast } from "@chakra-ui/core";
 import Axios from "axios";
 import { useState } from "react";
 
-let uId = "24836";
+let uId = "14125";
 
 export const Endpoint = () => {
   const [apiData, setApiData] = useState();
