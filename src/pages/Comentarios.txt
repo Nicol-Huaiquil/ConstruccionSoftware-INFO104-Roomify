@@ -1,0 +1,7 @@
+Para index.js:
+    linea 12
+    <Heading>Hello World</Heading>
+    <ProbandoJavascript />
+    <ProbandoAPI />
+    <ProbandoListas />
+    <ProbandoInput />
