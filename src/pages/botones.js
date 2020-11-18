@@ -12,7 +12,7 @@ export const Botones = () => {
   return (
     <>
       <Roomify>
-        <Stack padding="500px" alingSelf="center">
+        <Stack alignItems="center">
           <Flex>
             <Button
               //colorScheme="blue"
