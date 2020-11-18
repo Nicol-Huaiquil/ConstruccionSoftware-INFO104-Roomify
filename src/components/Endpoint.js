@@ -2,7 +2,7 @@ import { Button, Text, useToast } from "@chakra-ui/core";
 import Axios from "axios";
 import { useState } from "react";
 
-let uId = "10101";
+let uId = "24836";
 
 export const Endpoint = () => {
   const [apiData, setApiData] = useState();
@@ -23,7 +23,9 @@ export const Endpoint = () => {
           });
           setIsLoading(false);
 
-          setApiData(data);
+          const dataString = JSON.stringify(data);
+
+          setApiData(dataString);
 
           toast({
             status: "success",
