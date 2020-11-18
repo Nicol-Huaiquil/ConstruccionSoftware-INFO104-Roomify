@@ -6,5 +6,10 @@ import { NextApiResponse, NextApiRequest } from "next";
  * @param {NextApiResponse} res
  */
 export default async (req, res) => {
-  //res.send("¡Endpoint!");
+  req.body;
+  let perfil1 = [21, "Isla Teja"];
+  let perfil2 = [20, "Isla Teja"];
+  let perfil3 = [19, "Miraflores"];
+  let perfiles = [perfil1, perfil2, perfil3];
+  res.send(perfiles);
 };
