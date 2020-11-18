@@ -45,7 +45,7 @@ export const RoomifyManual = ({ children }) => {
   return (
     <Stack>
       <Tabs
-        index={["/composicion", "/pagina1", "/taller"].indexOf(pathname)}
+        index={["/home", "/pagina1", "/taller"].indexOf(pathname)}
         alignSelf="center"
       >
         <TabList>

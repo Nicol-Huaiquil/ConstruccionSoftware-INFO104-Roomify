@@ -1,6 +1,6 @@
 import { Stack } from "@chakra-ui/core";
 
-import { Roomify } from "../pages/Roomify";
+import { Roomify } from "../components/Roomify";
 
 export default function IndexPage() {
   return (
