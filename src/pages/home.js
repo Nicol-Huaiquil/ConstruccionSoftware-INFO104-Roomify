@@ -12,6 +12,7 @@ import { Roomify } from "../components/Roomify";
 import { useEffect, useState } from "react";
 
 let uId = "14125";
+let i = 0;
 
 export default function Home() {
   const [apiData, setApiData] = useState();
@@ -33,88 +34,101 @@ export default function Home() {
   //setApiData(dataString);
 
   return (
-    <>
-      <Roomify>
-        <div>
-          <Stack padding="20px">
-            {loading && <Spinner />}
-            {apiData ? <Text>{JSON.stringify(apiData, null, 2)}</Text> : null}
-          </Stack>
+    <Roomify>
+      {loading && <Spinner />}
+      {apiData ? (
+        <div id="texto">
+          <Text>
+            <div>Nombre: {JSON.stringify(apiData[i].name, null, 2)}</div>
+            <div>Edad: {JSON.stringify(apiData[i].age, null, 2)} años</div>
+            <div>Género: {JSON.stringify(apiData[i].gender, null, 2)}</div>
+            <div>Campus: {JSON.stringify(apiData[i].campus, null, 2)}</div>
+            <div>Carrera: {JSON.stringify(apiData[i].degree, null, 2)}</div>
+            <div>
+              Descripción: {JSON.stringify(apiData[i].description, null, 2)}
+            </div>
+          </Text>
         </div>
-        <div></div>
-        <div id="bottomButtons">
-          <Stack
-            alignItems="center"
-            //direction="row"
-            //shadow="md"
-            //borderWidth="1px"
-            //width="fit-content"
-            //padding="10px"
-            //borderRadius="10px"
-            //alignSelf="center"
-          >
-            <Flex>
-              <Button
-                //colorScheme="blue"
-                bg="#2980b9"
-                width="50px"
-                height="50px"
-                type="submit"
-                margin="10px"
-                padding="0px"
-              >
-                <AiOutlineArrowLeft size="30px" color="white" />
-              </Button>
-              <Button
-                //colorScheme="purple"
-                bg="#ad1fe2"
-                width="50px"
-                height="50px"
-                type="submit"
-                margin="10px"
-                padding="0px"
-                onClick={() => {
-                  toast({
-                    title: "Perfil guardado",
-                    duration: 1000,
-                  });
-                }}
-              >
-                <BsFillBookmarkFill size="30px" color="white" />
-              </Button>
-              <Button
-                //colorScheme="green"
-                bg="#1fe25f"
-                width="50px"
-                height="50px"
-                type="submit"
-                margin="10px"
-                padding="0px"
-                onClick={() => {
-                  toast({
-                    title: "Solicitud de mensaje enviada",
-                    duration: 1000,
-                  });
-                }}
-              >
-                <AiFillMessage size="30px" color="white" />
-              </Button>
-              <Button
-                //colorScheme="blue"
-                bg="#2980b9"
-                width="50px"
-                height="50px"
-                type="submit"
-                margin="10px"
-                padding="0px"
-              >
-                <AiOutlineArrowRight size="30px" color="white" />
-              </Button>
-            </Flex>
-          </Stack>
-        </div>
-      </Roomify>
-    </>
+      ) : null}
+      <div id="bottomButtons">
+        <Stack
+          alignItems="center"
+          //direction="row"
+          //shadow="md"
+          //borderWidth="1px"
+          //width="fit-content"
+          //padding="10px"
+          //borderRadius="10px"
+          //alignSelf="center"
+        >
+          <Flex>
+            <Button
+              //colorScheme="blue"
+              bg="#2980b9"
+              width="50px"
+              height="50px"
+              type="submit"
+              margin="10px"
+              padding="0px"
+            >
+              <AiOutlineArrowLeft size="30px" color="white" />
+            </Button>
+            <Button
+              //colorScheme="purple"
+              bg="#ad1fe2"
+              width="50px"
+              height="50px"
+              type="submit"
+              margin="10px"
+              padding="0px"
+              onClick={() => {
+                toast({
+                  title: "Perfil guardado",
+                  duration: 1000,
+                });
+              }}
+            >
+              <BsFillBookmarkFill size="30px" color="white" />
+            </Button>
+            <Button
+              //colorScheme="green"
+              bg="#1fe25f"
+              width="50px"
+              height="50px"
+              type="submit"
+              margin="10px"
+              padding="0px"
+              onClick={() => {
+                toast({
+                  title: "Solicitud de mensaje enviada",
+                  duration: 1000,
+                });
+              }}
+            >
+              <AiFillMessage size="30px" color="white" />
+            </Button>
+            <Button
+              //colorScheme="blue"
+              bg="#2980b9"
+              width="50px"
+              height="50px"
+              type="submit"
+              margin="10px"
+              padding="0px"
+              onClick={() => {
+                i++;
+                toast({
+                  title: "i = " + i,
+                  duration: 1000,
+                });
+              }}
+            >
+              <AiOutlineArrowRight size="30px" color="white" />
+            </Button>
+          </Flex>
+        </Stack>
+      </div>
+    </Roomify>
   );
 }
 //export default Home;
