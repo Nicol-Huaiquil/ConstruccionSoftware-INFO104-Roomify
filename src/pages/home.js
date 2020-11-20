@@ -44,44 +44,34 @@ export default function Home() {
   }
 
   return (
-    <Roomify>
+    <>
       {loading ? (
-        loading && <Spinner alignSelf="center" />
+        <div id="loadingHome">
+          <Spinner />
+        </div>
       ) : (
-        <div>
+        <div id="home">
           {profiles ? (
             <div id="texto">
-              <div>
-                <Text>
-                  Nombre: {JSON.stringify(profiles[index].name, null, 2)}
-                </Text>
-              </div>
-              <div>
-                <Text>
-                  Edad: {JSON.stringify(profiles[index].age, null, 2)} años
-                </Text>
-              </div>
-              <div>
-                <Text>
-                  Género: {JSON.stringify(profiles[index].gender, null, 2)}
-                </Text>
-              </div>
-              <div>
-                <Text>
-                  Campus: {JSON.stringify(profiles[index].campus, null, 2)}
-                </Text>
-              </div>
-              <div>
-                <Text>
-                  Carrera: {JSON.stringify(profiles[index].degree, null, 2)}
-                </Text>
-              </div>
-              <div>
-                <Text>
-                  Descripción:{" "}
-                  {JSON.stringify(profiles[index].description, null, 2)}
-                </Text>
-              </div>
+              <ul>
+                <li>
+                  {JSON.stringify(profiles[index].name, null, 2).slice(1, -1)}
+                </li>
+                <li>{JSON.stringify(profiles[index].age, null, 2)} años</li>
+                <li>
+                  {JSON.stringify(profiles[index].degree, null, 2).slice(1, -1)}
+                </li>
+                <li>
+                  Campus{" "}
+                  {JSON.stringify(profiles[index].campus, null, 2).slice(1, -1)}
+                </li>
+                <li>
+                  {JSON.stringify(profiles[index].description, null, 2).slice(
+                    1,
+                    -1
+                  )}
+                </li>
+              </ul>
             </div>
           ) : null}
           <div id="bottomButtons">
@@ -150,7 +140,7 @@ export default function Home() {
           </div>
         </div>
       )}
-    </Roomify>
+    </>
   );
 }
 //export default Home;

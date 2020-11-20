@@ -2,10 +2,34 @@ body {
   font-family: Montserrat, sans-serif;
 }
 
+ul {
+  list-style-type: none;
+}
+
+#loadingHome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+#home {
+  height: 100vh;
+}
+
 #texto {
-  background-color: #f29033;
+  background-color: #f29033; /* cambiar color */
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10%;
+  height: 89vh;
 }
 
 #bottomButtons {
-  background-color: #3390f2;
+  background-color: #3390f2; /* cambiar color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 11vh;
 }
