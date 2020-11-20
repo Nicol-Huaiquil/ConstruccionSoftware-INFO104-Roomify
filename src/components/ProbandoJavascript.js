@@ -1,4 +1,4 @@
-import { Button, useToast } from "@chakra-ui/core";
+import { Button, useToast } from "@chakra-ui/react";
 import { isEqual } from "lodash";
 
 export const ProbandoJavascript = () => {

@@ -1,4 +1,4 @@
-import { Button, Text, useToast } from "@chakra-ui/core";
+import { Button, Text, useToast } from "@chakra-ui/react";
 import Axios from "axios";
 import { useState } from "react";
 import { MdHttp } from "react-icons/md";

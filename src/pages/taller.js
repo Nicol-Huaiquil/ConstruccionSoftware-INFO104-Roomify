@@ -7,7 +7,7 @@ import {
   AccordionIcon,
   Button,
   Stack,
-} from "@chakra-ui/core";
+} from "@chakra-ui/react";
 import { useState } from "react";
 import { Navigation } from "../components/Navigation";
 import Image from "next/image";

@@ -1,4 +1,4 @@
-import { Heading, Stack } from "@chakra-ui/core";
+import { Heading, Stack } from "@chakra-ui/react";
 
 import { ProbandoJavascript } from "../components/ProbandoJavascript";
 import { ProbandoAPI } from "../components/ProbandoAPI";

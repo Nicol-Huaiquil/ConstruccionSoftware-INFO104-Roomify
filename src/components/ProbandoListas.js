@@ -1,4 +1,4 @@
-import { Text, useToast } from "@chakra-ui/core";
+import { Text, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 
 const lorem =

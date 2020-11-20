@@ -3,7 +3,7 @@ import "../../public/style.css";
 import { AppProps } from "next/app";
 import Head from "next/head";
 
-import { ChakraProvider, extendTheme } from "@chakra-ui/core";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
 const customTheme = extendTheme({
   fonts: {

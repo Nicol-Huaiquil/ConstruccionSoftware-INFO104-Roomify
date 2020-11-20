@@ -1,4 +1,4 @@
-import { Stack, Tab, TabList, Tabs } from "@chakra-ui/core";
+import { Stack, Tab, TabList, Tabs } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 const routes = [

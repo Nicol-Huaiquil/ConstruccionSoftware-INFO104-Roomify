@@ -1,4 +1,4 @@
-import { Button, Flex, Input, Stack, useToast } from "@chakra-ui/core";
+import { Button, Flex, Input, Stack, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { HiCursorClick } from "react-icons/hi";
 

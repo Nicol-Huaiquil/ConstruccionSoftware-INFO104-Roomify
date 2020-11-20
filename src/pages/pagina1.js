@@ -1,4 +1,4 @@
-import { Box, Stack } from "@chakra-ui/core";
+import { Box, Stack } from "@chakra-ui/react";
 import { Navigation } from "../components/Navigation";
 
 const Pagina1 = () => {

@@ -1,4 +1,4 @@
-import { Stack } from "@chakra-ui/core";
+import { Stack } from "@chakra-ui/react";
 
 import { Roomify } from "../components/Roomify";
 
