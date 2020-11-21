@@ -4,7 +4,7 @@ import { useState } from "react";
 import { MdHttp } from "react-icons/md";
 
 export const ProbandoAPI = () => {
-  const [apiData, setApiData] = useState();
+  const [apiData, setApiData] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const toast = useToast();
   return (

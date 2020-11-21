@@ -7,7 +7,7 @@ import { dbConnection } from "../../db";
  * @param {NextApiResponse} res
  */
 export default async (req, res) => {
-  const { id_ejecutivo } = re.body;
+  const { id_ejecutivo } = req.body;
   const db = await dbConnection;
 
   const collection = db.collection(`clientes_${id_ejecutivo}`);

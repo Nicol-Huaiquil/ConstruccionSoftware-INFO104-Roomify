@@ -1,4 +1,4 @@
-import { Button, Flex, Stack, Spinner, Text, useToast } from "@chakra-ui/react";
+import { Button, Flex, Stack, Spinner, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import {
   AiOutlineArrowLeft,
