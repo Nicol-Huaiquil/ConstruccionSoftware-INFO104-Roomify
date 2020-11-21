@@ -1,5 +1,4 @@
 import { Button, Flex, Stack, Spinner, Text, useToast } from "@chakra-ui/react";
-import { useRouter } from "next/router";
 import axios from "axios";
 import {
   AiOutlineArrowLeft,
@@ -7,14 +6,18 @@ import {
   AiFillMessage,
 } from "react-icons/ai";
 import { BsFillBookmarkFill } from "react-icons/bs";
-import { Roomify } from "../components/Roomify";
 
 import { useEffect, useState } from "react";
 
-let uId = "14125";
+//let uId = "24836"; // Rodolfo Seguel
+//let uId = "28374"; // Gustavo Reyes
+let uId = "14125"; // Matilde Valera
+//let uId = "25098"; // Daniela Vega
+//let uId = "98000"; //Nicolás García
+//let uId = "84061"; // Trinidad Vásquez
 
 export default function Home() {
-  const [profiles, setProfiles] = useState();
+  const [profiles, setProfiles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [index, setIndex] = useState(0);
   const toast = useToast();
@@ -32,15 +35,11 @@ export default function Home() {
   }, []);
 
   function increaseIndex() {
-    profiles[index + 1]
-      ? setIndex((index) => index + 1)
-      : setIndex((index) => (index = 0));
+    profiles[index + 1] ? setIndex(index + 1) : setIndex(0);
   }
 
   function decreaseIndex() {
-    profiles[index - 1]
-      ? setIndex((index) => index - 1)
-      : setIndex((index) => (index = 7)); // el 7 debería ser el largo del arreglo profiles
+    profiles[index - 1] ? setIndex(index - 1) : setIndex(profiles.length - 1);
   }
 
   return (
@@ -51,8 +50,8 @@ export default function Home() {
         </div>
       ) : (
         <div id="home">
-          {profiles ? (
-            <div id="texto">
+          <div id="texto">
+            {profiles[index] ? (
               <ul>
                 <li>
                   {JSON.stringify(profiles[index].name, null, 2).slice(1, -1)}
@@ -72,8 +71,12 @@ export default function Home() {
                   )}
                 </li>
               </ul>
-            </div>
-          ) : null}
+            ) : (
+              <ul>
+                <li>No hay perfiles para mostrar.</li>
+              </ul>
+            )}
+          </div>
           <div id="bottomButtons">
             <Stack alignItems="center">
               <Flex>

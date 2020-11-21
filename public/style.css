@@ -19,10 +19,10 @@ ul {
 
 #texto {
   background-color: #f29033; /* cambiar color */
-  display: table-cell;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  vertical-align: middle;
-  padding: 10%;
   height: 89vh;
 }
 

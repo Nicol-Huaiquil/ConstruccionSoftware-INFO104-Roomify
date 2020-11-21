@@ -18,8 +18,8 @@ export default async (req, res) => {
 
   let i = 0;
   while (profiles[i].id != uId) i++;
-  let uProfile = profiles.splice(i);
-  let uPreferences = uProfile[0].preferences;
+  let uProfile = profiles.splice(i)[0];
+  let uPreferences = uProfile.preferences;
 
   for (let i = 0; i < profiles.length; i++) {
     if (
@@ -27,13 +27,13 @@ export default async (req, res) => {
       profiles[i].age > uPreferences.ageRange[1]
     )
       continue;
-    /*
+
     if (
       (profiles[i].campus != uProfile.campus && uPreferences.sameCampus) ||
-      (profiles[i].campus == uProfile.campus && ~uPreferences.sameCampus)
+      (profiles[i].campus == uProfile.campus && !uPreferences.sameCampus)
     )
       continue;
-    */
+
     if (profiles[i].hasCabin ^ uPreferences.hasCabin) continue;
     selectedProfiles.push(profiles[i]);
   }
