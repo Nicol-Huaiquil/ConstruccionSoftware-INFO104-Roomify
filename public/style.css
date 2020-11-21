@@ -18,7 +18,7 @@ ul {
 }
 
 #texto {
-  background-color: #f29033; /* cambiar color */
+  background-color: #98d6c5; /* cambiar color #98d6c5 */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,7 +27,7 @@ ul {
 }
 
 #bottomButtons {
-  background-color: #3390f2; /* cambiar color */
+  background-color: #679beb; /* cambiar color */
   display: flex;
   align-items: center;
   justify-content: center;

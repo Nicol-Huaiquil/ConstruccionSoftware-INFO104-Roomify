@@ -81,7 +81,7 @@ export default function Home() {
             <Stack alignItems="center">
               <Flex>
                 <Button
-                  bg="#2980b9"
+                  bg="#50EBA1"
                   width="50px"
                   height="50px"
                   type="submit"
@@ -94,7 +94,7 @@ export default function Home() {
                   <AiOutlineArrowLeft size="30px" color="white" />
                 </Button>
                 <Button
-                  bg="#ad1fe2"
+                  bg="#EB8273"
                   width="50px"
                   height="50px"
                   type="submit"
@@ -110,7 +110,7 @@ export default function Home() {
                   <BsFillBookmarkFill size="30px" color="white" />
                 </Button>
                 <Button
-                  bg="#1fe25f"
+                  bg="#EBB344"
                   width="50px"
                   height="50px"
                   type="submit"
@@ -126,7 +126,7 @@ export default function Home() {
                   <AiFillMessage size="30px" color="white" />
                 </Button>
                 <Button
-                  bg="#2980b9"
+                  bg="#50EBA1"
                   width="50px"
                   height="50px"
                   type="submit"
