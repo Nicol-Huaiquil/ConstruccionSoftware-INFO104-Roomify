@@ -64,6 +64,7 @@ export default function Home() {
                   Campus{" "}
                   {JSON.stringify(profiles[index].campus, null, 2).slice(1, -1)}
                 </li>
+                <li>—</li>
                 <li>
                   {JSON.stringify(profiles[index].description, null, 2).slice(
                     1,
