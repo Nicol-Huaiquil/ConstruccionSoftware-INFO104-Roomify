@@ -18,6 +18,8 @@ ul {
 }
 
 #texto {
+  /*Para cambiar el color del fondo
+  */
   background-color: #98d6c5; /* cambiar color #98d6c5 */
   display: flex;
   align-items: center;
@@ -29,6 +31,8 @@ ul {
 }
 
 #bottomButtons {
+  /*Para cambiar el color de la barra
+  */
   background-color: #679beb; /* cambiar color */
   display: flex;
   align-items: center;
