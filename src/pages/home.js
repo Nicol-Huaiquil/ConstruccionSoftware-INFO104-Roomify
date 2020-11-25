@@ -105,6 +105,7 @@ export default function Home() {
                     toast({
                       title: "Perfil guardado",
                       duration: 1000,
+                      position: "top",
                     });
                   }}
                 >
@@ -121,6 +122,7 @@ export default function Home() {
                     toast({
                       title: "Solicitud de mensaje enviada",
                       duration: 1000,
+                      position: "top",
                     });
                   }}
                 >
