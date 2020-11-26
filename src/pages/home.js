@@ -81,7 +81,6 @@ export default function Home() {
           <div id="bottomButtons">
             <Stack alignItems="center">
               <Flex>
-                //Boton flecha izquierda
                 <Button
                   bg="#50EBA1"
                   width="50px"
@@ -95,7 +94,7 @@ export default function Home() {
                 >
                   <AiOutlineArrowLeft size="30px" color="white" />
                 </Button>
-                //Boton de Guardar perfil
+
                 <Button
                   bg="#EB8273"
                   width="50px"
@@ -113,7 +112,7 @@ export default function Home() {
                 >
                   <BsFillBookmarkFill size="30px" color="white" />
                 </Button>
-                //Boton de Solicitud
+
                 <Button
                   bg="#EBB344"
                   width="50px"
@@ -131,7 +130,7 @@ export default function Home() {
                 >
                   <AiFillMessage size="30px" color="white" />
                 </Button>
-                //Boton flecha derecha
+
                 <Button
                   bg="#50EBA1"
                   width="50px"

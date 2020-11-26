@@ -6,6 +6,8 @@ ul {
   list-style-type: none;
 }
 
+/* Pantalla Home*/
+
 #loadingHome {
   display: flex;
   align-items: center;
@@ -18,9 +20,7 @@ ul {
 }
 
 #texto {
-  /*Para cambiar el color del fondo
-  */
-  background-color: #98d6c5; /* cambiar color #98d6c5 */
+  background-color: #98d6c5; /* cambiar color del fondo */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,11 +31,27 @@ ul {
 }
 
 #bottomButtons {
-  /*Para cambiar el color de la barra
-  */
-  background-color: #679beb; /* cambiar color */
+  background-color: #679beb; /* cambiar color de la barra */
   display: flex;
   align-items: center;
   justify-content: center;
   height: 11vh;
+}
+
+/* Pantalla Settings*/
+
+#settings {
+  background-color: #eeeeee;
+}
+
+#header {
+  background-color: #aaaaaa;
+  padding: 4%;
+}
+
+.option {
+  display: flex;
+  padding-top: 4%;
+  padding-bottom: 4%;
+  padding-inline: 8%;
 }

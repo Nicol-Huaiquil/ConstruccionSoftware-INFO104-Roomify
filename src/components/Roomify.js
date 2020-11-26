@@ -7,6 +7,10 @@ const routes = [
     text: "Home",
   },
   {
+    path: "/settings",
+    text: "Settings",
+  },
+  {
     path: "/ejemplos",
     text: "Ejemplos",
   },
@@ -45,7 +49,7 @@ export const RoomifyManual = ({ children }) => {
   return (
     <Stack>
       <Tabs
-        index={["/home", "/pagina1", "/taller"].indexOf(pathname)}
+        index={["/home", "settings", "/ejemplos"].indexOf(pathname)}
         alignSelf="center"
       >
         <TabList>
