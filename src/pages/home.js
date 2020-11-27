@@ -1,4 +1,11 @@
-import { Button, Flex, Stack, Spinner, useToast } from "@chakra-ui/react";
+import {
+  Button,
+  Flex,
+  Stack,
+  Spinner,
+  Avatar,
+  useToast,
+} from "@chakra-ui/react";
 import axios from "axios";
 import {
   AiOutlineArrowLeft,
@@ -19,6 +26,8 @@ let uId = "14125"; // Matilde Valera
 export default function Home() {
   const [profiles, setProfiles] = useState([]);
   const [loading, setLoading] = useState(true);
+  //const [success, setSuccess] = useState(false);
+  const [id, setId] = useState();
   const [index, setIndex] = useState(0);
   const toast = useToast();
   useEffect(() => {
@@ -34,12 +43,35 @@ export default function Home() {
       });
   }, []);
 
+  useEffect(() => {
+    axios
+      .post("/api/marcarPerfil", {
+        uId: uId,
+        id: id,
+      })
+      .then(({ data }) => {
+        showToast(data);
+      });
+  }, [id]);
+
   function increaseIndex() {
     profiles[index + 1] ? setIndex(index + 1) : setIndex(0);
   }
 
   function decreaseIndex() {
     profiles[index - 1] ? setIndex(index - 1) : setIndex(profiles.length - 1);
+  }
+
+  function showToast(success) {
+    if (success) {
+      toast({
+        title: "Perfil guardado",
+        duration: 1000,
+        position: "top",
+        status: "success",
+      });
+      setId(undefined); // parche
+    }
   }
 
   return (
@@ -49,28 +81,19 @@ export default function Home() {
           <Spinner />
         </div>
       ) : (
-        <div id="home">
-          <div id="texto">
+        <>
+          <div id="home">
             {profiles[index] ? (
               <ul>
                 <li>
-                  {JSON.stringify(profiles[index].name, null, 2).slice(1, -1)}
+                  <Avatar bg="teal.500" size="2xl" m="4%" />
                 </li>
-                <li>{JSON.stringify(profiles[index].age, null, 2)} años</li>
-                <li>
-                  {JSON.stringify(profiles[index].degree, null, 2).slice(1, -1)}
-                </li>
-                <li>
-                  Campus{" "}
-                  {JSON.stringify(profiles[index].campus, null, 2).slice(1, -1)}
-                </li>
+                <li>{profiles[index].name}</li>
+                <li>{profiles[index].age} años</li>
+                <li>{profiles[index].degree}</li>
+                <li>Campus {profiles[index].campus}</li>
                 <li>—</li>
-                <li>
-                  {JSON.stringify(profiles[index].description, null, 2).slice(
-                    1,
-                    -1
-                  )}
-                </li>
+                <li>{profiles[index].description}</li>
               </ul>
             ) : (
               <ul>
@@ -78,7 +101,7 @@ export default function Home() {
               </ul>
             )}
           </div>
-          <div id="bottomButtons">
+          <div id="bottomBar">
             <Stack alignItems="center">
               <Flex>
                 <Button
@@ -103,11 +126,7 @@ export default function Home() {
                   margin="10px"
                   padding="0px"
                   onClick={() => {
-                    toast({
-                      title: "Perfil guardado",
-                      duration: 1000,
-                      position: "top",
-                    });
+                    setId(profiles[index].id);
                   }}
                 >
                   <BsFillBookmarkFill size="30px" color="white" />
@@ -147,7 +166,7 @@ export default function Home() {
               </Flex>
             </Stack>
           </div>
-        </div>
+        </>
       )}
     </>
   );

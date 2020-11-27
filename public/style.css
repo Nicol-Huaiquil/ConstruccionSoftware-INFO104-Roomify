@@ -1,12 +1,14 @@
 body {
   font-family: Montserrat, sans-serif;
+  height: 100%;
+  margin: 0;
 }
 
 ul {
   list-style-type: none;
 }
 
-/* Pantalla Home*/
+/* Pantalla Home */
 
 #loadingHome {
   display: flex;
@@ -16,21 +18,17 @@ ul {
 }
 
 #home {
-  height: 100vh;
-}
-
-#texto {
   background-color: #98d6c5; /* cambiar color del fondo */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 89vh;
   padding-left: 10%;
   padding-right: 10%;
+  height: 89vh;
 }
 
-#bottomButtons {
+#bottomBar {
   background-color: #679beb; /* cambiar color de la barra */
   display: flex;
   align-items: center;
@@ -38,15 +36,32 @@ ul {
   height: 11vh;
 }
 
-/* Pantalla Settings*/
+/* Pantalla Settings */
 
 #settings {
   background-color: #eeeeee;
 }
 
-#header {
+#settingsHeader {
   background-color: #aaaaaa;
-  padding: 4%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+}
+
+/* Pantalla Edit Profile */
+
+#editProfileHeader {
+  background-color: #aaaaaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+}
+
+#editProfile {
+  background-color: #eeeeee;
 }
 
 .option {
@@ -54,4 +69,59 @@ ul {
   padding-top: 4%;
   padding-bottom: 4%;
   padding-inline: 8%;
+}
+
+/* Pantalla My Profile */
+
+#myProfileHeader {
+  background-color: #aaaaaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+}
+
+#loadingMyProfile {
+  background-color: #eeeeee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+}
+
+#myProfile {
+  background-color: #eeeeee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-left: 10%;
+  padding-right: 10%;
+  height: 90vh;
+}
+
+/* Pantalla Bookmarked Profiles */
+
+#bookmarkedHeader {
+  background-color: #aaaaaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+}
+
+#loadingBookmarked {
+  background-color: #eeeeee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+}
+
+#bookmarked {
+  background-color: #eeeeee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
 }

@@ -7,8 +7,20 @@ const routes = [
     text: "Home",
   },
   {
+    path: "/myProfile",
+    text: "My Profile",
+  },
+  {
+    path: "/editProfile",
+    text: "Edit Profile",
+  },
+  {
     path: "/settings",
     text: "Settings",
+  },
+  {
+    path: "/bookmarkedProfiles",
+    text: "Bookmarked Profiles",
   },
   {
     path: "/ejemplos",

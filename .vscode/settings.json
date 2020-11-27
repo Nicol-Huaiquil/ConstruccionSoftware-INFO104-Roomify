@@ -3,5 +3,6 @@
   "workbench.colorTheme": "One Dark Pro",
   "workbench.iconTheme": "vscode-icons",
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.printWidth": 100
 }
