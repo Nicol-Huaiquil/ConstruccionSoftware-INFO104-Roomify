@@ -27,7 +27,7 @@ ul {
   padding-right: 10%;
   height: 80vh;
 }
-#TopBar {
+#topBar {
   background-color: #679beb; /* cambiar color de la barra */
   display: flex;
   align-items: center;
