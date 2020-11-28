@@ -82,6 +82,7 @@ export default function Home() {
         </div>
       ) : (
         <>
+          <div id="TopBar"></div>
           <div id="home">
             {profiles[index] ? (
               <ul>

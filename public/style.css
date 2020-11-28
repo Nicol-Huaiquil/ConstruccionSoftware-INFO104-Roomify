@@ -25,7 +25,14 @@ ul {
   text-align: center;
   padding-left: 10%;
   padding-right: 10%;
-  height: 89vh;
+  height: 80vh;
+}
+#TopBar {
+  background-color: #679beb; /* cambiar color de la barra */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
 }
 
 #bottomBar {
@@ -33,7 +40,7 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 11vh;
+  height: 10vh;
 }
 
 /* Pantalla Settings */
