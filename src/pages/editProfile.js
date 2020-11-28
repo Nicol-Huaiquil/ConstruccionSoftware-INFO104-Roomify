@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 //let uId = "24836"; // Rodolfo Seguel
 //let uId = "28374"; // Gustavo Reyes
@@ -35,6 +36,7 @@ export default function Settings() {
     description: "",
   });
   const [loading, setLoading] = useState(true);
+  const { push, pathname } = useRouter();
   useEffect(() => {
     axios
       .post("/api/obtenerPerfil", {
@@ -197,7 +199,14 @@ export default function Settings() {
           </Box>
 
           <Flex py="4%" px="8%" justify="right">
-            <Button colorScheme="green">Guardar</Button>
+            <Button
+              colorScheme="green"
+              onClick={() => {
+                push("/home");
+              }}
+            >
+              Guardar
+            </Button>
           </Flex>
         </Box>
       )}

@@ -11,6 +11,8 @@ import {
   DrawerOverlay,
   DrawerContent,
   useDisclosure,
+  Grid,
+  GridItem,
 } from "@chakra-ui/react";
 import axios from "axios";
 import {
@@ -22,6 +24,7 @@ import { TiThMenu } from "react-icons/ti";
 import { BsFillBookmarkFill } from "react-icons/bs";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 //let uId = "24836"; // Rodolfo Seguel
 //let uId = "28374"; // Gustavo Reyes
@@ -39,6 +42,7 @@ export default function Home() {
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
+  const { push, pathname } = useRouter();
   useEffect(() => {
     axios
       .post("/api/obtenerPerfiles", {
@@ -110,7 +114,39 @@ export default function Home() {
             >
               <DrawerOverlay>
                 <DrawerContent>
-                  <DrawerHeader>Probando Drawer</DrawerHeader>
+                  <DrawerHeader bg="#679beb" padding="0px">
+                    <Grid
+                      h="10vh"
+                      templateRows="repeat(2, 1fr)"
+                      templateColumns="repeat(5, 1fr)"
+                      gap={0}
+                      margin="5px"
+                    >
+                      <GridItem
+                        rowSpan={2}
+                        colSpan={1}
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="center"
+                      >
+                        {" "}
+                        <Avatar bg="teal.500" width="60px" height="60px" />{" "}
+                      </GridItem>
+                      <GridItem colSpan={4} display="flex" alignItems="center">
+                        Elba Zurita
+                      </GridItem>
+                      <GridItem colSpan={4} display="flex" alignItems="center">
+                        <Button
+                          bg="teal.500"
+                          onClick={() => {
+                            push("/editProfile");
+                          }}
+                        >
+                          EDITAR PERFIL
+                        </Button>
+                      </GridItem>
+                    </Grid>
+                  </DrawerHeader>
                 </DrawerContent>
               </DrawerOverlay>
             </Drawer>
