@@ -31,7 +31,7 @@ ul {
   background-color: #679beb; /* cambiar color de la barra */
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   height: 10vh;
 }
 

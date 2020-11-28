@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Button,
   Flex,
@@ -5,6 +6,15 @@ import {
   Spinner,
   Avatar,
   useToast,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  useDisclosure,
+  Input,
 } from "@chakra-ui/react";
 import axios from "axios";
 import {
@@ -12,6 +22,7 @@ import {
   AiOutlineArrowRight,
   AiFillMessage,
 } from "react-icons/ai";
+import { TiThMenu } from "react-icons/ti";
 import { BsFillBookmarkFill } from "react-icons/bs";
 
 import { useEffect, useState } from "react";
@@ -30,6 +41,8 @@ export default function Home() {
   const [id, setId] = useState();
   const [index, setIndex] = useState(0);
   const toast = useToast();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = React.useRef();
   useEffect(() => {
     axios
       .post("/api/obtenerPerfiles", {
@@ -82,7 +95,30 @@ export default function Home() {
         </div>
       ) : (
         <>
-          <div id="topBar"></div>
+          <div id="topBar">
+            <Button
+              bg="#679beb"
+              width="60px"
+              height="50px"
+              padding="0px"
+              ref={btnRef}
+              onClick={onOpen}
+            >
+              <TiThMenu size="40px" color="white" />
+            </Button>
+            <Drawer
+              isOpen={isOpen}
+              placement="right"
+              onClose={onClose}
+              finalFocusRef={btnRef}
+            >
+              <DrawerOverlay>
+                <DrawerContent>
+                  <DrawerHeader>Probando Drawer</DrawerHeader>
+                </DrawerContent>
+              </DrawerOverlay>
+            </Drawer>
+          </div>
           <div id="home">
             {profiles[index] ? (
               <ul>
