@@ -7,14 +7,10 @@ import {
   Avatar,
   useToast,
   Drawer,
-  DrawerBody,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
-  DrawerCloseButton,
   useDisclosure,
-  Input,
 } from "@chakra-ui/react";
 import axios from "axios";
 import {
