@@ -134,7 +134,10 @@ export default function Home() {
                           push("/myProfile");
                         }}
                       >
-                        <Avatar bg="teal.500" width="60px" height="60px" />
+                        <>
+                          <Avatar bg="teal.500" width="60px" height="60px" />
+                          <Text fontSize="3vh"> Ver perfil</Text>
+                        </>
                       </Button>
                     </GridItem>
                     <GridItem rowSpan={2} colSpan={1}>

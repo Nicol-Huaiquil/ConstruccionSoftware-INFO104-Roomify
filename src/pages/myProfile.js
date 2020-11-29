@@ -1,7 +1,16 @@
-import { Box, Text, Spinner, Avatar } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Spinner,
+  Avatar,
+  Button,
+  Grid,
+  GridItem,
+} from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import { AiOutlineArrowLeft } from "react-icons/ai";
+import { useRouter } from "next/router";
 //let uId = "24836"; // Rodolfo Seguel
 //let uId = "28374"; // Gustavo Reyes
 let uId = "14125"; // Matilde Valera
@@ -17,6 +26,7 @@ export default function Settings() {
     degree: "",
     description: "",
   });
+  const { push, pathname } = useRouter();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
@@ -34,9 +44,34 @@ export default function Settings() {
   return (
     <>
       <Box id="myProfileHeader">
-        <Text fontSize="lg" textAlign="center">
-          My Profile
-        </Text>
+        <Grid
+          h="10vh"
+          templateRows="repeat (1,1fr)"
+          templateColumns="repeat (6,1fr)"
+          gap={0}
+        >
+          <GridItem rowSpan={1} colSpan={1}>
+            <Button
+              bg="#50EBA1"
+              width="50px"
+              height="50px"
+              type="submit"
+              margin="10px"
+              padding="0px"
+              onClick={() => {
+                push("/home");
+              }}
+            >
+              <AiOutlineArrowLeft size="30px" color="white" />
+            </Button>
+          </GridItem>
+          <GridItem rowSpan={1} colSpan={4}>
+            <Text fontSize="lg" textAlign="center">
+              My Profile
+            </Text>
+          </GridItem>
+          <GridItem rowSpan={1} colSpan={1}></GridItem>
+        </Grid>
       </Box>
       {loading ? (
         <Box id="loadingMyProfile">
@@ -48,6 +83,7 @@ export default function Settings() {
             <li>
               <Avatar bg="teal.500" size="2xl" m="4%" />
             </li>
+
             <li>{JSON.stringify(profile.name, null, 2).slice(1, -1)}</li>
             <li>{JSON.stringify(profile.age, null, 2)} años</li>
             <li>{JSON.stringify(profile.degree, null, 2).slice(1, -1)}</li>
@@ -56,6 +92,20 @@ export default function Settings() {
             </li>
             <li>—</li>
             <li>{JSON.stringify(profile.description, null, 2).slice(1, -1)}</li>
+            <li>
+              <Button
+                bg="green.300"
+                width="100%"
+                height="100%"
+                my="1vh"
+                padding="2vh"
+                onClick={() => {
+                  push("/editProfile");
+                }}
+              >
+                <Text fontSize="3vh">Editar perfil</Text>
+              </Button>
+            </li>
           </ul>
         </Box>
       )}

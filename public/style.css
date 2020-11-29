@@ -75,9 +75,6 @@ ul {
 
 #myProfileHeader {
   background-color: #aaaaaa;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 10vh;
 }
 
