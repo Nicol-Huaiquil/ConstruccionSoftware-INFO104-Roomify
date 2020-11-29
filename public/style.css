@@ -71,13 +71,6 @@ ul {
   background-color: #eeeeee;
 }
 
-.option {
-  display: flex;
-  padding-top: 4%;
-  padding-bottom: 4%;
-  padding-inline: 8%;
-}
-
 /* Pantalla My Profile */
 
 #myProfileHeader {

@@ -63,15 +63,15 @@ export default function Settings() {
           <Spinner />
         </Box>
       ) : (
-        <Box id="editProfile">
-          <Box className="option">
+        <Box id="editProfile" padding="5vh">
+          <Box>
             <FormControl id="name">
               <FormLabel>Nombre</FormLabel>
               <Input defaultValue={profile.name} />
             </FormControl>
           </Box>
 
-          <Box className="option">
+          <Box>
             <FormControl id="age">
               <FormLabel>Edad</FormLabel>
               <NumberInput defaultValue={profile.age}>
@@ -80,7 +80,7 @@ export default function Settings() {
             </FormControl>
           </Box>
 
-          <Box className="option">
+          <Box>
             <FormControl id="gender" as="fieldset">
               <FormLabel as="legend">Género</FormLabel>
               <RadioGroup defaultValue={profile.gender}>
@@ -102,7 +102,7 @@ export default function Settings() {
             </FormControl>
           </Box>
 
-          <Box className="option">
+          <Box>
             <FormControl id="campus">
               <FormLabel>Campus</FormLabel>
               <Select
@@ -115,7 +115,7 @@ export default function Settings() {
             </FormControl>
           </Box>
 
-          <Box className="option">
+          <Box>
             <FormControl id="degree">
               <FormLabel>Carrera</FormLabel>
               <Select
@@ -175,7 +175,7 @@ export default function Settings() {
             </FormControl>
           </Box>
 
-          <Box className="option">
+          <Box>
             <FormControl id="hasCabin" as="fieldset">
               <FormLabel as="legend">Tengo cabaña</FormLabel>
               <RadioGroup defaultValue={profile.hasCabin ? "s" : "n"}>
@@ -191,18 +191,18 @@ export default function Settings() {
             </FormControl>
           </Box>
 
-          <Box className="option">
+          <Box>
             <FormControl id="description">
               <FormLabel>Descripción</FormLabel>
               <Textarea placeholder="..." defaultValue={profile.description} />
             </FormControl>
           </Box>
 
-          <Flex py="4%" px="8%" justify="right">
+          <Flex py="4%" px="8%" display="flex" justify="flex-end">
             <Button
               colorScheme="green"
               onClick={() => {
-                push("/home");
+                push("/myProfile");
               }}
             >
               Guardar
