@@ -7,7 +7,6 @@ import {
   Avatar,
   useToast,
   Drawer,
-  DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   useDisclosure,
@@ -38,6 +37,9 @@ let uId = "14125"; // Matilde Valera
 
 export default function Home() {
   const [profiles, setProfiles] = useState([]);
+  const [myProfile, setMyProfile] = useState({
+    pic: "",
+  });
   const [loading, setLoading] = useState(true);
   //const [success, setSuccess] = useState(false);
   const [id, setId] = useState();
@@ -56,6 +58,16 @@ export default function Home() {
       })
       .finally(() => {
         setLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .post("/api/obtenerPerfil", {
+        id: uId,
+      })
+      .then(({ data }) => {
+        setMyProfile(data);
       });
   }, []);
 
@@ -135,7 +147,12 @@ export default function Home() {
                         }}
                       >
                         <>
-                          <Avatar bg="teal.500" width="60px" height="60px" />
+                          <Avatar
+                            bg="teal.500"
+                            width="60px"
+                            height="60px"
+                            src={myProfile.pic}
+                          />
                           <Text fontSize="3vh"> Ver perfil</Text>
                         </>
                       </Button>
@@ -191,7 +208,12 @@ export default function Home() {
             {profiles[index] ? (
               <ul>
                 <li>
-                  <Avatar bg="teal.500" size="2xl" m="4%" />
+                  <Avatar
+                    bg="teal.500"
+                    size="2xl"
+                    m="4%"
+                    src={profiles[index].pic}
+                  />
                 </li>
                 <li>{profiles[index].name}</li>
                 <li>{profiles[index].age} años</li>
