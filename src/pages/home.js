@@ -13,6 +13,7 @@ import {
   useDisclosure,
   Grid,
   GridItem,
+  Text,
 } from "@chakra-ui/react";
 import axios from "axios";
 import {
@@ -20,8 +21,10 @@ import {
   AiOutlineArrowRight,
   AiFillMessage,
 } from "react-icons/ai";
-import { TiThMenu } from "react-icons/ti";
 import { BsFillBookmarkFill } from "react-icons/bs";
+import { CgLogOut } from "react-icons/cg";
+import { IoMdSettings } from "react-icons/io";
+import { TiThMenu } from "react-icons/ti";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
@@ -98,13 +101,14 @@ export default function Home() {
           <div id="topBar">
             <Button
               bg="#679beb"
-              width="60px"
-              height="50px"
+              width="8vh"
+              height="8vh"
               padding="0px"
+              margin="2vh"
               ref={btnRef}
               onClick={onOpen}
             >
-              <TiThMenu size="40px" color="white" />
+              <TiThMenu size="6vh" color="white" />
             </Button>
             <Drawer
               isOpen={isOpen}
@@ -114,39 +118,68 @@ export default function Home() {
             >
               <DrawerOverlay>
                 <DrawerContent>
-                  <DrawerHeader bg="#679beb" padding="0px">
-                    <Grid
-                      h="10vh"
-                      templateRows="repeat(2, 1fr)"
-                      templateColumns="repeat(5, 1fr)"
-                      gap={0}
-                      margin="5px"
-                    >
-                      <GridItem
-                        rowSpan={2}
-                        colSpan={1}
-                        display="flex"
-                        alignItems="center"
-                        justifyContent="center"
+                  <Grid
+                    h="100vh"
+                    templateRows="repeat(7, 1fr)"
+                    templateColumns="repeat(2, 1fr)"
+                    gap="1vh"
+                    margin="1vh"
+                  >
+                    <GridItem rowSpan={2} colSpan={2}>
+                      <Button
+                        bg="gray.300"
+                        width="100%"
+                        height="100%"
+                        onClick={() => {
+                          push("/myProfile");
+                        }}
                       >
-                        {" "}
-                        <Avatar bg="teal.500" width="60px" height="60px" />{" "}
-                      </GridItem>
-                      <GridItem colSpan={4} display="flex" alignItems="center">
-                        Elba Zurita
-                      </GridItem>
-                      <GridItem colSpan={4} display="flex" alignItems="center">
-                        <Button
-                          bg="teal.500"
-                          onClick={() => {
-                            push("/editProfile");
-                          }}
-                        >
-                          EDITAR PERFIL
-                        </Button>
-                      </GridItem>
-                    </Grid>
-                  </DrawerHeader>
+                        <Avatar bg="teal.500" width="60px" height="60px" />
+                      </Button>
+                    </GridItem>
+                    <GridItem rowSpan={2} colSpan={1}>
+                      <Button bg="orange.300" width="100%" height="100%">
+                        <AiFillMessage size="9vh" />
+                      </Button>
+                    </GridItem>
+                    <GridItem rowSpan={2} colSpan={1}>
+                      <Button
+                        bg="green.400"
+                        width="100%"
+                        height="100%"
+                        onClick={() => {
+                          push("/bookmarkedProfiles");
+                        }}
+                      >
+                        <BsFillBookmarkFill size="9vh" />
+                      </Button>
+                    </GridItem>
+                    <GridItem rowSpan={2} colSpan={1}>
+                      <Button
+                        bg="yellow.300"
+                        width="100%"
+                        height="100%"
+                        onClick={() => {
+                          push("/settings");
+                        }}
+                      >
+                        <IoMdSettings size="10vh" />
+                      </Button>
+                    </GridItem>
+                    <GridItem rowSpan={2} colSpan={1}>
+                      <Button bg="purple.500" width="100%" height="100%">
+                        XD
+                      </Button>
+                    </GridItem>
+                    <GridItem rowSpan={1} colSpan={2}>
+                      <Button bg="red.500" width="100%" height="100%">
+                        <CgLogOut size="6vh" color="white" />
+                        <Text fontSize="xl" color="white" m="1vh">
+                          Cerrar sesión
+                        </Text>
+                      </Button>
+                    </GridItem>
+                  </Grid>
                 </DrawerContent>
               </DrawerOverlay>
             </Drawer>
