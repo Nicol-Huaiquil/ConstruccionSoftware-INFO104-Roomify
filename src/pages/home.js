@@ -38,6 +38,7 @@ let uId = "14125"; // Matilde Valera
 export default function Home() {
   const [profiles, setProfiles] = useState([]);
   const [myProfile, setMyProfile] = useState({
+    name: "",
     pic: "",
   });
   const [loading, setLoading] = useState(true);
@@ -149,11 +150,12 @@ export default function Home() {
                         <>
                           <Avatar
                             bg="teal.500"
+                            mr="1vh"
                             width="60px"
                             height="60px"
                             src={myProfile.pic}
                           />
-                          <Text fontSize="3vh"> Ver perfil</Text>
+                          <Text fontSize="3vh">{myProfile.name}</Text>
                         </>
                       </Button>
                     </GridItem>

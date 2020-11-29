@@ -1,5 +1,7 @@
 import {
   Box,
+  Grid,
+  GridItem,
   Flex,
   Text,
   Spinner,
@@ -16,6 +18,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 import { useRouter } from "next/router";
 
 //let uId = "24836"; // Rodolfo Seguel
@@ -53,9 +56,44 @@ export default function Settings() {
   return (
     <>
       <Box id="editProfileHeader">
-        <Text fontSize="lg" textAlign="center">
-          Editar Perfil
-        </Text>
+        <Grid
+          h="10vh"
+          templateRows="repeat(1, 1fr)"
+          templateColumns="repeat(12, 1fr)"
+          gap={4}
+        >
+          <GridItem
+            rowSpan={1}
+            colSpan={3}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Button
+              bg="#868686"
+              width="50px"
+              height="50px"
+              type="submit"
+              padding="0px"
+              onClick={() => {
+                push("/myProfile");
+              }}
+            >
+              <AiOutlineArrowLeft size="30px" color="white" />
+            </Button>
+          </GridItem>
+          <GridItem
+            rowSpan={1}
+            colSpan={6}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Text fontSize="lg" textAlign="center">
+              Editar Perfil
+            </Text>
+          </GridItem>
+        </Grid>
       </Box>
 
       {loading ? (
@@ -63,7 +101,7 @@ export default function Settings() {
           <Spinner />
         </Box>
       ) : (
-        <Box id="editProfile" padding="5vh">
+        <Box id="editProfile" p="5vh">
           <Box>
             <FormControl id="name">
               <FormLabel>Nombre</FormLabel>
@@ -198,7 +236,7 @@ export default function Settings() {
             </FormControl>
           </Box>
 
-          <Flex py="4%" px="8%" display="flex" justify="flex-end">
+          <Flex py="4%" display="flex" justify="flex-end">
             <Button
               colorScheme="green"
               onClick={() => {

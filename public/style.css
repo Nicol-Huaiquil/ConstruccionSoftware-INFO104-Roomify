@@ -45,25 +45,19 @@ ul {
 
 /* Pantalla Settings */
 
-#settings {
-  background-color: #eeeeee;
-}
-
 #settingsHeader {
   background-color: #aaaaaa;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 10vh;
+}
+
+#settings {
+  background-color: #eeeeee;
 }
 
 /* Pantalla Edit Profile */
 
 #editProfileHeader {
   background-color: #aaaaaa;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 10vh;
 }
 
