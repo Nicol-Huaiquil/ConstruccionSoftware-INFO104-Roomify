@@ -25,6 +25,7 @@ export default function Settings() {
     campus: "",
     degree: "",
     description: "",
+    pic: "",
   });
   const { push, pathname } = useRouter();
   const [loading, setLoading] = useState(true);
@@ -81,7 +82,7 @@ export default function Settings() {
         <Box id="myProfile">
           <ul>
             <li>
-              <Avatar bg="teal.500" size="2xl" m="4%" />
+              <Avatar bg="teal.500" size="2xl" m="4%" src={profile.pic} />
             </li>
 
             <li>{JSON.stringify(profile.name, null, 2).slice(1, -1)}</li>
