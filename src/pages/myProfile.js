@@ -2,8 +2,10 @@ import {
   Box,
   Text,
   Spinner,
+  VStack,
   Avatar,
   Button,
+  IconButton,
   Grid,
   GridItem,
 } from "@chakra-ui/react";
@@ -11,6 +13,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { useRouter } from "next/router";
+
 //let uId = "24836"; // Rodolfo Seguel
 //let uId = "28374"; // Gustavo Reyes
 let uId = "14125"; // Matilde Valera
@@ -19,7 +22,7 @@ let uId = "14125"; // Matilde Valera
 //let uId = "84061"; // Trinidad Vásquez
 
 export default function Settings() {
-  const [profile, setProfile] = useState({
+  const [myProfile, setMyProfile] = useState({
     name: "",
     age: 0,
     campus: "",
@@ -27,7 +30,7 @@ export default function Settings() {
     description: "",
     pic: "",
   });
-  const { push, pathname } = useRouter();
+  const { push } = useRouter();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
@@ -35,7 +38,7 @@ export default function Settings() {
         id: uId,
       })
       .then(({ data }) => {
-        setProfile(data);
+        setMyProfile(data);
       })
       .finally(() => {
         setLoading(false);
@@ -44,80 +47,56 @@ export default function Settings() {
 
   return (
     <>
-      <Box id="myProfileHeader">
-        <Grid
-          h="10vh"
-          templateRows="repeat(1, 1fr)"
-          templateColumns="repeat(12, 1fr)"
-          gap={4}
-        >
-          <GridItem
-            rowSpan={1}
-            colSpan={3}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <Button
+      <Box className="h1 gray2">
+        <Grid className="h1" templateColumns="repeat(4, 1fr)" gap={4}>
+          <GridItem className="centeredFlex">
+            <IconButton
               bg="#868686"
-              width="50px"
-              height="50px"
+              width="7vh"
+              height="7vh"
               type="submit"
-              padding="0px"
+              aria-label="Volver"
+              icon={<AiOutlineArrowLeft size="4vh" color="white" />}
               onClick={() => {
                 push("/home");
               }}
-            >
-              <AiOutlineArrowLeft size="30px" color="white" />
-            </Button>
+            ></IconButton>
           </GridItem>
-          <GridItem
-            rowSpan={1}
-            colSpan={6}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <Text fontSize="lg" textAlign="center">
+          <GridItem className="centeredFlex" colSpan={2}>
+            <Text fontSize="3vh" textAlign="center">
               Mi Perfil
             </Text>
           </GridItem>
         </Grid>
       </Box>
       {loading ? (
-        <Box id="loadingMyProfile">
+        <Box className="centeredFlex h2 gray1">
           <Spinner />
         </Box>
       ) : (
-        <Box id="myProfile">
-          <ul>
-            <li>
-              <Avatar bg="teal.500" size="2xl" m="4%" src={profile.pic} />
-            </li>
-
-            <li>{JSON.stringify(profile.name, null, 2).slice(1, -1)}</li>
-            <li>{JSON.stringify(profile.age, null, 2)} años</li>
-            <li>{JSON.stringify(profile.degree, null, 2).slice(1, -1)}</li>
-            <li>
-              Campus {JSON.stringify(profile.campus, null, 2).slice(1, -1)}
-            </li>
-            <li>—</li>
-            <li>{JSON.stringify(profile.description, null, 2).slice(1, -1)}</li>
-            <li>
-              <Button
-                bg="green.300"
-                width="100%"
-                height="100%"
-                my="1vh"
-                padding="2vh"
-                onClick={() => {
-                  push("/editProfile");
-                }}
-              >
-                <Text fontSize="3vh">Editar perfil</Text>
-              </Button>
-            </li>
-          </ul>
+        <Box id="myProfile" className="centeredFlex h2 gray1">
+          <VStack spacing="2.5vh" py="2.5vh">
+            <Avatar bg="teal.500" size="2xl" src={myProfile.pic} />
+            <VStack spacing="0">
+              <Text>{myProfile.name}</Text>
+              <Text>{myProfile.age} años</Text>
+              <Text>{myProfile.degree}</Text>
+              <Text>Campus {myProfile.campus}</Text>
+              <Text>—</Text>
+              <Text>{myProfile.description}</Text>
+            </VStack>
+            <Button
+              bg="green.300"
+              width="100%"
+              height="100%"
+              p="2vh"
+              onClick={() => {
+                push("/editProfile");
+              }}
+            >
+              <Text fontSize="3vh">Editar perfil</Text>
+            </Button>
+          </VStack>
         </Box>
       )}
     </>

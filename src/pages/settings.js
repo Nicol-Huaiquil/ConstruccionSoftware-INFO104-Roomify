@@ -2,7 +2,7 @@ import {
   Box,
   Grid,
   GridItem,
-  Button,
+  IconButton,
   Text,
   Switch,
   Spacer,
@@ -11,51 +11,33 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import { useRouter } from "next/router";
 
 export default function Settings() {
-  const { push, pathname } = useRouter();
+  const { push } = useRouter();
   return (
     <>
-      <Box id="settingsHeader">
-        <Grid
-          h="10vh"
-          templateRows="repeat(1, 1fr)"
-          templateColumns="repeat(12, 1fr)"
-          gap={4}
-        >
-          <GridItem
-            rowSpan={1}
-            colSpan={3}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <Button
+      <Box className="h1 gray2">
+        <Grid className="h1" templateColumns="repeat(4, 1fr)" gap={4}>
+          <GridItem className="centeredFlex">
+            <IconButton
               bg="#868686"
-              width="50px"
-              height="50px"
+              width="7vh"
+              height="7vh"
               type="submit"
-              padding="0px"
+              aria-label="Volver"
+              icon={<AiOutlineArrowLeft size="4vh" color="white" />}
               onClick={() => {
                 push("/home");
               }}
-            >
-              <AiOutlineArrowLeft size="30px" color="white" />
-            </Button>
+            ></IconButton>
           </GridItem>
-          <GridItem
-            rowSpan={1}
-            colSpan={6}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <Text fontSize="lg" textAlign="center">
+          <GridItem className="centeredFlex" colSpan={2}>
+            <Text fontSize="3vh" textAlign="center">
               Opciones
             </Text>
           </GridItem>
         </Grid>
       </Box>
 
-      <Box id="settings" p="5vh">
+      <Box className="gray1" p="5vh">
         <Box className="option">
           <Text>Opción 0</Text>
         </Box>

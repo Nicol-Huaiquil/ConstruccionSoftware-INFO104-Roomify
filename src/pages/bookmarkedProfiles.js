@@ -1,4 +1,11 @@
-import { Box, Grid, GridItem, Button, Text, Spinner } from "@chakra-ui/react";
+import {
+  Box,
+  Grid,
+  GridItem,
+  IconButton,
+  Text,
+  Spinner,
+} from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
@@ -14,7 +21,7 @@ let uId = "14125"; // Matilde Valera
 export default function Settings() {
   const [profiles, setProfiles] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { push, pathname } = useRouter();
+  const { push } = useRouter();
 
   useEffect(() => {
     axios
@@ -31,52 +38,34 @@ export default function Settings() {
 
   return (
     <>
-      <Box id="bookmarkedHeader">
-        <Grid
-          h="10vh"
-          templateRows="repeat(1, 1fr)"
-          templateColumns="repeat(12, 1fr)"
-          gap={4}
-        >
-          <GridItem
-            rowSpan={1}
-            colSpan={3}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <Button
+      <Box className="h1 gray2">
+        <Grid className="h1" templateColumns="repeat(4, 1fr)" gap={4}>
+          <GridItem className="centeredFlex">
+            <IconButton
               bg="#868686"
-              width="50px"
-              height="50px"
+              width="7vh"
+              height="7vh"
               type="submit"
-              padding="0px"
+              aria-label="Volver"
+              icon={<AiOutlineArrowLeft size="4vh" color="white" />}
               onClick={() => {
                 push("/home");
               }}
-            >
-              <AiOutlineArrowLeft size="30px" color="white" />
-            </Button>
+            ></IconButton>
           </GridItem>
-          <GridItem
-            rowSpan={1}
-            colSpan={6}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <Text fontSize="lg" textAlign="center">
+          <GridItem className="centeredFlex" colSpan={2}>
+            <Text fontSize="3vh" textAlign="center">
               Perfiles Guardados
             </Text>
           </GridItem>
         </Grid>
       </Box>
       {loading ? (
-        <Box id="loadingBookmarked">
+        <Box className="centeredFlex h2 gray1">
           <Spinner />
         </Box>
       ) : (
-        <Box id="bookmarked">
+        <Box className="centeredFlex h2 gray1">
           <Text textAlign="center">Nada por ahora.</Text>
         </Box>
       )}

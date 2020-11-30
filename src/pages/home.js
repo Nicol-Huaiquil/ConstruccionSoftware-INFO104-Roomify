@@ -1,14 +1,16 @@
 import React from "react";
 import {
+  Box,
   Button,
-  Flex,
-  Stack,
+  IconButton,
   Spinner,
   Avatar,
   useToast,
   Drawer,
   DrawerOverlay,
   DrawerContent,
+  HStack,
+  VStack,
   useDisclosure,
   Grid,
   GridItem,
@@ -22,7 +24,11 @@ import {
 } from "react-icons/ai";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import { CgLogOut } from "react-icons/cg";
-import { IoMdSettings } from "react-icons/io";
+import {
+  IoMdSettings,
+  IoIosArrowBack,
+  IoIosArrowForward,
+} from "react-icons/io";
 import { TiThMenu } from "react-icons/ti";
 
 import { useEffect, useState } from "react";
@@ -37,18 +43,18 @@ let uId = "14125"; // Matilde Valera
 
 export default function Home() {
   const [profiles, setProfiles] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [myProfile, setMyProfile] = useState({
     name: "",
     pic: "",
   });
-  const [loading, setLoading] = useState(true);
-  //const [success, setSuccess] = useState(false);
   const [id, setId] = useState();
   const [index, setIndex] = useState(0);
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
-  const { push, pathname } = useRouter();
+  const { push } = useRouter();
+
   useEffect(() => {
     axios
       .post("/api/obtenerPerfiles", {
@@ -106,23 +112,57 @@ export default function Home() {
   return (
     <>
       {loading ? (
-        <div id="loadingHome">
+        <Box id="loadingHome" className="centeredFlex">
           <Spinner />
-        </div>
+        </Box>
       ) : (
         <>
-          <div id="topBar">
-            <Button
-              bg="#679beb"
-              width="8vh"
-              height="8vh"
-              padding="0px"
-              margin="2vh"
-              ref={btnRef}
-              onClick={onOpen}
-            >
-              <TiThMenu size="6vh" color="white" />
-            </Button>
+          <Box id="home" className="centeredFlex">
+            <VStack spacing="2.5vh" py="2.5vh">
+              {profiles[index] ? (
+                <>
+                  <Avatar bg="teal.500" size="2xl" src={profiles[index].pic} />
+                  <VStack spacing="0">
+                    <Text>{profiles[index].name}</Text>
+                    <Text>{profiles[index].age} años</Text>
+                    <Text>{profiles[index].degree}</Text>
+                    <Text>Campus {profiles[index].campus}</Text>
+                    <Text>—</Text>
+                    <Text>{profiles[index].description}</Text>
+                  </VStack>
+                </>
+              ) : (
+                <Text>No hay perfiles para mostrar.</Text>
+              )}
+            </VStack>
+          </Box>
+          <Box id="topBar">
+            <Grid h="10vh" templateColumns="repeat(4, 1fr)" gap={4}>
+              <GridItem></GridItem>
+              <GridItem
+                colSpan={2}
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Text fontSize="3vh" textAlign="center"></Text>
+              </GridItem>
+              <GridItem
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <IconButton
+                  bg="#679beb"
+                  width="8vh"
+                  height="8vh"
+                  aria-label="Abrir menú"
+                  icon={<TiThMenu size="6vh" color="white" />}
+                  ref={btnRef}
+                  onClick={onOpen}
+                ></IconButton>
+              </GridItem>
+            </Grid>
             <Drawer
               isOpen={isOpen}
               placement="right"
@@ -147,7 +187,7 @@ export default function Home() {
                           push("/myProfile");
                         }}
                       >
-                        <>
+                        <VStack>
                           <Avatar
                             bg="teal.500"
                             mr="1vh"
@@ -156,7 +196,7 @@ export default function Home() {
                             src={myProfile.pic}
                           />
                           <Text fontSize="3vh">{myProfile.name}</Text>
-                        </>
+                        </VStack>
                       </Button>
                     </GridItem>
                     <GridItem rowSpan={2} colSpan={1}>
@@ -189,9 +229,11 @@ export default function Home() {
                       </Button>
                     </GridItem>
                     <GridItem rowSpan={2} colSpan={1}>
-                      <Button bg="purple.500" width="100%" height="100%">
-                        XD
-                      </Button>
+                      <Button
+                        bg="purple.500"
+                        width="100%"
+                        height="100%"
+                      ></Button>
                     </GridItem>
                     <GridItem rowSpan={1} colSpan={2}>
                       <Button bg="red.500" width="100%" height="100%">
@@ -205,96 +247,59 @@ export default function Home() {
                 </DrawerContent>
               </DrawerOverlay>
             </Drawer>
-          </div>
-          <div id="home">
-            {profiles[index] ? (
-              <ul>
-                <li>
-                  <Avatar
-                    bg="teal.500"
-                    size="2xl"
-                    m="4%"
-                    src={profiles[index].pic}
-                  />
-                </li>
-                <li>{profiles[index].name}</li>
-                <li>{profiles[index].age} años</li>
-                <li>{profiles[index].degree}</li>
-                <li>Campus {profiles[index].campus}</li>
-                <li>—</li>
-                <li>{profiles[index].description}</li>
-              </ul>
-            ) : (
-              <ul>
-                <li>No hay perfiles para mostrar.</li>
-              </ul>
-            )}
-          </div>
-          <div id="bottomBar">
-            <Stack alignItems="center">
-              <Flex>
-                <Button
-                  bg="#50EBA1"
-                  width="50px"
-                  height="50px"
-                  type="submit"
-                  margin="10px"
-                  padding="0px"
-                  onClick={() => {
-                    decreaseIndex();
-                  }}
-                >
-                  <AiOutlineArrowLeft size="30px" color="white" />
-                </Button>
-
-                <Button
-                  bg="#EB8273"
-                  width="50px"
-                  height="50px"
-                  type="submit"
-                  margin="10px"
-                  padding="0px"
-                  onClick={() => {
-                    setId(profiles[index].id);
-                  }}
-                >
-                  <BsFillBookmarkFill size="30px" color="white" />
-                </Button>
-
-                <Button
-                  bg="#EBB344"
-                  width="50px"
-                  height="50px"
-                  type="submit"
-                  margin="10px"
-                  padding="0px"
-                  onClick={() => {
-                    toast({
-                      title: "Solicitud de mensaje enviada",
-                      duration: 1000,
-                      position: "top",
-                    });
-                  }}
-                >
-                  <AiFillMessage size="30px" color="white" />
-                </Button>
-
-                <Button
-                  bg="#50EBA1"
-                  width="50px"
-                  height="50px"
-                  type="submit"
-                  margin="10px"
-                  padding="0px"
-                  onClick={() => {
-                    increaseIndex();
-                  }}
-                >
-                  <AiOutlineArrowRight size="30px" color="white" />
-                </Button>
-              </Flex>
-            </Stack>
-          </div>
+          </Box>
+          <Box id="bottomBar" className="centeredFlex">
+            <HStack spacing="3vw">
+              <IconButton
+                bg="#50EBA1"
+                width="7.8vh"
+                height="7.8vh"
+                type="submit"
+                aria-label="Anterior"
+                icon={<IoIosArrowBack size="4.7vh" color="white" />}
+                onClick={() => {
+                  decreaseIndex();
+                }}
+              ></IconButton>
+              <IconButton
+                bg="#EB8273"
+                width="7.8vh"
+                height="7.8vh"
+                type="submit"
+                aria-label="Guardar perfil"
+                icon={<BsFillBookmarkFill size="4.7vh" color="white" />}
+                onClick={() => {
+                  setId(profiles[index].id);
+                }}
+              ></IconButton>
+              <IconButton
+                bg="#EBB344"
+                width="7.8vh"
+                height="7.8vh"
+                type="submit"
+                aria-label="Solicitar contacto"
+                icon={<AiFillMessage size="4.7vh" color="white" />}
+                onClick={() => {
+                  toast({
+                    title: "Solicitud de mensaje enviada",
+                    duration: 1000,
+                    position: "top",
+                  });
+                }}
+              ></IconButton>
+              <IconButton
+                bg="#50EBA1"
+                width="7.8vh"
+                height="7.8vh"
+                type="submit"
+                aria-label="Siguiente"
+                icon={<IoIosArrowForward size="4.7vh" color="white" />}
+                onClick={() => {
+                  increaseIndex();
+                }}
+              ></IconButton>
+            </HStack>
+          </Box>
         </>
       )}
     </>
