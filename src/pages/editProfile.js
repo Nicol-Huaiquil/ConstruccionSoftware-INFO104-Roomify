@@ -1,8 +1,5 @@
 import {
   Box,
-  Grid,
-  GridItem,
-  Text,
   Spinner,
   VStack,
   FormControl,
@@ -15,13 +12,12 @@ import {
   Select,
   Textarea,
   Button,
-  IconButton,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-//import { AiOutlineArrowLeft } from "react-icons/ai";
-import { IoIosArrowBack } from "react-icons/io";
 import { useRouter } from "next/router";
+
+import { TopBar } from "../components/TopBar";
 
 //let uId = "24836"; // Rodolfo Seguel
 //let uId = "28374"; // Gustavo Reyes
@@ -57,35 +53,14 @@ export default function Settings() {
 
   return (
     <>
-      <Box className="h1 gray2">
-        <Grid className="h1" templateColumns="repeat(4, 1fr)" gap={4}>
-          <GridItem className="centeredFlex">
-            <IconButton
-              bg="#868686"
-              width="7vh"
-              height="7vh"
-              type="submit"
-              aria-label="Volver"
-              icon={<IoIosArrowBack size="4vh" color="white" />}
-              onClick={() => {
-                push("/myProfile");
-              }}
-            ></IconButton>
-          </GridItem>
-          <GridItem className="centeredFlex" colSpan={2}>
-            <Text fontSize="3vh" textAlign="center">
-              Editar Perfil
-            </Text>
-          </GridItem>
-        </Grid>
-      </Box>
+      <TopBar color1="#868686" color2="#aaaaaa" title="Editar Perfil" />
 
       {loading ? (
         <Box className="centeredFlex h2 gray1">
           <Spinner />
         </Box>
       ) : (
-        <Box className="gray1" px="4vh" py="3vh">
+        <Box className="h2 gray1" px="4vh" py="3vh">
           <VStack spacing="2vh" align="stretch">
             <Box>
               <FormControl id="name">

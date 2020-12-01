@@ -1,43 +1,13 @@
-import {
-  Box,
-  Grid,
-  GridItem,
-  IconButton,
-  Text,
-  Switch,
-  Spacer,
-} from "@chakra-ui/react";
-import { AiOutlineArrowLeft } from "react-icons/ai";
-import { useRouter } from "next/router";
+import { Box, Text, Switch, Spacer } from "@chakra-ui/react";
+
+import { TopBar } from "../components/TopBar";
 
 export default function Settings() {
-  const { push } = useRouter();
   return (
     <>
-      <Box className="h1 gray2">
-        <Grid className="h1" templateColumns="repeat(4, 1fr)" gap={4}>
-          <GridItem className="centeredFlex">
-            <IconButton
-              bg="#868686"
-              width="7vh"
-              height="7vh"
-              type="submit"
-              aria-label="Volver"
-              icon={<AiOutlineArrowLeft size="4vh" color="white" />}
-              onClick={() => {
-                push("/home");
-              }}
-            ></IconButton>
-          </GridItem>
-          <GridItem className="centeredFlex" colSpan={2}>
-            <Text fontSize="3vh" textAlign="center">
-              Opciones
-            </Text>
-          </GridItem>
-        </Grid>
-      </Box>
+      <TopBar color1="#868686" color2="#aaaaaa" title="Opciones" />
 
-      <Box className="gray1" p="5vh">
+      <Box className="h2 gray1" p="5vh">
         <Box className="option">
           <Text>Opción 0</Text>
         </Box>

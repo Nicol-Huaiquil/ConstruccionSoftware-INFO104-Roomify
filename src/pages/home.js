@@ -17,11 +17,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import axios from "axios";
-import {
-  AiOutlineArrowLeft,
-  AiOutlineArrowRight,
-  AiFillMessage,
-} from "react-icons/ai";
+import { AiFillMessage, AiOutlineArrowLeft } from "react-icons/ai";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import { CgLogOut } from "react-icons/cg";
 import {
@@ -33,6 +29,8 @@ import { TiThMenu } from "react-icons/ti";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+
+import { SquareButton } from "../components/SquareButton";
 
 //let uId = "24836"; // Rodolfo Seguel
 //let uId = "28374"; // Gustavo Reyes
@@ -139,19 +137,10 @@ export default function Home() {
           <Box id="topBar">
             <Grid h="10vh" templateColumns="repeat(4, 1fr)" gap={4}>
               <GridItem></GridItem>
-              <GridItem
-                colSpan={2}
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-              >
+              <GridItem className="centeredFlex" colSpan={2}>
                 <Text fontSize="3vh" textAlign="center"></Text>
               </GridItem>
-              <GridItem
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-              >
+              <GridItem className="centeredFlex">
                 <IconButton
                   bg="#679beb"
                   width="8vh"
@@ -250,35 +239,26 @@ export default function Home() {
           </Box>
           <Box id="bottomBar" className="centeredFlex">
             <HStack spacing="3vw">
-              <IconButton
-                bg="#50EBA1"
-                width="7.8vh"
-                height="7.8vh"
-                type="submit"
-                aria-label="Anterior"
+              <SquareButton
+                color="#50EBA1"
                 icon={<IoIosArrowBack size="4.7vh" color="white" />}
+                label="Anterior"
                 onClick={() => {
                   decreaseIndex();
                 }}
-              ></IconButton>
-              <IconButton
-                bg="#EB8273"
-                width="7.8vh"
-                height="7.8vh"
-                type="submit"
-                aria-label="Guardar perfil"
+              />
+              <SquareButton
+                color="#EB8273"
                 icon={<BsFillBookmarkFill size="4.7vh" color="white" />}
+                label="Guardar perfil"
                 onClick={() => {
                   setId(profiles[index].id);
                 }}
-              ></IconButton>
-              <IconButton
-                bg="#EBB344"
-                width="7.8vh"
-                height="7.8vh"
-                type="submit"
-                aria-label="Solicitar contacto"
+              />
+              <SquareButton
+                color="#EBB344"
                 icon={<AiFillMessage size="4.7vh" color="white" />}
+                label="Solicitar contacto"
                 onClick={() => {
                   toast({
                     title: "Solicitud de mensaje enviada",
@@ -286,18 +266,15 @@ export default function Home() {
                     position: "top",
                   });
                 }}
-              ></IconButton>
-              <IconButton
-                bg="#50EBA1"
-                width="7.8vh"
-                height="7.8vh"
-                type="submit"
-                aria-label="Siguiente"
+              />
+              <SquareButton
+                color="#50EBA1"
                 icon={<IoIosArrowForward size="4.7vh" color="white" />}
+                label="Siguiente"
                 onClick={() => {
                   increaseIndex();
                 }}
-              ></IconButton>
+              />
             </HStack>
           </Box>
         </>
