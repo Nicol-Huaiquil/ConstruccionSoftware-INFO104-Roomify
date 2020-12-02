@@ -80,7 +80,15 @@ export default function Settings() {
             <Box>
               <FormControl id="gender" as="fieldset">
                 <FormLabel as="legend">Género</FormLabel>
-                <RadioGroup value={myProfile.gender}>
+                <RadioGroup
+                  value={myProfile.gender}
+                  onChange={(value) => {
+                    setMyProfile({
+                      ...myProfile,
+                      gender: value,
+                    });
+                  }}
+                >
                   <VStack spacing="0" align="stretch">
                     <Radio value="m">Masculino</Radio>
                     <Radio value="f">Femenino</Radio>
@@ -97,9 +105,15 @@ export default function Settings() {
                 <Select
                   placeholder="Seleccionar campus"
                   value={myProfile.campus}
+                  onChange={(ev) => {
+                    setMyProfile({
+                      ...myProfile,
+                      campus: ev.target.value,
+                    });
+                  }}
                 >
-                  <option>Isla Teja</option>
-                  <option>Miraflores</option>
+                  <option value="Isla Teja">Isla Teja</option>
+                  <option value="Miraflores">Miraflores</option>
                 </Select>
               </FormControl>
             </Box>
@@ -110,56 +124,110 @@ export default function Settings() {
                 <Select
                   placeholder="Seleccionar carrera"
                   value={myProfile.degree}
+                  onChange={(ev) => {
+                    setMyProfile({
+                      ...myProfile,
+                      degree: ev.target.value,
+                    });
+                  }}
                 >
-                  <option>Administración Empresas de Turismo</option>
-                  <option>Administración Pública</option>
-                  <option>Agronomía</option>
-                  <option>Antropología</option>
-                  <option>Arquitectura</option>
-                  <option>Artes Musicales y Sonoras</option>
-                  <option>Auditoría</option>
-                  <option>Bachillerato en Cs. de la Ingeniería</option>
-                  <option>Biología Marina</option>
-                  <option>Bioquímica</option>
-                  <option>Creación Audiovisual</option>
-                  <option>Derecho</option>
-                  <option>Diseño</option>
-                  <option>Enfermería</option>
-                  <option>Geografía</option>
-                  <option>Geología</option>
-                  <option>Ingeniería en Alimentos</option>
-                  <option>
+                  <option value="Administración Empresas de Turismo">
+                    Administración Empresas de Turismo
+                  </option>
+                  <option value="Administración Pública">
+                    Administración Pública
+                  </option>
+                  <option value="Agronomía">Agronomía</option>
+                  <option value="Antropología">Antropología</option>
+                  <option value="Arquitectura">Arquitectura</option>
+                  <option value="Artes Musicales y Sonoras">
+                    Artes Musicales y Sonoras
+                  </option>
+                  <option value="Auditoría">Auditoría</option>
+                  <option value="Bachillerato en Cs. de la Ingeniería">
+                    Bachillerato en Cs. de la Ingeniería
+                  </option>
+                  <option value="Biología Marina">Biología Marina</option>
+                  <option value="Bioquímica">Bioquímica</option>
+                  <option value="Creación Audiovisual">
+                    Creación Audiovisual
+                  </option>
+                  <option value="Derecho">Derecho</option>
+                  <option value="Diseño">Diseño</option>
+                  <option value="Enfermería">Enfermería</option>
+                  <option value="Geografía">Geografía</option>
+                  <option value="Geología">Geología</option>
+                  <option value="Ingeniería en Alimentos">
+                    Ingeniería en Alimentos
+                  </option>
+                  <option value="Ingeniería en Conservación de Recursos Naturales">
                     Ingeniería en Conservación de Recursos Naturales
                   </option>
-                  <option>Ingeniería Comercial</option>
-                  <option>Ingeniería Civil Acústica</option>
-                  <option>Ingeniería Civil Electrónica</option>
-                  <option>Ingeniería Civil en Informática</option>
-                  <option>Ingeniería Civil en Obras Civiles</option>
-                  <option>Ingeniería Civil Industrial</option>
-                  <option>Ingeniería Civil Mecánica</option>
-                  <option>Ingeniería en Construcción</option>
-                  <option>Ingeniería Naval</option>
-                  <option>Interpretación Musical</option>
-                  <option>Kinesiología</option>
-                  <option>Licenciatura en Ciencias con Mención</option>
-                  <option>Licenciatura en Artes Visuales</option>
-                  <option>Medicina</option>
-                  <option>Medicina Veterinaria</option>
-                  <option>Obstetricia y Puericultura</option>
-                  <option>Odontología</option>
-                  <option>Pedagogía en Comunicación en Lengua Inglesa</option>
-                  <option>
+                  <option value="Ingeniería Comercial">
+                    Ingeniería Comercial
+                  </option>
+                  <option value="Ingeniería Civil Acústica">
+                    Ingeniería Civil Acústica
+                  </option>
+                  <option value="Ingeniería Civil Electrónica">
+                    Ingeniería Civil Electrónica
+                  </option>
+                  <option value="Ingeniería Civil en Informática">
+                    Ingeniería Civil en Informática
+                  </option>
+                  <option value="Ingeniería Civil en Obras Civiles">
+                    Ingeniería Civil en Obras Civiles
+                  </option>
+                  <option value="Ingeniería Civil Industrial">
+                    Ingeniería Civil Industrial
+                  </option>
+                  <option value="Ingeniería Civil Mecánica">
+                    Ingeniería Civil Mecánica
+                  </option>
+                  <option value="Ingeniería en Construcción">
+                    Ingeniería en Construcción
+                  </option>
+                  <option value="Ingeniería Naval">Ingeniería Naval</option>
+                  <option value="Interpretación Musical">
+                    Interpretación Musical
+                  </option>
+                  <option value="Kinesiología">Kinesiología</option>
+                  <option value="Licenciatura en Ciencias con Mención">
+                    Licenciatura en Ciencias con Mención
+                  </option>
+                  <option value="Licenciatura en Artes Visuales">
+                    Licenciatura en Artes Visuales
+                  </option>
+                  <option value="Medicina">Medicina</option>
+                  <option value="Medicina Veterinari">
+                    Medicina Veterinaria
+                  </option>
+                  <option value="Obstetricia y Puericultura">
+                    Obstetricia y Puericultura
+                  </option>
+                  <option value="Odontología">Odontología</option>
+                  <option value="Pedagogía en Comunicación en Lengua Inglesa">
+                    Pedagogía en Comunicación en Lengua Inglesa
+                  </option>
+                  <option value="Pedagogía en Educación Física, Deportes y Recreación">
                     Pedagogía en Educación Física, Deportes y Recreación
                   </option>
-                  <option>Pedagogía en Educación Parvularia</option>
-                  <option>Pedagogía en Historia y Ciencias Sociales</option>
-                  <option>Pedagogía en Lenguaje y Comunicación</option>
-                  <option>Periodismo</option>
-                  <option>Psicología</option>
-                  <option>Química y Farmacia</option>
-                  <option>Tecnología Médica</option>
-                  <option>Terapia Ocupacional</option>
+                  <option value="Pedagogía en Educación Parvularia">
+                    Pedagogía en Educación Parvularia
+                  </option>
+                  <option value="Pedagogía en Historia y Ciencias Sociales">
+                    Pedagogía en Historia y Ciencias Sociales
+                  </option>
+                  <option value="Pedagogía en Lenguaje y Comunicación">
+                    Pedagogía en Lenguaje y Comunicación
+                  </option>
+                  <option value="Periodismo">Periodismo</option>
+                  <option value="Psicología">Psicología</option>
+                  <option value="Química y Farmacia">Química y Farmacia</option>
+                  <option value="Tecnología Médica">Tecnología Médica</option>
+                  <option value="Terapia Ocupacional">
+                    Terapia Ocupacional
+                  </option>
                 </Select>
               </FormControl>
             </Box>
