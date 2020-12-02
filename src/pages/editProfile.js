@@ -65,14 +65,22 @@ export default function Settings() {
             <Box>
               <FormControl id="name">
                 <FormLabel>Nombre</FormLabel>
-                <Input defaultValue={myProfile.name} />
+                <Input
+                  value={myProfile.name}
+                  onChange={(ev) => {
+                    setMyProfile({
+                      ...myProfile,
+                      name: ev.target.value,
+                    });
+                  }}
+                />
               </FormControl>
             </Box>
 
             <Box>
               <FormControl id="age">
                 <FormLabel>Edad</FormLabel>
-                <NumberInput defaultValue={myProfile.age}>
+                <NumberInput value={myProfile.age}>
                   <NumberInputField />
                 </NumberInput>
               </FormControl>
@@ -81,7 +89,7 @@ export default function Settings() {
             <Box>
               <FormControl id="gender" as="fieldset">
                 <FormLabel as="legend">Género</FormLabel>
-                <RadioGroup defaultValue={myProfile.gender}>
+                <RadioGroup value={myProfile.gender}>
                   <VStack spacing="0" align="stretch">
                     <Radio value="m">Masculino</Radio>
                     <Radio value="f">Femenino</Radio>
@@ -97,7 +105,7 @@ export default function Settings() {
                 <FormLabel>Campus</FormLabel>
                 <Select
                   placeholder="Seleccionar campus"
-                  defaultValue={myProfile.campus}
+                  value={myProfile.campus}
                 >
                   <option>Isla Teja</option>
                   <option>Miraflores</option>
@@ -110,7 +118,7 @@ export default function Settings() {
                 <FormLabel>Carrera</FormLabel>
                 <Select
                   placeholder="Seleccionar carrera"
-                  defaultValue={myProfile.degree}
+                  value={myProfile.degree}
                 >
                   <option>Administración Empresas de Turismo</option>
                   <option>Administración Pública</option>
@@ -168,7 +176,15 @@ export default function Settings() {
             <Box>
               <FormControl id="hasCabin" as="fieldset">
                 <FormLabel as="legend">Tengo cabaña</FormLabel>
-                <RadioGroup defaultValue={myProfile.hasCabin ? "s" : "n"}>
+                <RadioGroup
+                  value={myProfile.hasCabin ? "s" : "n"}
+                  onChange={(value) => {
+                    setMyProfile({
+                      ...myProfile,
+                      hasCabin: value === "s",
+                    });
+                  }}
+                >
                   <VStack spacing="0" align="stretch">
                     <Radio value="s">Sí</Radio>
                     <Radio value="n">No</Radio>
@@ -180,17 +196,15 @@ export default function Settings() {
             <Box>
               <FormControl id="description">
                 <FormLabel>Descripción</FormLabel>
-                <Textarea
-                  placeholder="..."
-                  defaultValue={myProfile.description}
-                />
+                <Textarea placeholder="..." value={myProfile.description} />
               </FormControl>
             </Box>
 
             <Box display="flex" justifyContent="flex-end">
               <Button
                 colorScheme="green"
-                onClick={() => {
+                onClick={async () => {
+                  await axios.post("/api/editarPerfil", myProfile);
                   push("/myProfile");
                 }}
               >
