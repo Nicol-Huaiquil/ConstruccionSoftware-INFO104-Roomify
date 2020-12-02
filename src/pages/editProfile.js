@@ -78,15 +78,6 @@ export default function Settings() {
             </Box>
 
             <Box>
-              <FormControl id="age">
-                <FormLabel>Edad</FormLabel>
-                <NumberInput value={myProfile.age}>
-                  <NumberInputField />
-                </NumberInput>
-              </FormControl>
-            </Box>
-
-            <Box>
               <FormControl id="gender" as="fieldset">
                 <FormLabel as="legend">Género</FormLabel>
                 <RadioGroup value={myProfile.gender}>
@@ -196,7 +187,16 @@ export default function Settings() {
             <Box>
               <FormControl id="description">
                 <FormLabel>Descripción</FormLabel>
-                <Textarea placeholder="..." value={myProfile.description} />
+                <Textarea
+                  placeholder="..."
+                  value={myProfile.description}
+                  onChange={(ev) => {
+                    setMyProfile({
+                      ...myProfile,
+                      description: ev.target.value,
+                    });
+                  }}
+                />
               </FormControl>
             </Box>
 
