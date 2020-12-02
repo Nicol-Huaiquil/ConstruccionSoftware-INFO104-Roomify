@@ -22,10 +22,6 @@ const routes = [
     path: "/bookmarkedProfiles",
     text: "Bookmarked Profiles",
   },
-  {
-    path: "/ejemplos",
-    text: "Ejemplos",
-  },
 ];
 
 export const Roomify = ({ children }) => {

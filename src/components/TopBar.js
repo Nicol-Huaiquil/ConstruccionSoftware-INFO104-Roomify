@@ -1,6 +1,5 @@
 import { Box, Grid, GridItem, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { AiOutlineArrowLeft } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
 
 import { SquareButton } from "./SquareButton";

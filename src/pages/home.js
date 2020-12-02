@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Image,
   Box,
   Button,
   IconButton,
@@ -17,7 +18,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import axios from "axios";
-import { AiFillMessage, AiOutlineArrowLeft } from "react-icons/ai";
+import { AiFillMessage } from "react-icons/ai";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import { CgLogOut } from "react-icons/cg";
 import {
@@ -25,6 +26,7 @@ import {
   IoIosArrowBack,
   IoIosArrowForward,
 } from "react-icons/io";
+import { MdHelp } from "react-icons/md";
 import { TiThMenu } from "react-icons/ti";
 
 import { useEffect, useState } from "react";
@@ -138,7 +140,7 @@ export default function Home() {
             <Grid h="10vh" templateColumns="repeat(4, 1fr)" gap={4}>
               <GridItem></GridItem>
               <GridItem className="centeredFlex" colSpan={2}>
-                <Text fontSize="3vh" textAlign="center"></Text>
+                <Image src="logoLetras.png" height="10vh" />
               </GridItem>
               <GridItem className="centeredFlex">
                 <IconButton
@@ -218,11 +220,9 @@ export default function Home() {
                       </Button>
                     </GridItem>
                     <GridItem rowSpan={2} colSpan={1}>
-                      <Button
-                        bg="purple.500"
-                        width="100%"
-                        height="100%"
-                      ></Button>
+                      <Button bg="purple.500" width="100%" height="100%">
+                        <MdHelp size="10vh" />
+                      </Button>
                     </GridItem>
                     <GridItem rowSpan={1} colSpan={2}>
                       <Button bg="red.500" width="100%" height="100%">
