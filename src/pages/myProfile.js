@@ -9,7 +9,7 @@ import { TopBar } from "../components/TopBar";
 //let uId = "28374"; // Gustavo Reyes
 let uId = "14125"; // Matilde Valera
 //let uId = "25098"; // Daniela Vega
-//let uId = "98000"; //Nicolás García
+//let uId = "98000"; // Nicolás García
 //let uId = "84061"; // Trinidad Vásquez
 
 export default function Settings() {

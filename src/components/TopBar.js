@@ -37,7 +37,7 @@ export const TopBar = ({ color1, color2, title }) => {
             icon={<IoIosArrowBack size="4vh" color="white" />}
             label="Volver"
             onClick={() => {
-              push("/home");
+              push("/");
             }}
           />
         </GridItem>

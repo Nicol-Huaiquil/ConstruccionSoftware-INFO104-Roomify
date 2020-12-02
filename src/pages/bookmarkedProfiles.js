@@ -1,7 +1,7 @@
 import { Box, Text, Spinner } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+//import { useRouter } from "next/router";
 
 import { TopBar } from "../components/TopBar";
 
