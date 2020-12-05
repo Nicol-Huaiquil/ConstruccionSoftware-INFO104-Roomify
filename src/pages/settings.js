@@ -6,6 +6,7 @@ import {
   Select,
   Button,
   VStack,
+  Spinner,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -23,12 +24,15 @@ export default function Settings() {
     degree: "",
     hasCabin: false,
     description: "",
-    preferences: {
-      ageRange: [0, 0],
-      sameCampus: "",
-      profilesWithCabin: "",
-    },
+    preferences: {},
   });
+
+  const [preferences, setPreferences] = useState({
+    ageRange: [0, 0],
+    sameCampus: "",
+    profilesWithCabin: "",
+  });
+
   const [loading, setLoading] = useState(true);
   const { push } = useRouter();
   useEffect(() => {
@@ -38,65 +42,87 @@ export default function Settings() {
       })
       .then(({ data }) => {
         setMyProfile(data);
+        setPreferences(data.preferences);
       })
       .finally(() => {
         setLoading(false);
       });
   }, []);
+
   return (
     <>
-      <TopBar color1="#868686" color2="#aaaaaa" title="Opciones de búsqueda" />
+      {loading ? (
+        <Box id="loadingSettings" className="centeredFlex">
+          <Spinner />
+        </Box>
+      ) : (
+        <>
+          <TopBar
+            color1="#868686"
+            color2="#aaaaaa"
+            title="Opciones de búsqueda"
+          />
 
-      <Box className="h2 gray1" p="5vh">
-        <VStack spacing="2vh" align="stretch">
-          <Box className="option">
-            <Text>Rango de edad a buscar</Text>
-          </Box>
+          <Box className="h2 gray1" p="5vh">
+            <VStack spacing="2vh" align="stretch">
+              <Box className="option">
+                <Text>Rango de edad a buscar</Text>
+              </Box>
 
-          <Box>
-            <FormControl id="pCampus">
-              <FormLabel>Mostrar perfiles de campus:</FormLabel>
-              <Select
-                placeholder="Seleccionar campus"
-                value={myProfile.preferences.sameCampus}
-                onChange={(ev) => {
-                  setMyProfile({
-                    ...myProfile,
-                    preferences.sameCampus: ev.target.value,
-                  });
-                }}
-              >
-                <option value="Isla Teja">Isla Teja</option>
-                <option value="Miraflores">Miraflores</option>
-                <option value="Ambos">Ambos</option>
-              </Select>
-            </FormControl>
-          </Box>
+              <Box>
+                <FormControl id="pCampus">
+                  <FormLabel>Mostrar perfiles de campus:</FormLabel>
+                  <Select
+                    value={preferences.sameCampus}
+                    onChange={(ev) => {
+                      setPreferences({
+                        ...preferences,
+                        sameCampus: ev.target.value,
+                      });
+                    }}
+                  >
+                    <option value="i">Isla Teja</option>
+                    <option value="m">Miraflores</option>
+                    <option value="a">Ambos</option>
+                  </Select>
+                </FormControl>
+              </Box>
 
-          <Box>
-            <FormControl id="cabaña">
-              <FormLabel>Mostrar perfiles con cabaña</FormLabel>
-              <Select>
-                <option value="CabañaSi">Si</option>
-                <option value="CabañaNo">No</option>
-                <option value="CabañaAmbos">Ambos</option>
-              </Select>
-            </FormControl>
-          </Box>
+              <Box>
+                <FormControl id="cabin">
+                  <FormLabel>Mostrar perfiles con cabaña</FormLabel>
+                  <Select
+                    value={preferences.profilesWithCabin}
+                    onChange={(ev) => {
+                      setPreferences({
+                        ...preferences,
+                        profilesWithCabin: ev.target.value,
+                      });
+                    }}
+                  >
+                    <option value="s">Sí</option>
+                    <option value="n">No</option>
+                    <option value="a">Ambos</option>
+                  </Select>
+                </FormControl>
+              </Box>
 
-          <Box display="flex" justifyContent="flex-end">
-            <Button
-              colorScheme="green"
-              onClick={async () => {
-                await axios.post("/api/editarPerfil", myProfile);
-                push("/myProfile");
-              }}
-            >
-              Guardar
-            </Button>
+              <Box display="flex" justifyContent="flex-end">
+                <Button
+                  colorScheme="green"
+                  onClick={async () => {
+                    myProfile.preferences = preferences;
+                    await axios.post("/api/editarPerfil", myProfile);
+                    push("/");
+                  }}
+                >
+                  Guardar
+                </Button>
+              </Box>
+            </VStack>
           </Box>
-        </VStack>
-      </Box>
+        </>
+      )}
     </>
   );
 }
