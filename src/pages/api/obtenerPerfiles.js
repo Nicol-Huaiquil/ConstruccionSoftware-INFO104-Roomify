@@ -22,7 +22,7 @@ export default async (req, res) => {
   let uPreferences = uProfile.preferences;
 
   for (let i = 0; i < profiles.length; i++) {
-    if (
+    /*if (
       profiles[i].age < uPreferences.ageRange[0] ||
       profiles[i].age > uPreferences.ageRange[1]
     )
@@ -34,7 +34,7 @@ export default async (req, res) => {
     )
       continue;
 
-    if (profiles[i].hasCabin ^ uPreferences.hasCabin) continue;
+    if (profiles[i].hasCabin ^ uPreferences.hasCabin) continue;*/
     selectedProfiles.push(profiles[i]);
   }
 
