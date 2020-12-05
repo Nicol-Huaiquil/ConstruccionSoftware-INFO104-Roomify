@@ -81,8 +81,8 @@ export default function Settings() {
                       });
                     }}
                   >
-                    <option value="i">Isla Teja</option>
-                    <option value="m">Miraflores</option>
+                    <option value="Isla Teja">Isla Teja</option>
+                    <option value="Miraflores">Miraflores</option>
                     <option value="a">Ambos</option>
                   </Select>
                 </FormControl>

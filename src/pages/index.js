@@ -127,6 +127,11 @@ export default function Home() {
                     <Text>{profiles[index].age} años</Text>
                     <Text>{profiles[index].degree}</Text>
                     <Text>Campus {profiles[index].campus}</Text>
+                    <Text>
+                      {profiles[index].hasCabin
+                        ? "Tiene cabaña"
+                        : "No tiene cabaña"}
+                    </Text>
                     <Text>—</Text>
                     <Text>{profiles[index].description}</Text>
                   </VStack>

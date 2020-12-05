@@ -26,16 +26,25 @@ export default async (req, res) => {
       profiles[i].age < uPreferences.ageRange[0] ||
       profiles[i].age > uPreferences.ageRange[1]
     )
-      continue;
+      continue;*/
 
     if (
-      (profiles[i].campus != uProfile.campus && uPreferences.sameCampus) ||
-      (profiles[i].campus == uProfile.campus && !uPreferences.sameCampus)
+      uPreferences.sameCampus != "a" &&
+      uPreferences.sameCampus != profiles[i].campus
     )
       continue;
 
-    if (profiles[i].hasCabin ^ uPreferences.hasCabin) continue;*/
+    if (uPreferences.profilesWithCabin != "a") {
+      if (
+        (uPreferences.profilesWithCabin == "s" && !profiles[i].hasCabin) ||
+        (uPreferences.profilesWithCabin == "n" && profiles[i].hasCabin)
+      ) {
+        continue;
+      }
+    }
+
     selectedProfiles.push(profiles[i]);
+    console.log("agregado " + i);
   }
 
   res.send(selectedProfiles);
