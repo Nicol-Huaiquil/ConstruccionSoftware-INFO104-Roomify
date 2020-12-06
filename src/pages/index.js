@@ -197,7 +197,7 @@ export default function Home() {
                     </GridItem>
                     <GridItem rowSpan={2} colSpan={1}>
                       <Button bg="orange.300" width="100%" height="100%">
-                        <AiFillMessage size="9vh" />
+                        <AiFillMessage size="9vh" color="white" />
                       </Button>
                     </GridItem>
                     <GridItem rowSpan={2} colSpan={1}>
@@ -209,7 +209,7 @@ export default function Home() {
                           push("/bookmarkedProfiles");
                         }}
                       >
-                        <BsFillBookmarkFill size="9vh" />
+                        <BsFillBookmarkFill size="9vh" color="white" />
                       </Button>
                     </GridItem>
                     <GridItem rowSpan={2} colSpan={1}>
@@ -221,12 +221,12 @@ export default function Home() {
                           push("/settings");
                         }}
                       >
-                        <IoMdSettings size="10vh" />
+                        <IoMdSettings size="10vh" color="white" />
                       </Button>
                     </GridItem>
                     <GridItem rowSpan={2} colSpan={1}>
                       <Button bg="purple.500" width="100%" height="100%">
-                        <MdHelp size="10vh" />
+                        <MdHelp size="10vh" color="white" />
                       </Button>
                     </GridItem>
                     <GridItem rowSpan={1} colSpan={2}>

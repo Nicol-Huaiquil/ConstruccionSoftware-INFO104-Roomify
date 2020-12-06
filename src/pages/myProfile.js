@@ -38,7 +38,7 @@ export default function Settings() {
 
   return (
     <>
-      <TopBar color1="#868686" color2="#aaaaaa" title="Mi Perfil" />
+      <TopBar color1="#679beb" color2="#679beb" title="Mi Perfil" />
 
       {loading ? (
         <Box className="centeredFlex h2 gray1">

@@ -7,6 +7,13 @@ import {
   Button,
   VStack,
   Spinner,
+  Grid,
+  GridItem,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -58,8 +65,8 @@ export default function Settings() {
       ) : (
         <>
           <TopBar
-            color1="#868686"
-            color2="#aaaaaa"
+            color1="#679beb"
+            color2="#679beb"
             title="Opciones de búsqueda"
           />
 
@@ -67,6 +74,49 @@ export default function Settings() {
             <VStack spacing="2vh" align="stretch">
               <Box className="option">
                 <Text>Rango de edad a buscar</Text>
+                <Grid templateColumns="repeat(5, 1fr)" gap={4}>
+                  <GridItem colSpan={2} h="10">
+                    <NumberInput
+                      defaultValue={18}
+                      min={18}
+                      max={40}
+                      /*onChange={(ev) => {
+                        setPreferences({
+                          ...preferences,
+                          ageRange: ev.target.value,
+                        });
+                      }}*/
+                    >
+                      <NumberInputField />
+                      <NumberInputStepper>
+                        <NumberIncrementStepper children="+" />
+                        <NumberDecrementStepper children="-" />
+                      </NumberInputStepper>
+                    </NumberInput>
+                  </GridItem>
+
+                  <Text>-</Text>
+
+                  <GridItem colStart={4} colEnd={6} h="10">
+                    <NumberInput
+                      defaultValue={40}
+                      min={18}
+                      max={40}
+                      /*onChange={(ev) => {
+                        setPreferences({
+                          ...preferences,
+                          ageRange: ev.target.value,
+                        });
+                      }}*/
+                    >
+                      <NumberInputField />
+                      <NumberInputStepper>
+                        <NumberIncrementStepper children="+" />
+                        <NumberDecrementStepper children="-" />
+                      </NumberInputStepper>
+                    </NumberInput>
+                  </GridItem>
+                </Grid>
               </Box>
 
               <Box>
