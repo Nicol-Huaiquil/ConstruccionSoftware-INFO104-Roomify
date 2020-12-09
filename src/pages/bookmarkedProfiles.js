@@ -1,8 +1,18 @@
-import { Box, Text, Spinner, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Spinner,
+  Grid,
+  GridItem,
+  useToast,
+  HStack,
+  Avatar,
+} from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { SquareButton } from "../components/SquareButton";
 //import { useRouter } from "next/router";
-
+import { BiBookmarkMinus } from "react-icons/bi";
 import { TopBar } from "../components/TopBar";
 
 import { uId } from "./index.js";
@@ -10,6 +20,8 @@ import { uId } from "./index.js";
 export default function Settings() {
   const [profiles, setProfiles] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const toast = useToast();
 
   useEffect(() => {
     axios
@@ -37,15 +49,42 @@ export default function Settings() {
           {profiles.length === 0 && <Text>No hay perfiles guardados.</Text>}
           {profiles.map((perfil) => {
             return (
-              <VStack
+              <Box
+                display="flex"
                 key={perfil._id}
                 shadow="md"
                 borderWidth="1px"
                 borderRadius="5px"
-                padding="10px"
+                padding="2vh"
               >
-                <Text>{perfil.name}</Text>
-              </VStack>
+                <Grid w="100%" templateColumns="repeat(4,1fr)" gap={4}>
+                  <GridItem
+                    display="flex"
+                    alignItems="center"
+                    padding="2vh"
+                    colSpan={3}
+                  >
+                    <HStack>
+                      <Avatar bg="teal.500" size="md" src={perfil.pic} />
+                      <Text>{perfil.name}</Text>
+                    </HStack>
+                  </GridItem>
+                  <GridItem className="centeredFlex">
+                    <SquareButton
+                      color="red.500"
+                      icon={<BiBookmarkMinus size="4.7vh" color="white" />}
+                      label="Eliminar Perfil"
+                      onClick={() => {
+                        toast({
+                          title: "Perfil Eliminado",
+                          duration: 1000,
+                          position: "top",
+                        });
+                      }}
+                    />
+                  </GridItem>
+                </Grid>
+              </Box>
             );
           })}
         </Box>
