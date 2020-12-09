@@ -83,7 +83,7 @@ export default function Settings() {
                   onChange={(value) => {
                     setMyProfile({
                       ...myProfile,
-                      gender: value,
+                      gender: value.toString(),
                     });
                   }}
                 >

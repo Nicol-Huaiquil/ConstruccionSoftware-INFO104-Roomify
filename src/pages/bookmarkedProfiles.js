@@ -1,4 +1,4 @@
-import { Box, Text, Spinner } from "@chakra-ui/react";
+import { Box, Text, Spinner, VStack } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 //import { useRouter } from "next/router";
@@ -38,8 +38,21 @@ export default function Settings() {
           <Spinner />
         </Box>
       ) : (
-        <Box className="centeredFlex h2 gray1">
-          <Text textAlign="center">Nada por ahora.</Text>
+        <Box className="h2 gray1">
+          {profiles.length === 0 && <Text>No hay perfiles guardados.</Text>}
+          {profiles.map((perfil) => {
+            return (
+              <VStack
+                key={perfil._id}
+                shadow="md"
+                borderWidth="1px"
+                borderRadius="5px"
+                padding="10px"
+              >
+                <Text>{perfil.name}</Text>
+              </VStack>
+            );
+          })}
         </Box>
       )}
     </>

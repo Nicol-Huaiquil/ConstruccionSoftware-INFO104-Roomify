@@ -40,6 +40,9 @@ export default function Settings() {
     profilesWithCabin: "",
   });
 
+  const [minAge, setMinAge] = useState(17);
+  const [maxAge, setMaxAge] = useState(40);
+
   const [loading, setLoading] = useState(true);
   const { push } = useRouter();
   useEffect(() => {
@@ -77,15 +80,12 @@ export default function Settings() {
                 <Grid templateColumns="repeat(5, 1fr)" gap={4}>
                   <GridItem colSpan={2} h="10">
                     <NumberInput
-                      defaultValue={18}
+                      defaultValue={17}
                       min={18}
                       max={40}
-                      /*onChange={(ev) => {
-                        setPreferences({
-                          ...preferences,
-                          ageRange: ev.target.value,
-                        });
-                      }}*/
+                      onChange={(ev) => {
+                        setMinAge(ev);
+                      }}
                     >
                       <NumberInputField />
                       <NumberInputStepper>
@@ -95,13 +95,18 @@ export default function Settings() {
                     </NumberInput>
                   </GridItem>
 
-                  <Text>-</Text>
+                  <GridItem className="centeredFlex">
+                    <Text>-</Text>
+                  </GridItem>
 
                   <GridItem colStart={4} colEnd={6} h="10">
                     <NumberInput
                       defaultValue={40}
                       min={18}
                       max={40}
+                      onChange={(ev) => {
+                        setMaxAge(ev);
+                      }}
                       /*onChange={(ev) => {
                         setPreferences({
                           ...preferences,
@@ -161,6 +166,7 @@ export default function Settings() {
                 <Button
                   colorScheme="green"
                   onClick={async () => {
+                    preferences.ageRange = [minAge, maxAge];
                     myProfile.preferences = preferences;
                     await axios.post("/api/editarPerfil", myProfile);
                     push("/");

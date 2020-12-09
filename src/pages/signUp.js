@@ -160,7 +160,7 @@ export default function SignUp() {
                 onChange={(value) => {
                   setNewProfile({
                     ...newProfile,
-                    gender: value,
+                    gender: value.toString(),
                   });
                 }}
               >
