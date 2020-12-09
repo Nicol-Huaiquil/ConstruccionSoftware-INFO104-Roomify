@@ -22,12 +22,12 @@ export default async (req, res) => {
   let uPreferences = uProfile.preferences;
 
   for (let i = 0; i < profiles.length; i++) {
-    /*if (
+    if (
       profiles[i].age < uPreferences.ageRange[0] ||
       profiles[i].age > uPreferences.ageRange[1]
     )
-      continue;*/
-
+      continue;
+    console.log(uPreferences.ageRange[0], uPreferences.ageRange[1]);
     if (
       uPreferences.sameCampus != "a" &&
       uPreferences.sameCampus != profiles[i].campus

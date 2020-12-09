@@ -5,12 +5,7 @@ import { useEffect, useState } from "react";
 
 import { TopBar } from "../components/TopBar";
 
-//let uId = "24836"; // Rodolfo Seguel
-//let uId = "28374"; // Gustavo Reyes
-let uId = "14125"; // Matilde Valera
-//let uId = "25098"; // Daniela Vega
-//let uId = "98000"; //Nicolás García
-//let uId = "84061"; // Trinidad Vásquez
+import { uId } from "./index.js";
 
 export default function Settings() {
   const [profiles, setProfiles] = useState([]);

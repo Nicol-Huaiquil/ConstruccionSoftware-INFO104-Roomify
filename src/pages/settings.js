@@ -20,7 +20,8 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 import { TopBar } from "../components/TopBar";
-let uId = "14125"; // Matilde Valera
+
+import { uId } from "./index.js";
 
 export default function Settings() {
   const [myProfile, setMyProfile] = useState({
@@ -35,13 +36,10 @@ export default function Settings() {
   });
 
   const [preferences, setPreferences] = useState({
-    ageRange: [0, 0],
+    ageRange: [17, 40],
     sameCampus: "",
     profilesWithCabin: "",
   });
-
-  const [minAge, setMinAge] = useState(17);
-  const [maxAge, setMaxAge] = useState(40);
 
   const [loading, setLoading] = useState(true);
   const { push } = useRouter();
@@ -58,6 +56,9 @@ export default function Settings() {
         setLoading(false);
       });
   }, []);
+
+  const [minAge, setMinAge] = useState(preferences.ageRange[0]);
+  const [maxAge, setMaxAge] = useState(preferences.ageRange[1]);
 
   return (
     <>
@@ -80,7 +81,7 @@ export default function Settings() {
                 <Grid templateColumns="repeat(5, 1fr)" gap={4}>
                   <GridItem colSpan={2} h="10">
                     <NumberInput
-                      defaultValue={17}
+                      defaultValue={minAge}
                       min={18}
                       max={40}
                       onChange={(ev) => {
@@ -101,7 +102,7 @@ export default function Settings() {
 
                   <GridItem colStart={4} colEnd={6} h="10">
                     <NumberInput
-                      defaultValue={40}
+                      defaultValue={maxAge}
                       min={18}
                       max={40}
                       onChange={(ev) => {

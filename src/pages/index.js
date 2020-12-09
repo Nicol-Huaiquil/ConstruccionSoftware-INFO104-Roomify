@@ -32,14 +32,15 @@ import { TiThMenu } from "react-icons/ti";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
+import { ProfileDisplay } from "../components/ProfileDisplay";
 import { SquareButton } from "../components/SquareButton";
 
-//let uId = "24836"; // Rodolfo Seguel
-//let uId = "28374"; // Gustavo Reyes
-let uId = "14125"; // Matilde Valera
-//let uId = "25098"; // Daniela Vega
-//let uId = "98000"; // Nicolás García
-//let uId = "84061"; // Trinidad Vásquez
+//export constuId = "24836"; // Rodolfo Seguel
+//export const uId = "28374"; // Gustavo Reyes
+export const uId = "14125"; // Matilde Valera
+//export const uId = "25098"; // Daniela Vega
+//export const uId = "98000"; // Nicolás García
+//export const uId = "84061"; // Trinidad Vásquez
 
 export default function Home() {
   const [profiles, setProfiles] = useState([]);
@@ -120,22 +121,7 @@ export default function Home() {
           <Box id="home" className="centeredFlex">
             <VStack spacing="2.5vh" py="2.5vh">
               {profiles[index] ? (
-                <>
-                  <Avatar bg="teal.500" size="2xl" src={profiles[index].pic} />
-                  <VStack spacing="0">
-                    <Text>{profiles[index].name}</Text>
-                    <Text>{profiles[index].age} años</Text>
-                    <Text>{profiles[index].degree}</Text>
-                    <Text>Campus {profiles[index].campus}</Text>
-                    <Text>
-                      {profiles[index].hasCabin
-                        ? "Tiene cabaña"
-                        : "No tiene cabaña"}
-                    </Text>
-                    <Text>—</Text>
-                    <Text>{profiles[index].description}</Text>
-                  </VStack>
-                </>
+                <ProfileDisplay profile={profiles[index]} />
               ) : (
                 <Text>No hay perfiles para mostrar.</Text>
               )}

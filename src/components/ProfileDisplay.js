@@ -1,0 +1,18 @@
+import { Avatar, VStack, Text } from "@chakra-ui/react";
+
+export const ProfileDisplay = ({ profile }) => {
+  return (
+    <>
+      <Avatar bg="teal.500" size="2xl" src={profile.pic} />
+      <VStack spacing="0">
+        <Text>{profile.name}</Text>
+        <Text>{profile.age} años</Text>
+        <Text>{profile.degree}</Text>
+        <Text>Campus {profile.campus}</Text>
+        <Text>{profile.hasCabin ? "Tiene cabaña" : "No tiene cabaña"}</Text>
+        <Text>—</Text>
+        <Text>{profile.description}</Text>
+      </VStack>
+    </>
+  );
+};
