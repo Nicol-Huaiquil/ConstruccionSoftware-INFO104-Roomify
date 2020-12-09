@@ -61,19 +61,19 @@ export default function SignUp() {
         <VStack spacing="2vh" px="5vh" align="stretch">
           <Box>
             <FormControl isRequired>
-              <FormLabel>Nombre de usuario</FormLabel>
+              <FormLabel>Correo electrónico</FormLabel>
               <Input
-                value={newUser.username}
+                type="email"
+                value={newUser.email}
                 onChange={(ev) => {
                   setNewUser({
                     ...newUser,
-                    username: ev.target.value,
+                    email: ev.target.value,
                   });
                 }}
               />
             </FormControl>
           </Box>
-
           <Box>
             <FormControl isRequired>
               <FormLabel>Contraseña</FormLabel>
@@ -92,22 +92,6 @@ export default function SignUp() {
                   setNewUser({
                     ...newUser,
                     password: ev.target.value,
-                  });
-                }}
-              />
-            </FormControl>
-          </Box>
-
-          <Box>
-            <FormControl isRequired>
-              <FormLabel>Correo electrónico</FormLabel>
-              <Input
-                type="email"
-                value={newUser.email}
-                onChange={(ev) => {
-                  setNewUser({
-                    ...newUser,
-                    email: ev.target.value,
                   });
                 }}
               />
@@ -342,111 +326,18 @@ export default function SignUp() {
           </Box>
         </VStack>
 
-        <Text fontSize="2.5vh" p="2.5vh">
-          Preferencias de búsqueda
-        </Text>
-
-        <VStack spacing="2vh" px="5vh" pb="2.5vh" align="stretch">
-          <Box className="option">
-            <Text>Rango de edad a buscar</Text>
-            <Grid templateColumns="repeat(5, 1fr)" gap={4}>
-              <GridItem colSpan={2} h="10">
-                <NumberInput
-                  defaultValue={18}
-                  min={18}
-                  max={40}
-                  /*onChange={(ev) => {
-                        setPreferences({
-                          ...preferences,
-                          ageRange: ev.target.value,
-                        });
-                      }}*/
-                >
-                  <NumberInputField />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper children="+" />
-                    <NumberDecrementStepper children="-" />
-                  </NumberInputStepper>
-                </NumberInput>
-              </GridItem>
-
-              <GridItem className="centeredFlex">
-                <Text>-</Text>
-              </GridItem>
-
-              <GridItem colSpan={2} h="10">
-                <NumberInput
-                  defaultValue={40}
-                  min={18}
-                  max={40}
-                  /*onChange={(ev) => {
-                        setPreferences({
-                          ...preferences,
-                          ageRange: ev.target.value,
-                        });
-                      }}*/
-                >
-                  <NumberInputField />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper children="+" />
-                    <NumberDecrementStepper children="-" />
-                  </NumberInputStepper>
-                </NumberInput>
-              </GridItem>
-            </Grid>
-          </Box>
-
-          <Box>
-            <FormControl>
-              <FormLabel>Mostrar perfiles de campus:</FormLabel>
-              <Select
-                value={preferences.sameCampus}
-                onChange={(ev) => {
-                  setPreferences({
-                    ...preferences,
-                    sameCampus: ev.target.value,
-                  });
-                }}
-              >
-                <option value="Isla Teja">Isla Teja</option>
-                <option value="Miraflores">Miraflores</option>
-                <option value="a">Ambos</option>
-              </Select>
-            </FormControl>
-          </Box>
-
-          <Box>
-            <FormControl>
-              <FormLabel>Mostrar perfiles con cabaña</FormLabel>
-              <Select
-                value={preferences.profilesWithCabin}
-                onChange={(ev) => {
-                  setPreferences({
-                    ...preferences,
-                    profilesWithCabin: ev.target.value,
-                  });
-                }}
-              >
-                <option value="s">Sí</option>
-                <option value="n">No</option>
-                <option value="a">Ambos</option>
-              </Select>
-            </FormControl>
-          </Box>
-
-          <Box display="flex" justifyContent="flex-end">
-            <Button
-              colorScheme="green"
-              onClick={async () => {
-                newProfile.preferences = preferences;
-                await axios.post("/api/createProfile", newProfile);
-                push("/");
-              }}
-            >
-              Crear
-            </Button>
-          </Box>
-        </VStack>
+        <Box display="flex" justifyContent="flex-end">
+          <Button
+            colorScheme="green"
+            onClick={async () => {
+              newProfile.preferences = preferences;
+              await axios.post("/api/createProfile", newProfile);
+              push("/");
+            }}
+          >
+            Crear
+          </Button>
+        </Box>
       </Box>
     </>
   );
