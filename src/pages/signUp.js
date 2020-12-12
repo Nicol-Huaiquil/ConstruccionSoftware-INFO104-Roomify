@@ -21,6 +21,14 @@ import {
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import {
+  NameInput,
+  CampusInput,
+  GenderInput,
+  DegreeInput,
+  HasCabinInput,
+  DescriptionInput,
+} from "../components/Inputs";
 
 import { TopBar } from "../components/TopBar";
 
@@ -28,9 +36,9 @@ export default function SignUp() {
   const { push } = useRouter();
 
   const [newUser, setNewUser] = useState({
-    username: "",
-    password: "",
+    name: "",
     email: "",
+    password: "",
   });
 
   const [newProfile, setNewProfile] = useState({
@@ -104,20 +112,20 @@ export default function SignUp() {
         </Text>
 
         <VStack spacing="2vh" px="5vh" align="stretch">
-          <Box>
-            <FormControl isRequired>
-              <FormLabel>Nombre</FormLabel>
-              <Input
-                value={newProfile.name}
-                onChange={(ev) => {
-                  setNewProfile({
-                    ...newProfile,
-                    name: ev.target.value,
-                  });
-                }}
-              />
-            </FormControl>
-          </Box>
+          <NameInput
+            isRequired={true}
+            value={newProfile.name}
+            onChange={(ev) => {
+              setNewProfile({
+                ...newProfile,
+                name: ev.target.value,
+              });
+              setNewUser({
+                ...newUser,
+                name: ev.target.value,
+              });
+            }}
+          />
 
           <Box>
             <FormControl isRequired>
@@ -136,194 +144,59 @@ export default function SignUp() {
             </FormControl>
           </Box>
 
-          <Box>
-            <FormControl as="fieldset" isRequired>
-              <FormLabel as="legend">Género</FormLabel>
-              <RadioGroup
-                value={newProfile.gender}
-                onChange={(value) => {
-                  setNewProfile({
-                    ...newProfile,
-                    gender: value.toString(),
-                  });
-                }}
-              >
-                <VStack spacing="0" align="stretch">
-                  <Radio value="m">Masculino</Radio>
-                  <Radio value="f">Femenino</Radio>
-                  <Radio value="o">Otro</Radio>
-                  <Radio value="n">Prefiero no responder</Radio>
-                </VStack>
-              </RadioGroup>
-            </FormControl>
-          </Box>
+          <GenderInput
+            isRequired={true}
+            value={newProfile.gender}
+            onChange={(value) => {
+              setNewProfile({
+                ...newProfile,
+                gender: value.toString(),
+              });
+            }}
+          />
 
-          <Box>
-            <FormControl isRequired>
-              <FormLabel>Campus</FormLabel>
-              <Select
-                placeholder="Seleccionar campus"
-                value={newProfile.campus}
-                onChange={(ev) => {
-                  setNewProfile({
-                    ...newProfile,
-                    campus: ev.target.value,
-                  });
-                }}
-              >
-                <option value="Isla Teja">Isla Teja</option>
-                <option value="Miraflores">Miraflores</option>
-              </Select>
-            </FormControl>
-          </Box>
+          <CampusInput
+            isRequired={true}
+            value={newProfile.campus}
+            onChange={(ev) => {
+              setNewProfile({
+                ...newProfile,
+                campus: ev.target.value,
+              });
+            }}
+          />
 
-          <Box>
-            <FormControl isRequired>
-              <FormLabel>Carrera</FormLabel>
-              <Select
-                placeholder="Seleccionar carrera"
-                value={newProfile.degree}
-                onChange={(ev) => {
-                  setNewProfile({
-                    ...newProfile,
-                    degree: ev.target.value,
-                  });
-                }}
-              >
-                <option value="Administración Empresas de Turismo">
-                  Administración Empresas de Turismo
-                </option>
-                <option value="Administración Pública">
-                  Administración Pública
-                </option>
-                <option value="Agronomía">Agronomía</option>
-                <option value="Antropología">Antropología</option>
-                <option value="Arquitectura">Arquitectura</option>
-                <option value="Artes Musicales y Sonoras">
-                  Artes Musicales y Sonoras
-                </option>
-                <option value="Auditoría">Auditoría</option>
-                <option value="Bachillerato en Cs. de la Ingeniería">
-                  Bachillerato en Cs. de la Ingeniería
-                </option>
-                <option value="Biología Marina">Biología Marina</option>
-                <option value="Bioquímica">Bioquímica</option>
-                <option value="Creación Audiovisual">
-                  Creación Audiovisual
-                </option>
-                <option value="Derecho">Derecho</option>
-                <option value="Diseño">Diseño</option>
-                <option value="Enfermería">Enfermería</option>
-                <option value="Geografía">Geografía</option>
-                <option value="Geología">Geología</option>
-                <option value="Ingeniería en Alimentos">
-                  Ingeniería en Alimentos
-                </option>
-                <option value="Ingeniería en Conservación de Recursos Naturales">
-                  Ingeniería en Conservación de Recursos Naturales
-                </option>
-                <option value="Ingeniería Comercial">
-                  Ingeniería Comercial
-                </option>
-                <option value="Ingeniería Civil Acústica">
-                  Ingeniería Civil Acústica
-                </option>
-                <option value="Ingeniería Civil Electrónica">
-                  Ingeniería Civil Electrónica
-                </option>
-                <option value="Ingeniería Civil en Informática">
-                  Ingeniería Civil en Informática
-                </option>
-                <option value="Ingeniería Civil en Obras Civiles">
-                  Ingeniería Civil en Obras Civiles
-                </option>
-                <option value="Ingeniería Civil Industrial">
-                  Ingeniería Civil Industrial
-                </option>
-                <option value="Ingeniería Civil Mecánica">
-                  Ingeniería Civil Mecánica
-                </option>
-                <option value="Ingeniería en Construcción">
-                  Ingeniería en Construcción
-                </option>
-                <option value="Ingeniería Naval">Ingeniería Naval</option>
-                <option value="Interpretación Musical">
-                  Interpretación Musical
-                </option>
-                <option value="Kinesiología">Kinesiología</option>
-                <option value="Licenciatura en Ciencias con Mención">
-                  Licenciatura en Ciencias con Mención
-                </option>
-                <option value="Licenciatura en Artes Visuales">
-                  Licenciatura en Artes Visuales
-                </option>
-                <option value="Medicina">Medicina</option>
-                <option value="Medicina Veterinari">
-                  Medicina Veterinaria
-                </option>
-                <option value="Obstetricia y Puericultura">
-                  Obstetricia y Puericultura
-                </option>
-                <option value="Odontología">Odontología</option>
-                <option value="Pedagogía en Comunicación en Lengua Inglesa">
-                  Pedagogía en Comunicación en Lengua Inglesa
-                </option>
-                <option value="Pedagogía en Educación Física, Deportes y Recreación">
-                  Pedagogía en Educación Física, Deportes y Recreación
-                </option>
-                <option value="Pedagogía en Educación Parvularia">
-                  Pedagogía en Educación Parvularia
-                </option>
-                <option value="Pedagogía en Historia y Ciencias Sociales">
-                  Pedagogía en Historia y Ciencias Sociales
-                </option>
-                <option value="Pedagogía en Lenguaje y Comunicación">
-                  Pedagogía en Lenguaje y Comunicación
-                </option>
-                <option value="Periodismo">Periodismo</option>
-                <option value="Psicología">Psicología</option>
-                <option value="Química y Farmacia">Química y Farmacia</option>
-                <option value="Tecnología Médica">Tecnología Médica</option>
-                <option value="Terapia Ocupacional">Terapia Ocupacional</option>
-              </Select>
-            </FormControl>
-          </Box>
+          <DegreeInput
+            isRequired={true}
+            value={newProfile.degree}
+            onChange={(ev) => {
+              setNewProfile({
+                ...newProfile,
+                degree: ev.target.value,
+              });
+            }}
+          />
 
-          <Box>
-            <FormControl as="fieldset" isRequired>
-              <FormLabel as="legend">Tengo cabaña</FormLabel>
-              <RadioGroup
-                value=""
-                onChange={(value) => {
-                  setNewProfile({
-                    ...newProfile,
-                    hasCabin: value === "s",
-                  });
-                }}
-              >
-                <VStack spacing="0" align="stretch">
-                  <Radio value="s">Sí</Radio>
-                  <Radio value="n">No</Radio>
-                </VStack>
-              </RadioGroup>
-            </FormControl>
-          </Box>
+          <HasCabinInput
+            isRequired={true}
+            value={newProfile.hasCabin ? "s" : "n"}
+            onChange={(value) => {
+              setNewProfile({
+                ...newProfile,
+                hasCabin: value === "s",
+              });
+            }}
+          />
 
-          <Box>
-            <FormControl>
-              <FormLabel>Descripción</FormLabel>
-              <Textarea
-                placeholder="..."
-                value={newProfile.description}
-                onChange={(ev) => {
-                  setNewProfile({
-                    ...newProfile,
-                    description: ev.target.value,
-                  });
-                }}
-              />
-            </FormControl>
-          </Box>
+          <DescriptionInput
+            value={newProfile.description}
+            onChange={(ev) => {
+              setNewProfile({
+                ...newProfile,
+                description: ev.target.value,
+              });
+            }}
+          />
         </VStack>
 
         <Box display="flex" justifyContent="flex-end">
@@ -331,7 +204,10 @@ export default function SignUp() {
             colorScheme="green"
             onClick={async () => {
               newProfile.preferences = preferences;
-              await axios.post("/api/createProfile", newProfile);
+              await axios.post("/api/createAccount", {
+                user: newUser,
+                profile: newProfile,
+              });
               push("/");
             }}
           >

@@ -29,18 +29,8 @@ export default async (req, res) => {
     let j = 0;
     while (j < n && profiles[i].bookmarked[j] != id) j++;
 
-    // Eliminación de la id
-    /*for (let k = 0; k < n; k++) {
-      console.log(profiles[i].bookmarked[k]);
-    }*/
-    if (j != n) {
-      //console.log("aquí es cuando elimina. ID = " + id + "  -  index = " + j);
-      profiles[i].bookmarked.splice(j, 1);
-    }
-    /*console.log("eliminado.");
-    for (let h = 0; h < profiles[i].bookmarked.length; h++) {
-      console.log(profiles[i].bookmarked[h]);
-    }*/
+    // Elimina el perfil
+    if (j != n) profiles[i].bookmarked.splice(j, 1);
 
     // Sobreescritura de la base de datos (horrible)
     await collection.deleteMany({});
