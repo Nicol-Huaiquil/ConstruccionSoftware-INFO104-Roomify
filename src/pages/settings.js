@@ -36,7 +36,7 @@ export default function Settings() {
   });
 
   const [preferences, setPreferences] = useState({
-    ageRange: [17, 40],
+    ageRange: [18, 35],
     sameCampus: "",
     profilesWithCabin: "",
   });
@@ -81,7 +81,7 @@ export default function Settings() {
                       min={18}
                       max={40}
                       onChange={(ev) => {
-                        setMinAge(ev);
+                        setMinAge(parseInt(ev));
                       }}
                     >
                       <NumberInputField />
@@ -102,7 +102,7 @@ export default function Settings() {
                       min={18}
                       max={40}
                       onChange={(ev) => {
-                        setMaxAge(ev);
+                        setMaxAge(parseInt(ev));
                       }}
                       /*onChange={(ev) => {
                         setPreferences({

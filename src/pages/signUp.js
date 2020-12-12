@@ -4,23 +4,17 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Select,
   Button,
   VStack,
   NumberInput,
   NumberInputField,
-  Radio,
-  RadioGroup,
-  Textarea,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
-  Grid,
-  GridItem,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useState } from "react";
+
+import { TopBar } from "../components/TopBar";
+
 import {
   NameInput,
   CampusInput,
@@ -29,8 +23,6 @@ import {
   HasCabinInput,
   DescriptionInput,
 } from "../components/Inputs";
-
-import { TopBar } from "../components/TopBar";
 
 export default function SignUp() {
   const { push } = useRouter();
@@ -52,11 +44,11 @@ export default function SignUp() {
     preferences: {},
   });
 
-  const [preferences, setPreferences] = useState({
-    ageRange: [18, 40],
+  const preferences = {
+    ageRange: [18, 35],
     sameCampus: "a",
     profilesWithCabin: "a",
-  });
+  };
 
   return (
     <>
