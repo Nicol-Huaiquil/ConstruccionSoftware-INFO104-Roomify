@@ -46,7 +46,7 @@ export default function Settings() {
 
   return (
     <>
-      <TopBar color1="#679beb" color2="#679beb" title="Editar Perfil" />
+      <TopBar title="Editar Perfil" route="/myProfile" />
 
       {loading ? (
         <Box className="centeredFlex h2 gray1">

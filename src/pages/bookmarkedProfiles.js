@@ -14,6 +14,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 //import { useRouter } from "next/router";
 import { ImCross } from "react-icons/im";
+import { useRouter } from "next/router";
+
 import { TopBar } from "../components/TopBar";
 
 import { uId } from "./index.js";
@@ -24,6 +26,7 @@ export default function Settings() {
   const [id, setId] = useState();
 
   const toast = useToast();
+  const { push } = useRouter();
 
   useEffect(() => {
     axios
@@ -63,7 +66,7 @@ export default function Settings() {
 
   return (
     <>
-      <TopBar color1="#679beb" color2="#679beb" title="Perfiles Guardados" />
+      <TopBar title="Perfiles Guardados" route="/" />
 
       {loading ? (
         <Box className="centeredFlex h2 gray1">
@@ -87,6 +90,9 @@ export default function Settings() {
                       alignItems="center"
                       padding="2vh"
                       colSpan={3}
+                      onClick={() => {
+                        push("/viewProfile");
+                      }}
                     >
                       <HStack spacing="2vh">
                         <Avatar

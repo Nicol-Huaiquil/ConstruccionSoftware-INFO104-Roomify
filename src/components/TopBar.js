@@ -4,11 +4,11 @@ import { IoIosArrowBack } from "react-icons/io";
 
 import { SquareButton } from "./SquareButton";
 
-export const TopBar = ({ color1, color2, title }) => {
+export const TopBar = ({ title, route }) => {
   const styles = {
     Bar: {
       height: "10vh",
-      backgroundColor: color1,
+      backgroundColor: "#679beb",
     },
     Grid: {
       height: "10vh",
@@ -19,7 +19,7 @@ export const TopBar = ({ color1, color2, title }) => {
       justifyContent: "center",
     },
     Button: {
-      backgroundColor: color2,
+      backgroundColor: "#679beb",
       width: "7vh",
       height: "7vh",
       type: "submit",
@@ -33,11 +33,11 @@ export const TopBar = ({ color1, color2, title }) => {
       <Grid style={styles.Grid} templateColumns="repeat(4, 1fr)" gap={4}>
         <GridItem style={styles.GridItem}>
           <SquareButton
-            color={color2}
+            color={"#679beb"}
             icon={<IoIosArrowBack size="4vh" color="white" />}
             label="Volver"
             onClick={() => {
-              push("/");
+              push(route);
             }}
           />
         </GridItem>

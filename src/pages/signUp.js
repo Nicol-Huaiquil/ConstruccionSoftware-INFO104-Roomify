@@ -52,7 +52,7 @@ export default function SignUp() {
 
   return (
     <>
-      <TopBar color1="#679beb" color2="#679beb" title="Crear cuenta" />
+      <TopBar title="Crear cuenta" route="/" />
 
       <Box className="h2 gray1">
         <Text fontSize="2.5vh" p="2.5vh">

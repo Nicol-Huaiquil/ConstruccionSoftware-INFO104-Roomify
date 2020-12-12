@@ -68,11 +68,7 @@ export default function Settings() {
         </Box>
       ) : (
         <>
-          <TopBar
-            color1="#679beb"
-            color2="#679beb"
-            title="Opciones de búsqueda"
-          />
+          <TopBar title="Opciones de búsqueda" route="/" />
 
           <Box className="h2 gray1" p="5vh">
             <VStack spacing="2vh" align="stretch">

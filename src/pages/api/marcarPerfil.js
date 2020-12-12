@@ -30,11 +30,11 @@ export default async (req, res) => {
 
     let k = 0;
     while (!isUndefined(profiles[i].bookmarked[k])) {
-      //console.log(profiles[i].bookmarked[k]);
+      console.log(profiles[i].bookmarked[k]);
       k++;
     }
 
-    profiles[i].bookmarked.push(id);
+    if (j == m) profiles[i].bookmarked.push(id);
 
     await collection.deleteMany({});
     await collection.insertMany(profiles);
