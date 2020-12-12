@@ -27,7 +27,7 @@ export default async (req, res) => {
       profiles[i].age > uPreferences.ageRange[1]
     )
       continue;
-    console.log(uPreferences.ageRange[0], uPreferences.ageRange[1]);
+
     if (
       uPreferences.sameCampus != "a" &&
       uPreferences.sameCampus != profiles[i].campus
@@ -44,7 +44,6 @@ export default async (req, res) => {
     }
 
     selectedProfiles.push(profiles[i]);
-    console.log("agregado " + i);
   }
 
   res.send(selectedProfiles);

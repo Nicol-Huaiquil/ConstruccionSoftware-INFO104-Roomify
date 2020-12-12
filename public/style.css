@@ -19,9 +19,9 @@ ul {
   position: absolute;
   top: 10vh;
   text-align: center;
-  padding: 0 10% 10vh 10%;
+  padding: 6vh 6vh 10vh 6vh;
   width: 100vw;
-  min-height: 80vh;
+  min-height: 90vh;
 }
 
 #topBar {

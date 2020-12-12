@@ -4,5 +4,6 @@
   "workbench.iconTheme": "vscode-icons",
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "prettier.printWidth": 100
+  "prettier.printWidth": 100,
+  "editor.tabSize": 2
 }

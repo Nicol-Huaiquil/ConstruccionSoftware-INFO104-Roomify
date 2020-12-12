@@ -128,7 +128,7 @@ export default function SignUp() {
                   onChange={(ev) => {
                     setNewProfile({
                       ...newProfile,
-                      name: ev.target.value,
+                      age: ev.target.value,
                     });
                   }}
                 />

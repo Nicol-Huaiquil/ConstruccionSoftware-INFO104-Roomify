@@ -19,23 +19,30 @@ export default async (req, res) => {
     const collection = db.collection("profiles");
     const profiles = await collection.find({}).toArray();
 
+    // Búsqueda del perfil del usuario que quiere eliminar un perfil guardado
     let i = 0;
     while (profiles[i].id != uId) i++;
 
-    let m = 0;
-    while (!isUndefined(profiles[i].bookmarked[m])) m++;
+    let n = profiles[i].bookmarked.length;
 
+    // Búsqueda del id del perfil a eliminar
     let j = 0;
-    while (j < m && profiles[i].bookmarked[j] != id) j++;
+    while (j < n && profiles[i].bookmarked[j] != id) j++;
 
-    let k = 0;
-    while (!isUndefined(profiles[i].bookmarked[k])) {
-      //console.log(profiles[i].bookmarked[k]);
-      k++;
+    // Eliminación de la id
+    /*for (let k = 0; k < n; k++) {
+      console.log(profiles[i].bookmarked[k]);
+    }*/
+    if (j != n) {
+      //console.log("aquí es cuando elimina. ID = " + id + "  -  index = " + j);
+      profiles[i].bookmarked.splice(j, 1);
     }
+    /*console.log("eliminado.");
+    for (let h = 0; h < profiles[i].bookmarked.length; h++) {
+      console.log(profiles[i].bookmarked[h]);
+    }*/
 
-    profiles[i].bookmarked.push(id);
-
+    // Sobreescritura de la base de datos (horrible)
     await collection.deleteMany({});
     await collection.insertMany(profiles);
 

@@ -35,7 +35,7 @@ import { useRouter } from "next/router";
 import { ProfileDisplay } from "../components/ProfileDisplay";
 import { SquareButton } from "../components/SquareButton";
 
-//export constuId = "24836"; // Rodolfo Seguel
+//export const uId = "24836"; // Rodolfo Seguel
 //export const uId = "28374"; // Gustavo Reyes
 export const uId = "14125"; // Matilde Valera
 //export const uId = "25098"; // Daniela Vega
@@ -118,8 +118,8 @@ export default function Home() {
         </Box>
       ) : (
         <>
-          <Box id="home" className="centeredFlex">
-            <VStack spacing="2.5vh" py="2.5vh">
+          <Box id="home">
+            <VStack spacing="2.5vh">
               {profiles[index] ? (
                 <ProfileDisplay profile={profiles[index]} />
               ) : (
