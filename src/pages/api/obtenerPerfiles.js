@@ -12,10 +12,51 @@ export default async (req, res) => {
 
   const db = await dbConnection;
   const collection = db.collection("profiles");
-  const profiles = await collection.find({}).toArray();
+  const uProfile = await collection.findOne({ id: uId });
+  const uPreferences = uProfile.preferences;
+
+  let filter = {};
+
+  if (uProfile.preferences.sameCampus != "a")
+    filter = { ...filter, campus: uProfile.preferences.sameCampus };
+
+  if (uProfile.preferences.profilesWithCabin != "a")
+    filter = {
+      ...filter,
+      hasCabin: uProfile.preferences.profilesWithCabin === "s" ? true : false,
+    };
+
+  const profiles = await collection.find(filter).toArray();
 
   let selectedProfiles = [];
 
+  for (let i = 0; i < profiles.length; i++) {
+    if (
+      profiles[i].age < uPreferences.ageRange[0] ||
+      profiles[i].age > uPreferences.ageRange[1]
+    )
+      continue;
+    if (profiles[i].id === uId) continue;
+    selectedProfiles.push(profiles[i]);
+  }
+
+  res.send(selectedProfiles);
+
+  /*
+  if (
+    uProfile.preferences.sameCampus != "a" &&
+    uProfile.preferences.profilesWithCabin != "a"
+  ) {
+    const profiles = await collection
+      .find({ campus: uProfile.preferences.sameCampus })
+      .toArray();
+    res.send(profiles);
+  } else {
+    const profiles = await collection.find({}).toArray();
+    res.send(profiles);
+  }
+*/
+  /*
   let i = 0;
   while (profiles[i].id != uId) i++;
   let uProfile = profiles.splice(i)[0];
@@ -42,9 +83,6 @@ export default async (req, res) => {
         continue;
       }
     }
-
     selectedProfiles.push(profiles[i]);
-  }
-
-  res.send(selectedProfiles);
+  }*/
 };

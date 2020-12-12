@@ -28,12 +28,13 @@ export default function SignUp() {
   const { push } = useRouter();
 
   const [newUser, setNewUser] = useState({
-    name: "",
+    id: "",
     email: "",
     password: "",
   });
 
   const [newProfile, setNewProfile] = useState({
+    id: "",
     name: "",
     age: 0,
     gender: "",
@@ -41,10 +42,12 @@ export default function SignUp() {
     degree: "",
     hasCabin: false,
     description: "",
-    preferences: {},
+    bookmarked: [],
+    pic: "",
   });
 
-  const preferences = {
+  const newPreferences = {
+    id: "",
     ageRange: [18, 35],
     sameCampus: "a",
     profilesWithCabin: "a",
@@ -112,10 +115,6 @@ export default function SignUp() {
                 ...newProfile,
                 name: ev.target.value,
               });
-              setNewUser({
-                ...newUser,
-                name: ev.target.value,
-              });
             }}
           />
 
@@ -128,7 +127,7 @@ export default function SignUp() {
                   onChange={(ev) => {
                     setNewProfile({
                       ...newProfile,
-                      age: ev.target.value,
+                      age: parseInt(ev.target.value),
                     });
                   }}
                 />
@@ -195,10 +194,10 @@ export default function SignUp() {
           <Button
             colorScheme="green"
             onClick={async () => {
-              newProfile.preferences = preferences;
               await axios.post("/api/createAccount", {
                 user: newUser,
                 profile: newProfile,
+                preferences: newPreferences,
               });
               push("/");
             }}
