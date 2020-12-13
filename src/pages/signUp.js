@@ -37,16 +37,14 @@ export default function SignUp() {
     });
   }, []);
 
-  let newId = (9999 + globalData.n).toString();
-
   const [newUser, setNewUser] = useState({
-    id: newId,
+    id: "",
     email: "",
     password: "",
   });
 
   const [newProfile, setNewProfile] = useState({
-    id: newId,
+    id: "",
     pic: "",
     name: "",
     age: 0,
@@ -58,14 +56,14 @@ export default function SignUp() {
   });
 
   const newPreferences = {
-    id: newId,
+    id: "",
     ageRange: [18, 35],
     profilesFromCampus: "a",
     profilesWithCabin: "a",
   };
 
   const newBookmarked = {
-    id: newId,
+    id: "",
     bookmarked: [],
   };
 

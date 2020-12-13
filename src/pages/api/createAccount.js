@@ -14,6 +14,13 @@ export default async (req, res) => {
   const newBookmarked = req.body.bookmarked;
   const newGlobalData = req.body.globalData;
 
+  const newId = (10000 + newGlobalData.n).toString();
+
+  newUser.id = newId;
+  newProfile.id = newId;
+  newPreferences.id = newId;
+  newBookmarked.id = newId;
+
   newGlobalData.n += 1;
 
   const db = await dbConnection;
