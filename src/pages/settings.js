@@ -24,20 +24,9 @@ import { TopBar } from "../components/TopBar";
 import { uId } from "./index.js";
 
 export default function Settings() {
-  const [myProfile, setMyProfile] = useState({
-    name: "",
-    age: 0,
-    gender: "",
-    campus: "",
-    degree: "",
-    hasCabin: false,
-    description: "",
-    preferences: {},
-  });
-
   const [preferences, setPreferences] = useState({
     ageRange: [18, 35],
-    sameCampus: "",
+    profilesFromCampus: "",
     profilesWithCabin: "",
   });
 
@@ -45,12 +34,11 @@ export default function Settings() {
   const { push } = useRouter();
   useEffect(() => {
     axios
-      .post("/api/obtenerPerfil", {
+      .post("/api/getPreferences", {
         id: uId,
       })
       .then(({ data }) => {
-        setMyProfile(data);
-        setPreferences(data.preferences);
+        setPreferences(data);
       })
       .finally(() => {
         setLoading(false);
@@ -81,7 +69,7 @@ export default function Settings() {
                       min={18}
                       max={40}
                       onChange={(ev) => {
-                        setMinAge(parseInt(ev));
+                        setMinAge(ev);
                       }}
                     >
                       <NumberInputField />
@@ -102,14 +90,8 @@ export default function Settings() {
                       min={18}
                       max={40}
                       onChange={(ev) => {
-                        setMaxAge(parseInt(ev));
+                        setMaxAge(ev);
                       }}
-                      /*onChange={(ev) => {
-                        setPreferences({
-                          ...preferences,
-                          ageRange: ev.target.value,
-                        });
-                      }}*/
                     >
                       <NumberInputField />
                       <NumberInputStepper>
@@ -125,11 +107,11 @@ export default function Settings() {
                 <FormControl id="pCampus">
                   <FormLabel>Mostrar perfiles de campus:</FormLabel>
                   <Select
-                    value={preferences.sameCampus}
+                    value={preferences.profilesFromCampus}
                     onChange={(ev) => {
                       setPreferences({
                         ...preferences,
-                        sameCampus: ev.target.value,
+                        profilesFromCampus: ev.target.value,
                       });
                     }}
                   >
@@ -164,8 +146,7 @@ export default function Settings() {
                   colorScheme="green"
                   onClick={async () => {
                     preferences.ageRange = [minAge, maxAge];
-                    myProfile.preferences = preferences;
-                    await axios.post("/api/editarPerfil", myProfile);
+                    await axios.post("/api/savePreferences", preferences);
                     push("/");
                   }}
                 >

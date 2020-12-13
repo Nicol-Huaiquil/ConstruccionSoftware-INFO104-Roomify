@@ -58,7 +58,7 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .post("/api/obtenerPerfiles", {
+      .post("/api/getProfiles", {
         uId: uId,
       })
       .then(({ data }) => {
@@ -71,7 +71,7 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .post("/api/obtenerPerfil", {
+      .post("/api/getProfile", {
         id: uId,
       })
       .then(({ data }) => {
@@ -81,7 +81,7 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .post("/api/marcarPerfil", {
+      .post("/api/bookmarkProfile", {
         uId: uId,
         id: id,
       })

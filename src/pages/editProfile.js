@@ -42,7 +42,7 @@ export default function Settings() {
   const { push } = useRouter();
   useEffect(() => {
     axios
-      .post("/api/obtenerPerfil", {
+      .post("/api/getProfile", {
         id: uId,
       })
       .then(({ data }) => {
@@ -133,7 +133,7 @@ export default function Settings() {
               <Button
                 colorScheme="green"
                 onClick={async () => {
-                  await axios.post("/api/editarPerfil", myProfile);
+                  await axios.post("/api/saveProfileChanges", myProfile);
                   push("/myProfile");
                 }}
               >

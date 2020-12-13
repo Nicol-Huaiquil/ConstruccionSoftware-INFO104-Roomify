@@ -2,7 +2,6 @@ import React from "react";
 import {
   Image,
   Box,
-  Heading,
   FormControl,
   FormLabel,
   Input,
@@ -15,16 +14,14 @@ export default function LogIn() {
   return (
     <Box className="fullscreen centeredFlex" bg="#679beb">
       <Box p={2}>
-        <Box textAlign="center">
-          <Heading>
-            <Image src="logoLetras.png" height="10vh" />
-          </Heading>
+        <Box className="centeredFlex">
+          <Image src="logoLetras.png" height="10vh" />
         </Box>
         <Box my={4} textAlign="left">
           <form>
             <FormControl>
               <FormLabel>Email</FormLabel>
-              <Input type="email" placeholder="example@gmail.com" bg="white" />
+              <Input type="email" placeholder="example@email.com" bg="white" />
             </FormControl>
             <FormControl mt={6}>
               <FormLabel>Contraseña</FormLabel>
@@ -41,7 +38,15 @@ export default function LogIn() {
             >
               Ingresar
             </Button>
-            <Button width="full" mt={4} type="submit" bg="#466ba3">
+            <Button
+              width="full"
+              mt={4}
+              type="submit"
+              bg="#466ba3"
+              onClick={() => {
+                push("/signUp");
+              }}
+            >
               Crear cuenta
             </Button>
           </form>

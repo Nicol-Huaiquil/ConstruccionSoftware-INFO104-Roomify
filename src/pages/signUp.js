@@ -53,7 +53,7 @@ export default function SignUp() {
   };
 
   const newBookmarked = {
-    id: "",
+    id: "76576",
     bookmarked: [],
   };
 

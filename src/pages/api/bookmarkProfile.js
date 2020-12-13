@@ -19,7 +19,7 @@ export default async (req, res) => {
     const collection = db.collection("usersBookmarked");
     const uBookmarked = await collection.findOne({ id: uId });
 
-    if (!uBookmarked.bookmarked.includes(id)) uBookmarked.push(id);
+    if (!uBookmarked.bookmarked.includes(id)) uBookmarked.bookmarked.push(id);
 
     const auxConst = await collection.updateOne(
       { id: uId },

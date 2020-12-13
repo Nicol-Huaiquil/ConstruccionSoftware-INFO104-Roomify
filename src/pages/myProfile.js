@@ -21,7 +21,7 @@ export default function Settings() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
-      .post("/api/obtenerPerfil", {
+      .post("/api/getProfile", {
         id: uId,
       })
       .then(({ data }) => {

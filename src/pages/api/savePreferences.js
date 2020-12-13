@@ -8,11 +8,15 @@ import { dbConnection } from "../../db";
  */
 
 export default async (req, res) => {
-  let uId = req.body.uId;
+  const { _id, ...preferences } = req.body;
 
   const db = await dbConnection;
-  const collection = db.collection("profiles");
-  const uBookmarked = await collection.findOne({ id: uId });
+  const collection = db.collection("usersPreferences");
+  const auxConst = await collection.updateOne(
+    { id: preferences.id },
+    { $set: preferences },
+    {}
+  );
 
-  res.send(uBookmarked.uBookmarked);
+  res.send(auxConst);
 };

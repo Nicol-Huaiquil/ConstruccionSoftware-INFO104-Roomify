@@ -11,7 +11,7 @@ export default async (req, res) => {
   const newUser = req.body.user;
   const newProfile = req.body.profile;
   const newPreferences = req.body.preferences;
-  const newBookmarked = req.body.bokkmarked;
+  const newBookmarked = req.body.bookmarked;
 
   const db = await dbConnection;
   const users = db.collection("users");
@@ -22,7 +22,7 @@ export default async (req, res) => {
   users.insertOne(newUser);
   profiles.insertOne(newProfile);
   usersPreferences.insertOne(newPreferences);
-  usersBookmarked.insertOne(newBookmarked;)
+  usersBookmarked.insertOne(newBookmarked);
 
   res.send(true);
 };

@@ -30,7 +30,7 @@ export default function Settings() {
 
   useEffect(() => {
     axios
-      .post("/api/obtenerPerfilesGuardados", {
+      .post("/api/getBookmarked", {
         uId: uId,
       })
       .then(({ data }) => {
