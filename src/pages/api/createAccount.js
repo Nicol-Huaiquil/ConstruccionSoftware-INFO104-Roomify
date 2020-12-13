@@ -12,17 +12,23 @@ export default async (req, res) => {
   const newProfile = req.body.profile;
   const newPreferences = req.body.preferences;
   const newBookmarked = req.body.bookmarked;
+  const newGlobalData = req.body.globalData;
+
+  newGlobalData.n += 1;
 
   const db = await dbConnection;
   const users = db.collection("users");
   const profiles = db.collection("profiles");
   const usersPreferences = db.collection("usersPreferences");
   const usersBookmarked = db.collection("usersBookmarked");
+  const globalData = db.collection("globalData");
 
   users.insertOne(newUser);
   profiles.insertOne(newProfile);
   usersPreferences.insertOne(newPreferences);
   usersBookmarked.insertOne(newBookmarked);
+  globalData.deleteMany({});
+  globalData.insertOne(newGlobalData);
 
   res.send(true);
 };

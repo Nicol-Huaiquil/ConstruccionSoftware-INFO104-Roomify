@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { TopBar } from "../components/TopBar";
 
@@ -27,14 +27,26 @@ import {
 export default function SignUp() {
   const { push } = useRouter();
 
+  const [globalData, setGlobalData] = useState({
+    n: 0,
+  });
+
+  useEffect(() => {
+    axios.post("/api/getGlobalData").then(({ data }) => {
+      setGlobalData(data);
+    });
+  }, []);
+
+  let newId = (9999 + globalData.n).toString();
+
   const [newUser, setNewUser] = useState({
-    id: "",
+    id: newId,
     email: "",
     password: "",
   });
 
   const [newProfile, setNewProfile] = useState({
-    id: "",
+    id: newId,
     pic: "",
     name: "",
     age: 0,
@@ -46,14 +58,14 @@ export default function SignUp() {
   });
 
   const newPreferences = {
-    id: "",
+    id: newId,
     ageRange: [18, 35],
     profilesFromCampus: "a",
     profilesWithCabin: "a",
   };
 
   const newBookmarked = {
-    id: "76576",
+    id: newId,
     bookmarked: [],
   };
 
@@ -203,6 +215,7 @@ export default function SignUp() {
                 profile: newProfile,
                 preferences: newPreferences,
                 bookmarked: newBookmarked,
+                globalData: globalData,
               });
               push("/");
             }}
