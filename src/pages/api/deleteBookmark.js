@@ -16,25 +16,16 @@ export default async (req, res) => {
     res.send(false);
   } else {
     const db = await dbConnection;
-    const collection = db.collection("profiles");
-    const profiles = await collection.find({}).toArray();
+    const collection = db.collection("usersBookmarked");
+    const uBookmarked = await collection.findOne({ id: uId });
 
-    // Búsqueda del perfil del usuario que quiere eliminar un perfil guardado
-    let i = 0;
-    while (profiles[i].id != uId) i++;
+    uBookmarked.bookmarked.splice(uBookmarked.bookmarked.indexOf(id), 1);
 
-    let n = profiles[i].bookmarked.length;
-
-    // Búsqueda del id del perfil a eliminar
-    let j = 0;
-    while (j < n && profiles[i].bookmarked[j] != id) j++;
-
-    // Elimina el perfil
-    if (j != n) profiles[i].bookmarked.splice(j, 1);
-
-    // Sobreescritura de la base de datos (horrible)
-    await collection.deleteMany({});
-    await collection.insertMany(profiles);
+    const auxConst = await collection.updateOne(
+      { id: uId },
+      { $set: uBookmarked },
+      {}
+    );
 
     res.send(true);
   }

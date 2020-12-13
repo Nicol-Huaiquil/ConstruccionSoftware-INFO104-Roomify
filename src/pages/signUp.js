@@ -35,6 +35,7 @@ export default function SignUp() {
 
   const [newProfile, setNewProfile] = useState({
     id: "",
+    pic: "",
     name: "",
     age: 0,
     gender: "",
@@ -42,15 +43,18 @@ export default function SignUp() {
     degree: "",
     hasCabin: false,
     description: "",
-    bookmarked: [],
-    pic: "",
   });
 
   const newPreferences = {
     id: "",
     ageRange: [18, 35],
-    sameCampus: "a",
+    profilesFromCampus: "a",
     profilesWithCabin: "a",
+  };
+
+  const newBookmarked = {
+    id: "",
+    bookmarked: [],
   };
 
   return (
@@ -198,6 +202,7 @@ export default function SignUp() {
                 user: newUser,
                 profile: newProfile,
                 preferences: newPreferences,
+                bookmarked: newBookmarked,
               });
               push("/");
             }}

@@ -216,7 +216,14 @@ export default function Home() {
                       </Button>
                     </GridItem>
                     <GridItem rowSpan={1} colSpan={2}>
-                      <Button bg="red.500" width="100%" height="100%">
+                      <Button
+                        bg="red.500"
+                        width="100%"
+                        height="100%"
+                        onClick={() => {
+                          push("/logIn");
+                        }}
+                      >
                         <CgLogOut size="6vh" color="white" />
                         <Text fontSize="xl" color="white" m="1vh">
                           Cerrar sesión

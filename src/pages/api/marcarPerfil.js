@@ -16,28 +16,16 @@ export default async (req, res) => {
     res.send(false);
   } else {
     const db = await dbConnection;
-    const collection = db.collection("profiles");
-    const profiles = await collection.find({}).toArray();
+    const collection = db.collection("usersBookmarked");
+    const uBookmarked = await collection.findOne({ id: uId });
 
-    let i = 0;
-    while (profiles[i].id != uId) i++;
+    if (!uBookmarked.bookmarked.includes(id)) uBookmarked.push(id);
 
-    let m = 0;
-    while (!isUndefined(profiles[i].bookmarked[m])) m++;
-
-    let j = 0;
-    while (j < m && profiles[i].bookmarked[j] != id) j++;
-
-    let k = 0;
-    while (!isUndefined(profiles[i].bookmarked[k])) {
-      console.log(profiles[i].bookmarked[k]);
-      k++;
-    }
-
-    if (j == m) profiles[i].bookmarked.push(id);
-
-    await collection.deleteMany({});
-    await collection.insertMany(profiles);
+    const auxConst = await collection.updateOne(
+      { id: uId },
+      { $set: uBookmarked },
+      {}
+    );
 
     res.send(true);
   }

@@ -12,26 +12,7 @@ export default async (req, res) => {
 
   const db = await dbConnection;
   const collection = db.collection("profiles");
-  const profiles = await collection.find({}).toArray();
+  const uBookmarked = await collection.findOne({ id: uId });
 
-  let i = 0;
-  while (profiles[i].id != uId) i++;
-
-  //console.log("1.");
-
-  let bookmarked = profiles[i].bookmarked;
-  let n = bookmarked.length;
-
-  i = 0;
-  let selectedProfiles = [];
-  while (n != 0) {
-    if (bookmarked.includes(profiles[i].id)) {
-      //console.log("2.");
-      selectedProfiles.push(profiles[i]);
-      n--;
-    }
-    i++;
-  }
-
-  res.send(selectedProfiles);
+  res.send(uBookmarked.uBookmarked);
 };
