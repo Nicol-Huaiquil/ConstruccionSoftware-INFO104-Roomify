@@ -1,21 +1,10 @@
-import {
-  Box,
-  Spinner,
-  VStack,
-  FormControl,
-  FormLabel,
-  Input,
-  RadioGroup,
-  Radio,
-  Select,
-  Textarea,
-  Button,
-} from "@chakra-ui/react";
+import { Box, Spinner, VStack, Button } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import { TopBar } from "../components/TopBar";
+import { LoadingScreen } from "../components/LoadingScreen";
 import {
   NameInput,
   CampusInput,
@@ -26,7 +15,6 @@ import {
 } from "../components/Inputs";
 
 import { uId } from "./index.js";
-import { isRegExp } from "lodash";
 
 export default function Settings() {
   const [myProfile, setMyProfile] = useState({
@@ -58,9 +46,7 @@ export default function Settings() {
       <TopBar title="Editar Perfil" route="/myProfile" />
 
       {loading ? (
-        <Box className="centeredFlex h2 gray1">
-          <Spinner />
-        </Box>
+        <LoadingScreen />
       ) : (
         <Box className="h2 gray1" px="4vh" py="3vh">
           <VStack spacing="2vh" align="stretch">

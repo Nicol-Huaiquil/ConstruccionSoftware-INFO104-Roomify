@@ -2,7 +2,6 @@ import {
   Box,
   Text,
   IconButton,
-  Spinner,
   Grid,
   GridItem,
   useToast,
@@ -12,11 +11,11 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-//import { useRouter } from "next/router";
 import { ImCross } from "react-icons/im";
 import { useRouter } from "next/router";
 
 import { TopBar } from "../components/TopBar";
+import { LoadingScreen } from "../components/LoadingScreen";
 
 import { uId } from "./index.js";
 
@@ -69,9 +68,7 @@ export default function Settings() {
       <TopBar title="Perfiles Guardados" route="/" />
 
       {loading ? (
-        <Box className="centeredFlex h2 gray1">
-          <Spinner />
-        </Box>
+        <LoadingScreen />
       ) : (
         <Box className="h2 gray1">
           {profiles.length === 0 && <Text>No hay perfiles guardados.</Text>}

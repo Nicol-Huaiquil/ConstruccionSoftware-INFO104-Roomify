@@ -113,7 +113,7 @@ export default function Home() {
   return (
     <>
       {loading ? (
-        <Box id="loadingHome" className="centeredFlex">
+        <Box className="fullscreen centeredFlex">
           <Spinner />
         </Box>
       ) : (

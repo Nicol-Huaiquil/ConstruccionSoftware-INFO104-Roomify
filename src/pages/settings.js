@@ -6,7 +6,6 @@ import {
   Select,
   Button,
   VStack,
-  Spinner,
   Grid,
   GridItem,
   NumberInput,
@@ -18,6 +17,7 @@ import {
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { LoadingScreen } from "../components/LoadingScreen";
 
 import { TopBar } from "../components/TopBar";
 
@@ -51,9 +51,7 @@ export default function Settings() {
   return (
     <>
       {loading ? (
-        <Box id="loadingSettings" className="centeredFlex">
-          <Spinner />
-        </Box>
+        <LoadingScreen />
       ) : (
         <>
           <TopBar title="Opciones de búsqueda" route="/" />
@@ -69,7 +67,7 @@ export default function Settings() {
                       min={18}
                       max={40}
                       onChange={(ev) => {
-                        setMinAge(ev);
+                        setMinAge(parseInt(ev));
                       }}
                     >
                       <NumberInputField />
@@ -90,7 +88,7 @@ export default function Settings() {
                       min={18}
                       max={40}
                       onChange={(ev) => {
-                        setMaxAge(ev);
+                        setMaxAge(parseInt(ev));
                       }}
                     >
                       <NumberInputField />

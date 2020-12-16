@@ -5,6 +5,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { SquareButton } from "./SquareButton";
 
 export const TopBar = ({ title, route }) => {
+  const { push } = useRouter();
   const styles = {
     Bar: {
       height: "10vh",
@@ -18,22 +19,14 @@ export const TopBar = ({ title, route }) => {
       alignItems: "center",
       justifyContent: "center",
     },
-    Button: {
-      backgroundColor: "#679beb",
-      width: "7vh",
-      height: "7vh",
-      type: "submit",
-    },
   };
-
-  const { push } = useRouter();
 
   return (
     <Box style={styles.Bar}>
       <Grid style={styles.Grid} templateColumns="repeat(4, 1fr)" gap={4}>
         <GridItem style={styles.GridItem}>
           <SquareButton
-            color={"#679beb"}
+            color="#679beb"
             icon={<IoIosArrowBack size="4vh" color="white" />}
             label="Volver"
             onClick={() => {

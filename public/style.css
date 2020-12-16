@@ -4,15 +4,7 @@ body {
   margin: 0;
 }
 
-ul {
-  list-style-type: none;
-}
-
 /* Pantalla Home */
-
-#loadingHome {
-  height: 100vh;
-}
 
 #home {
   background-color: #98d6c5; /* cambiar color del fondo */
@@ -38,13 +30,6 @@ ul {
   bottom: 0;
   width: 100vw;
   height: 10vh;
-}
-
-/* Pantalla My Profile */
-
-#myProfile {
-  text-align: center;
-  padding: 0 10% 0 10%;
 }
 
 /* Pantalla Settings */

@@ -1,9 +1,9 @@
-import { Box, Spinner, VStack } from "@chakra-ui/react";
+import { Box, VStack } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 
 import { TopBar } from "../components/TopBar";
+import { LoadingScreen } from "../components/LoadingScreen";
 import { ProfileDisplay } from "../components/ProfileDisplay";
 
 export default function Settings() {
@@ -15,12 +15,11 @@ export default function Settings() {
     description: "",
     pic: "",
   });
-  const { push } = useRouter();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
-      .post("/api/obtenerPerfil", {
-        id: "28374",
+      .post("/api/getProfile", {
+        id: "10003",
       })
       .then(({ data }) => {
         setMyProfile(data);
@@ -35,9 +34,7 @@ export default function Settings() {
       <TopBar title="" route="/bookmarkedProfiles" />
 
       {loading ? (
-        <Box className="centeredFlex h2 gray1">
-          <Spinner />
-        </Box>
+        <LoadingScreen />
       ) : (
         <Box id="myProfile" className="centeredFlex h2 gray1">
           <VStack spacing="2.5vh" py="2.5vh">
