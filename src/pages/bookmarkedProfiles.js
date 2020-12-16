@@ -22,12 +22,11 @@ import { uId } from "./index.js";
 export default function Settings() {
   const [profiles, setProfiles] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [id, setId] = useState();
 
   const toast = useToast();
   const { push } = useRouter();
 
-  useEffect(() => {
+  const getProfiles = () => {
     axios
       .post("/api/getBookmarked", {
         uId: uId,
@@ -38,30 +37,8 @@ export default function Settings() {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
-
-  useEffect(() => {
-    axios
-      .post("/api/deleteBookmark", {
-        uId: uId,
-        id: id,
-      })
-      .then(({ data }) => {
-        showToast(data);
-      });
-  }, [id]);
-
-  function showToast(success) {
-    if (success) {
-      toast({
-        title: "Perfil eliminado",
-        duration: 1000,
-        position: "top",
-        status: "success",
-      });
-      setId(undefined); // parche
-    }
-  }
+  };
+  useEffect(getProfiles, []);
 
   return (
     <>
@@ -74,13 +51,8 @@ export default function Settings() {
           {profiles.length === 0 && <Text>No hay perfiles guardados.</Text>}
           {profiles.map((perfil) => {
             return (
-              <VStack p="2vh" spacing="2vh" align="stretch">
-                <Box
-                  key={perfil._id}
-                  shadow="md"
-                  borderWidth="1px"
-                  borderRadius="5px"
-                >
+              <VStack key={perfil._id} p="2vh" spacing="2vh" align="stretch">
+                <Box shadow="md" borderWidth="1px" borderRadius="5px">
                   <Grid w="100%" templateColumns="repeat(4,1fr)">
                     <GridItem
                       display="flex"
@@ -109,7 +81,20 @@ export default function Settings() {
                         icon={<ImCross size="2vh" color="white" />}
                         aria-label="Eliminar Perfil"
                         onClick={() => {
-                          setId(perfil.id);
+                          axios
+                            .post("/api/deleteBookmark", {
+                              uId: uId,
+                              id: perfil.id,
+                            })
+                            .then(() => {
+                              getProfiles();
+                              toast({
+                                title: "Perfil eliminado",
+                                duration: 1000,
+                                position: "top",
+                                status: "success",
+                              });
+                            });
                         }}
                       />
                     </GridItem>

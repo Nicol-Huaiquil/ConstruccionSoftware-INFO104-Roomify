@@ -18,14 +18,9 @@ export default async (req, res) => {
     const db = await dbConnection;
     const collection = db.collection("usersBookmarked");
     const uBookmarked = await collection.findOne({ id: uId });
-
+    console.log(uBookmarked);
     uBookmarked.bookmarked.splice(uBookmarked.bookmarked.indexOf(id), 1);
-
-    const auxConst = await collection.updateOne(
-      { id: uId },
-      { $set: uBookmarked },
-      {}
-    );
+    await collection.updateOne({ id: uId }, { $set: uBookmarked }, {});
 
     res.send(true);
   }
