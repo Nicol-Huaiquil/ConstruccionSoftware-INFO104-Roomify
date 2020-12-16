@@ -18,7 +18,11 @@ export default function LogIn() {
           <Image src="logoLetras.png" height="10vh" />
         </Box>
         <Box my={4} textAlign="left">
-          <form>
+          <form
+            onSubmit={(ev) => {
+              ev.preventDefault();
+            }}
+          >
             <FormControl>
               <FormLabel>Email</FormLabel>
               <Input type="email" placeholder="example@email.com" bg="white" />
