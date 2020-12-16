@@ -49,7 +49,7 @@ export default function Settings() {
               height="100%"
               p="2vh"
               onClick={() => {
-                push("/editProfile");
+                push("/edit_profile");
               }}
             >
               <Text fontSize="3vh">Editar perfil</Text>

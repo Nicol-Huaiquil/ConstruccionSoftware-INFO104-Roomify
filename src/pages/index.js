@@ -166,7 +166,7 @@ export default function Home() {
                         width="100%"
                         height="100%"
                         onClick={() => {
-                          push("/myProfile");
+                          push("/my_profile");
                         }}
                       >
                         <VStack>
@@ -192,7 +192,7 @@ export default function Home() {
                         width="100%"
                         height="100%"
                         onClick={() => {
-                          push("/bookmarkedProfiles");
+                          push("/bookmarked_profiles");
                         }}
                       >
                         <BsFillBookmarkFill size="9vh" color="white" />
@@ -221,7 +221,7 @@ export default function Home() {
                         width="100%"
                         height="100%"
                         onClick={() => {
-                          push("/logIn");
+                          push("/log_in");
                         }}
                       >
                         <CgLogOut size="6vh" color="white" />

@@ -43,7 +43,7 @@ export default function Settings() {
 
   return (
     <>
-      <TopBar title="Editar Perfil" route="/myProfile" />
+      <TopBar title="Editar Perfil" route="/my_profile" />
 
       {loading ? (
         <LoadingScreen />
@@ -120,7 +120,7 @@ export default function Settings() {
                 colorScheme="green"
                 onClick={async () => {
                   await axios.post("/api/saveProfileChanges", myProfile);
-                  push("/myProfile");
+                  push("/my_profile");
                 }}
               >
                 Guardar

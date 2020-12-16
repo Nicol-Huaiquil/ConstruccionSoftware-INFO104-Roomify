@@ -31,7 +31,7 @@ export default function Settings() {
 
   return (
     <>
-      <TopBar title="" route="/bookmarkedProfiles" />
+      <TopBar title="" route="/bookmarked_profiles" />
 
       {loading ? (
         <LoadingScreen />

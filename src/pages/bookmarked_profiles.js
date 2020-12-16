@@ -60,7 +60,7 @@ export default function Settings() {
                       padding="2vh"
                       colSpan={3}
                       onClick={() => {
-                        push("/viewProfile");
+                        push("/view_profile");
                       }}
                     >
                       <HStack spacing="2vh">
