@@ -17,7 +17,7 @@ import { useRouter } from "next/router";
 import { TopBar } from "../components/TopBar";
 import { LoadingScreen } from "../components/LoadingScreen";
 
-import { uId } from "./index.js";
+import { uId } from "./home.js";
 
 export default function Settings() {
   const [profiles, setProfiles] = useState([]);
@@ -42,7 +42,7 @@ export default function Settings() {
 
   return (
     <>
-      <TopBar title="Perfiles Guardados" route="/" />
+      <TopBar title="Perfiles Guardados" route="/home" />
 
       {loading ? (
         <LoadingScreen />
