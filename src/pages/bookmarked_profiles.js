@@ -82,7 +82,7 @@ export default function Settings() {
                         onClick={() => {
                           axios
                             .post("/api/deleteBookmark", {
-                              uId: uId,
+                              uId: localStorage.getItem("user_id"),
                               id: perfil.id,
                             })
                             .then(() => {
