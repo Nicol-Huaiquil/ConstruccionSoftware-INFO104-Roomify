@@ -17,8 +17,6 @@ import { useRouter } from "next/router";
 import { TopBar } from "../components/TopBar";
 import { LoadingScreen } from "../components/LoadingScreen";
 
-import { uId } from "./home.js";
-
 export default function Settings() {
   const [profiles, setProfiles] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -27,6 +25,7 @@ export default function Settings() {
   const { push } = useRouter();
 
   const getProfiles = () => {
+    const uId = localStorage.getItem("user_id");
     axios
       .post("/api/getBookmarked", {
         uId: uId,

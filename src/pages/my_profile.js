@@ -7,8 +7,6 @@ import { TopBar } from "../components/TopBar";
 import { LoadingScreen } from "../components/LoadingScreen";
 import { ProfileDisplay } from "../components/ProfileDisplay";
 
-import { uId } from "./home.js";
-
 export default function Settings() {
   const { push } = useRouter();
   const [myProfile, setMyProfile] = useState({
@@ -21,6 +19,8 @@ export default function Settings() {
   });
   const [loading, setLoading] = useState(true);
   useEffect(() => {
+    const uId = localStorage.getItem("user_id");
+
     axios
       .post("/api/getProfile", {
         id: uId,

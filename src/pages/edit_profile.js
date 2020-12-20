@@ -14,8 +14,6 @@ import {
   DescriptionInput,
 } from "../components/Inputs";
 
-import { uId } from "./home.js";
-
 export default function Settings() {
   const [myProfile, setMyProfile] = useState({
     name: "",
@@ -29,6 +27,8 @@ export default function Settings() {
   const [loading, setLoading] = useState(true);
   const { push } = useRouter();
   useEffect(() => {
+    const uId = localStorage.getItem("user_id");
+
     axios
       .post("/api/getProfile", {
         id: uId,

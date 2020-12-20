@@ -16,8 +16,6 @@ import { useRouter } from "next/router";
 import { TopBar } from "../components/TopBar";
 import { LoadingScreen } from "../components/LoadingScreen";
 
-import { uId } from "./index.js";
-
 export default function Messages() {
   const chats = [
     {

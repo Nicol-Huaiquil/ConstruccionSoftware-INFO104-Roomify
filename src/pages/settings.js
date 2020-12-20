@@ -21,8 +21,6 @@ import { LoadingScreen } from "../components/LoadingScreen";
 
 import { TopBar } from "../components/TopBar";
 
-import { uId } from "./home.js";
-
 export default function Settings() {
   const [preferences, setPreferences] = useState({
     ageRange: [18, 35],
@@ -33,6 +31,8 @@ export default function Settings() {
   const [loading, setLoading] = useState(true);
   const { push } = useRouter();
   useEffect(() => {
+    const uId = localStorage.getItem("user_id");
+
     axios
       .post("/api/getPreferences", {
         id: uId,
