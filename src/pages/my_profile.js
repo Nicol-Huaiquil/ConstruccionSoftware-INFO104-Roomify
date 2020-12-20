@@ -7,7 +7,7 @@ import { TopBar } from "../components/TopBar";
 import { LoadingScreen } from "../components/LoadingScreen";
 import { ProfileDisplay } from "../components/ProfileDisplay";
 
-import { uId } from "./index.js";
+import { uId } from "./home.js";
 
 export default function Settings() {
   const { push } = useRouter();
@@ -35,7 +35,7 @@ export default function Settings() {
 
   return (
     <>
-      <TopBar title="Mi Perfil" route="/" />
+      <TopBar title="Mi Perfil" route="/home" />
 
       {loading ? (
         <LoadingScreen />

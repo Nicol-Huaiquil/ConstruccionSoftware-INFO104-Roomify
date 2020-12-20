@@ -21,7 +21,7 @@ import { LoadingScreen } from "../components/LoadingScreen";
 
 import { TopBar } from "../components/TopBar";
 
-import { uId } from "./index.js";
+import { uId } from "./home.js";
 
 export default function Settings() {
   const [preferences, setPreferences] = useState({
@@ -54,7 +54,7 @@ export default function Settings() {
         <LoadingScreen />
       ) : (
         <>
-          <TopBar title="Opciones de búsqueda" route="/" />
+          <TopBar title="Opciones de búsqueda" route="/home" />
 
           <Box className="h2 gray1" p="5vh">
             <VStack spacing="2vh" align="stretch">
@@ -145,7 +145,7 @@ export default function Settings() {
                   onClick={async () => {
                     preferences.ageRange = [minAge, maxAge];
                     await axios.post("/api/savePreferences", preferences);
-                    push("/");
+                    push("/home");
                   }}
                 >
                   Guardar

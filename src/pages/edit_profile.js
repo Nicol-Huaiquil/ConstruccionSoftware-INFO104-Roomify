@@ -14,7 +14,7 @@ import {
   DescriptionInput,
 } from "../components/Inputs";
 
-import { uId } from "./index.js";
+import { uId } from "./home.js";
 
 export default function Settings() {
   const [myProfile, setMyProfile] = useState({

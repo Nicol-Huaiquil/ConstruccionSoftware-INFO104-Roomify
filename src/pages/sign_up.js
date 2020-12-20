@@ -69,7 +69,7 @@ export default function SignUp() {
 
   return (
     <>
-      <TopBar title="Crear cuenta" route="/logIn" />
+      <TopBar title="Crear cuenta" route="/" />
       <form
         onSubmit={(ev) => {
           ev.preventDefault();
