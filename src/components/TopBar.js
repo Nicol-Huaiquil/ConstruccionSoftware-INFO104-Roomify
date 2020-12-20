@@ -22,7 +22,7 @@ export const TopBar = ({ title, route }) => {
   };
 
   return (
-    <Box style={styles.Bar}>
+    <Box shadow="md" style={styles.Bar}>
       <Grid style={styles.Grid} templateColumns="repeat(4, 1fr)" gap={4}>
         <GridItem style={styles.GridItem}>
           <SquareButton

@@ -6,7 +6,7 @@ import { TopBar } from "../components/TopBar";
 import { LoadingScreen } from "../components/LoadingScreen";
 import { ProfileDisplay } from "../components/ProfileDisplay";
 
-export default function Settings() {
+export default function ViewProfile() {
   const [myProfile, setMyProfile] = useState({
     name: "",
     age: 0,
@@ -19,7 +19,7 @@ export default function Settings() {
   useEffect(() => {
     axios
       .post("/api/getProfile", {
-        id: "10003",
+        id: "10006",
       })
       .then(({ data }) => {
         setMyProfile(data);
