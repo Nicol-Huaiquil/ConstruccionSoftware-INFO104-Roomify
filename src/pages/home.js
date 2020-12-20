@@ -185,7 +185,14 @@ export default function Home() {
                       </Button>
                     </GridItem>
                     <GridItem rowSpan={2} colSpan={1}>
-                      <Button bg="orange.300" width="100%" height="100%">
+                      <Button
+                        bg="orange.300"
+                        width="100%"
+                        height="100%"
+                        onClick={() => {
+                          push("/messages");
+                        }}
+                        >
                         <AiFillMessage size="9vh" color="white" />
                       </Button>
                     </GridItem>
