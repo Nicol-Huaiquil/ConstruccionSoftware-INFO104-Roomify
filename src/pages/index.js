@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Image,
   Box,
@@ -15,6 +15,14 @@ import axios from "axios";
 export default function LogIn() {
   const { push } = useRouter();
 
+  useEffect(() => {
+    const uIdStorage = localStorage.getItem("user_id");
+
+    if (uIdStorage) {
+      push("/home");
+    }
+  }, []);
+
   const toast = useToast();
 
   const [user, setUser] = useState({
@@ -30,6 +38,7 @@ export default function LogIn() {
       })
       .then(({ data }) => {
         if (data) {
+          localStorage.setItem("user_id", data);
           push("/home");
         } else {
           toast({
@@ -90,9 +99,7 @@ export default function LogIn() {
               type="submit"
               bg="#466ba3"
               onClick={() => {
-                {
-                  validUser();
-                }
+                validUser();
               }}
             >
               Ingresar

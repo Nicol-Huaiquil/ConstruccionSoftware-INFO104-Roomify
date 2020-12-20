@@ -1,7 +1,5 @@
 import { NextApiResponse, NextApiRequest } from "next";
 import { dbConnection } from "../../db";
-import { LocalStorage } from "node-localstorage";
-global.localStorage = new LocalStorage("./scratch");
 
 /**
  * @export
@@ -16,8 +14,7 @@ export default async (req, res) => {
   const db = await dbConnection;
   const collection = db.collection("users");
   const user = await collection.findOne({ email: email });
-  localStorage.setItem("id", user.id);
 
-  if (user && password === user.password) res.send(true);
+  if (user && password === user.password) res.send(user.id);
   else res.send(false);
 };

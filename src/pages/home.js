@@ -34,16 +34,6 @@ import { useRouter } from "next/router";
 
 import { ProfileDisplay } from "../components/ProfileDisplay";
 import { SquareButton } from "../components/SquareButton";
-import { isString } from "lodash";
-
-//export const uId = "24836"; // Rodolfo Seguel
-//export const uId = "28374"; // Gustavo Reyes
-//var id = localStorage.getItem("id");
-export const uId = "14125"; // Matilde Valera
-console.log(localStorage.getItem("id"));
-//export const uId = "25098"; // Daniela Vega
-//export const uId = "98000"; // Nicolás García
-//export const uId = "84061"; // Trinidad Vásquez
 
 export default function Home() {
   const [profiles, setProfiles] = useState([]);
@@ -59,7 +49,21 @@ export default function Home() {
   const btnRef = React.useRef();
   const { push } = useRouter();
 
+  const [uId, setUid] = useState("");
+
   useEffect(() => {
+    const uIdStorage = localStorage.getItem("user_id");
+
+    if (uIdStorage) {
+      setUid(uIdStorage);
+    } else {
+      push("/");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!uId) return;
+
     axios
       .post("/api/getProfiles", {
         uId: uId,
@@ -70,9 +74,11 @@ export default function Home() {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [uId]);
 
   useEffect(() => {
+    if (!uId) return;
+
     axios
       .post("/api/getProfile", {
         id: uId,
@@ -80,9 +86,11 @@ export default function Home() {
       .then(({ data }) => {
         setMyProfile(data);
       });
-  }, []);
+  }, [uId]);
 
   useEffect(() => {
+    if (!uId) return;
+
     axios
       .post("/api/bookmarkProfile", {
         uId: uId,
@@ -91,7 +99,7 @@ export default function Home() {
       .then(({ data }) => {
         showToast(data);
       });
-  }, [id]);
+  }, [id, uId]);
 
   function increaseIndex() {
     profiles[index + 1] ? setIndex(index + 1) : setIndex(0);
@@ -231,6 +239,7 @@ export default function Home() {
                         width="100%"
                         height="100%"
                         onClick={() => {
+                          localStorage.removeItem("user_id");
                           push("/");
                         }}
                       >
