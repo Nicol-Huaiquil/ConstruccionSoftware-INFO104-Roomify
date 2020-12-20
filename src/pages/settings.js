@@ -17,6 +17,7 @@ import {
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useProfileId } from "../auth";
 import { LoadingScreen } from "../components/LoadingScreen";
 
 import { TopBar } from "../components/TopBar";
@@ -30,8 +31,10 @@ export default function Settings() {
 
   const [loading, setLoading] = useState(true);
   const { push } = useRouter();
+
+  const uId = useProfileId();
   useEffect(() => {
-    const uId = localStorage.getItem("user_id");
+    if (!uId) return;
 
     axios
       .post("/api/getPreferences", {
@@ -43,7 +46,7 @@ export default function Settings() {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [uId]);
 
   const [minAge, setMinAge] = useState(preferences.ageRange[0]);
   const [maxAge, setMaxAge] = useState(preferences.ageRange[1]);

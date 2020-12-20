@@ -16,6 +16,7 @@ import { useRouter } from "next/router";
 
 import { TopBar } from "../components/TopBar";
 import { LoadingScreen } from "../components/LoadingScreen";
+import { useProfileId } from "../auth";
 
 export default function Settings() {
   const [profiles, setProfiles] = useState([]);
@@ -24,8 +25,11 @@ export default function Settings() {
   const toast = useToast();
   const { push } = useRouter();
 
+  const uId = useProfileId();
+
   const getProfiles = () => {
-    const uId = localStorage.getItem("user_id");
+    if (!uId) return;
+
     axios
       .post("/api/getBookmarked", {
         uId: uId,
@@ -37,7 +41,7 @@ export default function Settings() {
         setLoading(false);
       });
   };
-  useEffect(getProfiles, []);
+  useEffect(getProfiles, [uId]);
 
   return (
     <>

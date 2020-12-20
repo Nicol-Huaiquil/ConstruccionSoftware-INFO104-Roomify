@@ -13,6 +13,7 @@ import {
   HasCabinInput,
   DescriptionInput,
 } from "../components/Inputs";
+import { useProfileId } from "../auth";
 
 export default function Settings() {
   const [myProfile, setMyProfile] = useState({
@@ -26,8 +27,11 @@ export default function Settings() {
   });
   const [loading, setLoading] = useState(true);
   const { push } = useRouter();
+
+  const uId = useProfileId();
+
   useEffect(() => {
-    const uId = localStorage.getItem("user_id");
+    if (!uId) return;
 
     axios
       .post("/api/getProfile", {
@@ -39,7 +43,7 @@ export default function Settings() {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [uId]);
 
   return (
     <>

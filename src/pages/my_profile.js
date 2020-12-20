@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { TopBar } from "../components/TopBar";
 import { LoadingScreen } from "../components/LoadingScreen";
 import { ProfileDisplay } from "../components/ProfileDisplay";
+import { useProfileId } from "../auth";
 
 export default function Settings() {
   const { push } = useRouter();
@@ -18,8 +19,10 @@ export default function Settings() {
     pic: "",
   });
   const [loading, setLoading] = useState(true);
+  const uId = useProfileId();
+
   useEffect(() => {
-    const uId = localStorage.getItem("user_id");
+    if (!uId) return;
 
     axios
       .post("/api/getProfile", {
@@ -31,7 +34,7 @@ export default function Settings() {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [uId]);
 
   return (
     <>
