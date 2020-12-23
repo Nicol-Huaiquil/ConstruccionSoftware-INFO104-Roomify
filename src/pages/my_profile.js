@@ -44,7 +44,7 @@ export default function Settings() {
         <LoadingScreen />
       ) : (
         <Box className="centeredFlex h2 gray1" py="10%">
-          <VStack spacing="2.5vh" py="2.5vh">
+          <VStack spacing="2.5vh" py="2.5vh" px="10%">
             <ProfileDisplay profile={myProfile} />
             <Button
               bg="green.300"

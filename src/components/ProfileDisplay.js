@@ -11,7 +11,7 @@ export const ProfileDisplay = ({ profile }) => {
         <Text>Campus {profile.campus}</Text>
         <Text>{profile.hasCabin ? "Tiene cabaña" : "No tiene cabaña"}</Text>
         <Text>—</Text>
-        <Text>{profile.description}</Text>
+        <Text textAlign="center">{profile.description}</Text>
       </VStack>
     </>
   );

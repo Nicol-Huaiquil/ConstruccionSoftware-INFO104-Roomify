@@ -52,7 +52,7 @@ export default function ViewProfile() {
         <LoadingScreen />
       ) : (
         <Box className="centeredFlex h2 gray1">
-          <VStack spacing="2.5vh" py="2.5vh">
+          <VStack spacing="2.5vh" py="2.5vh" px="10%">
             <ProfileDisplay profile={myProfile} />
           </VStack>
         </Box>
