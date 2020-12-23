@@ -6,7 +6,11 @@ import { TopBar } from "../components/TopBar";
 import { LoadingScreen } from "../components/LoadingScreen";
 import { ProfileDisplay } from "../components/ProfileDisplay";
 
+import { useRouter } from "next/router";
+
 export default function ViewProfile() {
+  const { push } = useRouter();
+  const [loading, setLoading] = useState(true);
   const [myProfile, setMyProfile] = useState({
     name: "",
     age: 0,
@@ -15,11 +19,22 @@ export default function ViewProfile() {
     description: "",
     pic: "",
   });
-  const [loading, setLoading] = useState(true);
+  const [id, setId] = useState("");
+
+  useEffect(() => {
+    const idStorage = localStorage.getItem("viewed_id");
+
+    if (idStorage) {
+      setId(idStorage);
+    } else {
+      push("/bookmarked_profiles");
+    }
+  }, []);
+
   useEffect(() => {
     axios
       .post("/api/getProfile", {
-        id: "10006",
+        id: id,
       })
       .then(({ data }) => {
         setMyProfile(data);
@@ -27,7 +42,7 @@ export default function ViewProfile() {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [id]);
 
   return (
     <>
@@ -36,7 +51,7 @@ export default function ViewProfile() {
       {loading ? (
         <LoadingScreen />
       ) : (
-        <Box id="myProfile" className="centeredFlex h2 gray1">
+        <Box className="centeredFlex h2 gray1">
           <VStack spacing="2.5vh" py="2.5vh">
             <ProfileDisplay profile={myProfile} />
           </VStack>

@@ -8,7 +8,7 @@ import { dbConnection } from "../../db";
  */
 
 export default async (req, res) => {
-  let id = req.body.id;
+  const id = req.body.id;
 
   const db = await dbConnection;
   const collection = db.collection("profiles");

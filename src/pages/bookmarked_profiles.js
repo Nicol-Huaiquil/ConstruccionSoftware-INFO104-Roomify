@@ -63,6 +63,7 @@ export default function Settings() {
                       padding="2vh"
                       colSpan={3}
                       onClick={() => {
+                        localStorage.setItem("viewed_id", perfil.id);
                         push("/view_profile");
                       }}
                     >
