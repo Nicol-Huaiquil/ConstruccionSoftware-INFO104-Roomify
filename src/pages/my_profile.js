@@ -48,9 +48,7 @@ export default function Settings() {
             <ProfileDisplay profile={myProfile} />
             <Button
               bg="green.300"
-              width="100%"
-              height="100%"
-              p="2vh"
+              p="3.5vh"
               onClick={() => {
                 push("/edit_profile");
               }}

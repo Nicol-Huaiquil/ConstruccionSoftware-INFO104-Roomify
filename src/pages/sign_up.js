@@ -75,7 +75,7 @@ export default function SignUp() {
           ev.preventDefault();
         }}
       >
-        <Box className="h2 gray1">
+        <Box className="h2 gray1" pb="3vh">
           <Text fontSize="2.5vh" p="2.5vh">
             Datos de usuario
           </Text>
@@ -207,25 +207,24 @@ export default function SignUp() {
                 });
               }}
             />
+            <Box display="flex" justifyContent="flex-end">
+              <Button
+                colorScheme="green"
+                onClick={async () => {
+                  await axios.post("/api/createAccount", {
+                    user: newUser,
+                    profile: newProfile,
+                    preferences: newPreferences,
+                    bookmarked: newBookmarked,
+                    globalData: globalData,
+                  });
+                  push("/");
+                }}
+              >
+                Crear
+              </Button>
+            </Box>
           </VStack>
-
-          <Box display="flex" justifyContent="flex-end">
-            <Button
-              colorScheme="green"
-              onClick={async () => {
-                await axios.post("/api/createAccount", {
-                  user: newUser,
-                  profile: newProfile,
-                  preferences: newPreferences,
-                  bookmarked: newBookmarked,
-                  globalData: globalData,
-                });
-                push("/");
-              }}
-            >
-              Crear
-            </Button>
-          </Box>
         </Box>
       </form>
     </>

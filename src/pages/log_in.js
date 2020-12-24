@@ -82,7 +82,7 @@ export default function LogIn() {
               <FormLabel>Contraseña</FormLabel>
               <Input
                 type="password"
-                placeholder="***"
+                placeholder="********"
                 bg="white"
                 value={user.password}
                 onChange={(ev) => {
