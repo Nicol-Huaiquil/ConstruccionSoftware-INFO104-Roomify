@@ -2,14 +2,9 @@ import React from "react";
 import {
   Image,
   Box,
-  Button,
   IconButton,
   Spinner,
-  Avatar,
   useToast,
-  Drawer,
-  DrawerOverlay,
-  DrawerContent,
   HStack,
   VStack,
   useDisclosure,
@@ -20,13 +15,7 @@ import {
 import axios from "axios";
 import { AiFillMessage } from "react-icons/ai";
 import { BsFillBookmarkFill } from "react-icons/bs";
-import { CgLogOut } from "react-icons/cg";
-import {
-  IoMdSettings,
-  IoIosArrowBack,
-  IoIosArrowForward,
-} from "react-icons/io";
-import { MdHelp } from "react-icons/md";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { TiThMenu } from "react-icons/ti";
 
 import { useEffect, useState } from "react";
@@ -34,6 +23,7 @@ import { useRouter } from "next/router";
 import { useProfileId } from "../auth";
 import { ProfileDisplay } from "../components/ProfileDisplay";
 import { SquareButton } from "../components/SquareButton";
+import { Menu } from "../components/Menu";
 
 export default function Home() {
   const [profiles, setProfiles] = useState([]);
@@ -130,8 +120,7 @@ export default function Home() {
           </Box>
           <Box id="topBar">
             <Grid h="10vh" templateColumns="repeat(4, 1fr)" gap={4}>
-              <GridItem></GridItem>
-              <GridItem className="centeredFlex" colSpan={2}>
+              <GridItem className="centeredFlex" colStart={2} colSpan={2}>
                 <Image src="logoLetras.png" height="10vh" />
               </GridItem>
               <GridItem className="centeredFlex">
@@ -146,105 +135,15 @@ export default function Home() {
                 ></IconButton>
               </GridItem>
             </Grid>
-            <Drawer
+            <Menu
               isOpen={isOpen}
-              placement="right"
               onClose={onClose}
-              finalFocusRef={btnRef}
-            >
-              <DrawerOverlay>
-                <DrawerContent>
-                  <Grid
-                    h="100vh"
-                    templateRows="repeat(7, 1fr)"
-                    templateColumns="repeat(2, 1fr)"
-                    gap="1vh"
-                    margin="1vh"
-                  >
-                    <GridItem rowSpan={2} colSpan={2}>
-                      <Button
-                        bg="gray.300"
-                        width="100%"
-                        height="100%"
-                        onClick={() => {
-                          push("/my_profile");
-                        }}
-                      >
-                        <VStack>
-                          <Avatar
-                            bg="teal.500"
-                            mr="1vh"
-                            width="60px"
-                            height="60px"
-                            src={myProfile.pic}
-                          />
-                          <Text fontSize="3vh">{myProfile.name}</Text>
-                        </VStack>
-                      </Button>
-                    </GridItem>
-                    <GridItem rowSpan={2} colSpan={1}>
-                      <Button
-                        bg="orange.300"
-                        width="100%"
-                        height="100%"
-                        onClick={() => {
-                          push("/messages");
-                        }}
-                      >
-                        <AiFillMessage size="9vh" color="white" />
-                      </Button>
-                    </GridItem>
-                    <GridItem rowSpan={2} colSpan={1}>
-                      <Button
-                        bg="green.400"
-                        width="100%"
-                        height="100%"
-                        onClick={() => {
-                          push("/bookmarked_profiles");
-                        }}
-                      >
-                        <BsFillBookmarkFill size="9vh" color="white" />
-                      </Button>
-                    </GridItem>
-                    <GridItem rowSpan={2} colSpan={1}>
-                      <Button
-                        bg="yellow.300"
-                        width="100%"
-                        height="100%"
-                        onClick={() => {
-                          push("/settings");
-                        }}
-                      >
-                        <IoMdSettings size="10vh" color="white" />
-                      </Button>
-                    </GridItem>
-                    <GridItem rowSpan={2} colSpan={1}>
-                      <Button bg="purple.500" width="100%" height="100%">
-                        <MdHelp size="10vh" color="white" />
-                      </Button>
-                    </GridItem>
-                    <GridItem rowSpan={1} colSpan={2}>
-                      <Button
-                        bg="red.500"
-                        width="100%"
-                        height="100%"
-                        onClick={() => {
-                          localStorage.removeItem("user_id");
-                          push("/log_in");
-                        }}
-                      >
-                        <CgLogOut size="6vh" color="white" />
-                        <Text fontSize="xl" color="white" m="1vh">
-                          Cerrar sesión
-                        </Text>
-                      </Button>
-                    </GridItem>
-                  </Grid>
-                </DrawerContent>
-              </DrawerOverlay>
-            </Drawer>
+              btnRef={btnRef}
+              pic={myProfile.pic}
+              name={myProfile.name}
+            />
           </Box>
-          <Box id="bottomBar" className="centeredFlex">
+          <Box id="bottomBar" className="centeredFlex" shadow="2xl">
             <HStack spacing="3vw">
               <SquareButton
                 color="#50EBA1"
