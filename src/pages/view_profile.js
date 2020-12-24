@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 import { TopBar } from "../components/TopBar";
+import { useProfileId } from "../auth";
 import { LoadingScreen } from "../components/LoadingScreen";
 import { ProfileDisplay } from "../components/ProfileDisplay";
 
@@ -21,6 +22,7 @@ export default function ViewProfile() {
   });
   const [id, setId] = useState("");
 
+  const uId = useProfileId();
   useEffect(() => {
     const idStorage = localStorage.getItem("viewed_id");
 
@@ -32,6 +34,8 @@ export default function ViewProfile() {
   }, []);
 
   useEffect(() => {
+    if (!uId) return;
+
     axios
       .post("/api/getProfile", {
         id: id,

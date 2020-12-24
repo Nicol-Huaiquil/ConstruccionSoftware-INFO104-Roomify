@@ -16,7 +16,7 @@ export default async (req, res) => {
 
   // obtiene las preferencias del usuario
   const uPreferences = await collection2.findOne({ id: uId });
-  console.log(uPreferences);
+
   // crea el filtro según las preferencias del usuario
   let filter = {};
   if (uPreferences.profilesFromCampus != "a")

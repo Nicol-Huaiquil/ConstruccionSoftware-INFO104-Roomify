@@ -45,7 +45,7 @@ export default function Settings() {
 
   return (
     <>
-      <TopBar title="Perfiles Guardados" route="/home" />
+      <TopBar title="Perfiles Guardados" route="/" />
 
       {loading ? (
         <LoadingScreen />

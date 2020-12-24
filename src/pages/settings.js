@@ -57,7 +57,7 @@ export default function Settings() {
         <LoadingScreen />
       ) : (
         <>
-          <TopBar title="Opciones de búsqueda" route="/home" />
+          <TopBar title="Opciones de búsqueda" route="/" />
 
           <Box className="h2 gray1" p="5vh">
             <VStack spacing="2vh" align="stretch">
@@ -148,7 +148,7 @@ export default function Settings() {
                   onClick={async () => {
                     preferences.ageRange = [minAge, maxAge];
                     await axios.post("/api/savePreferences", preferences);
-                    push("/home");
+                    push("/");
                   }}
                 >
                   Guardar

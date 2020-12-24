@@ -12,7 +12,7 @@ export const useProfileId = () => {
     if (uIdStorage) {
       setUid(uIdStorage);
     } else {
-      push("/");
+      push("/log_in");
     }
   }, []);
 

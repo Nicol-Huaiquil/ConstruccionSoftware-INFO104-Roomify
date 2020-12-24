@@ -19,8 +19,8 @@ export default function Settings() {
     pic: "",
   });
   const [loading, setLoading] = useState(true);
-  const uId = useProfileId();
 
+  const uId = useProfileId();
   useEffect(() => {
     if (!uId) return;
 
@@ -38,7 +38,7 @@ export default function Settings() {
 
   return (
     <>
-      <TopBar title="Mi Perfil" route="/home" />
+      <TopBar title="Mi Perfil" route="/" />
 
       {loading ? (
         <LoadingScreen />
