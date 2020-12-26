@@ -75,7 +75,11 @@ export default function Settings() {
                         setMinAge(parseInt(ev));
                       }}
                     >
-                      <NumberInputField />
+                      <NumberInputField
+                        bg="white"
+                        borderWidth="2px"
+                        borderColor="#dcdcdc"
+                      />
                       <NumberInputStepper>
                         <NumberIncrementStepper children="+" />
                         <NumberDecrementStepper children="-" />
@@ -96,7 +100,11 @@ export default function Settings() {
                         setMaxAge(parseInt(ev));
                       }}
                     >
-                      <NumberInputField />
+                      <NumberInputField
+                        bg="white"
+                        borderWidth="2px"
+                        borderColor="#dcdcdc"
+                      />
                       <NumberInputStepper>
                         <NumberIncrementStepper children="+" />
                         <NumberDecrementStepper children="-" />
@@ -111,6 +119,9 @@ export default function Settings() {
                   <FormLabel>Mostrar perfiles de campus:</FormLabel>
                   <Select
                     value={preferences.profilesFromCampus}
+                    bg="white"
+                    borderWidth="2px"
+                    borderColor="#dcdcdc"
                     onChange={(ev) => {
                       setPreferences({
                         ...preferences,
@@ -130,6 +141,9 @@ export default function Settings() {
                   <FormLabel>Mostrar perfiles con cabaña</FormLabel>
                   <Select
                     value={preferences.profilesWithCabin}
+                    bg="white"
+                    borderWidth="2px"
+                    borderColor="#dcdcdc"
                     onChange={(ev) => {
                       setPreferences({
                         ...preferences,

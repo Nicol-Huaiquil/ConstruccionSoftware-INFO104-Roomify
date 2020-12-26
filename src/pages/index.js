@@ -67,6 +67,7 @@ export default function Home() {
                 No hay perfiles que coincidan con la búsqueda.
               </Text>
             )}
+            <Box h="6vh"></Box>
           </Box>
 
           <Box id="buttonBar" className="centeredFlex">

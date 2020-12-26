@@ -87,6 +87,9 @@ export default function SignUp() {
                 <Input
                   type="email"
                   value={newUser.email}
+                  bg="white"
+                  borderWidth="2px"
+                  borderColor="#dcdcdc"
                   onChange={(ev) => {
                     setNewUser({
                       ...newUser,
@@ -99,7 +102,13 @@ export default function SignUp() {
             <Box>
               <FormControl isRequired>
                 <FormLabel>Contraseña</FormLabel>
-                <Input pr="4.5rem" type="password" />
+                <Input
+                  pr="4.5rem"
+                  type="password"
+                  bg="white"
+                  borderWidth="2px"
+                  borderColor="#dcdcdc"
+                />
               </FormControl>
             </Box>
 
@@ -110,6 +119,9 @@ export default function SignUp() {
                   pr="4.5rem"
                   type="password"
                   value={newUser.password}
+                  bg="white"
+                  borderWidth="2px"
+                  borderColor="#dcdcdc"
                   onChange={(ev) => {
                     setNewUser({
                       ...newUser,
@@ -143,6 +155,9 @@ export default function SignUp() {
                 <NumberInput min={18} max={40}>
                   <NumberInputField
                     value={newProfile.age}
+                    bg="white"
+                    borderWidth="2px"
+                    borderColor="#dcdcdc"
                     onChange={(ev) => {
                       setNewProfile({
                         ...newProfile,

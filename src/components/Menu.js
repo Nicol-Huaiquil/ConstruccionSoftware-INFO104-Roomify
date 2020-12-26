@@ -38,7 +38,7 @@ export const Menu = ({ isOpen, onClose, btnRef, pic, name }) => {
           >
             <GridItem rowSpan={2} colSpan={2}>
               <Button
-                bg="gray.300"
+                bg="#e8e8e8"
                 width="100%"
                 height="100%"
                 onClick={() => {
@@ -59,48 +59,48 @@ export const Menu = ({ isOpen, onClose, btnRef, pic, name }) => {
             </GridItem>
             <GridItem rowSpan={2} colSpan={1}>
               <Button
-                bg="orange.300"
+                bg="#EBB344"
                 width="100%"
                 height="100%"
                 onClick={() => {
                   push("/messages");
                 }}
               >
-                <AiFillMessage size="9vh" color="white" />
+                <AiFillMessage size="9vh" color="rgba(255,255,255,0.85)" />
               </Button>
             </GridItem>
             <GridItem rowSpan={2} colSpan={1}>
               <Button
-                bg="green.400"
+                bg="#EB8273"
                 width="100%"
                 height="100%"
                 onClick={() => {
                   push("/bookmarked_profiles");
                 }}
               >
-                <BsFillBookmarkFill size="9vh" color="white" />
+                <BsFillBookmarkFill size="9vh" color="rgba(255,255,255,0.85)" />
               </Button>
             </GridItem>
             <GridItem rowSpan={2} colSpan={1}>
               <Button
-                bg="yellow.300"
+                bg="#50EBA1"
                 width="100%"
                 height="100%"
                 onClick={() => {
                   push("/settings");
                 }}
               >
-                <IoMdSettings size="10vh" color="white" />
+                <IoMdSettings size="10vh" color="rgba(255,255,255,0.85)" />
               </Button>
             </GridItem>
             <GridItem rowSpan={2} colSpan={1}>
-              <Button bg="purple.500" width="100%" height="100%">
-                <MdHelp size="10vh" color="white" />
+              <Button bg="#679beb" width="100%" height="100%">
+                <MdHelp size="10vh" color="rgba(255,255,255,0.85)" />
               </Button>
             </GridItem>
             <GridItem rowSpan={1} colSpan={2}>
               <Button
-                bg="red.500"
+                bg="red.400"
                 width="100%"
                 height="100%"
                 onClick={() => {

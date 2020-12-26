@@ -55,7 +55,7 @@ export default function LogIn() {
     <Box className="fullscreen centeredFlex" bg="#679beb">
       <Box p={2}>
         <Box className="centeredFlex">
-          <Image src="logoLetras.png" height="10vh" />
+          <Image src="logoLetras.png" height="15vh" />
         </Box>
         <Box my={4} textAlign="left">
           <form

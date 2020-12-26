@@ -24,7 +24,13 @@ export const NameInput = ({ isRequired, value, onChange }) => {
     <Box>
       <FormControl isRequired={isRequired}>
         <FormLabel>Nombre</FormLabel>
-        <Input value={value} onChange={onChange} />
+        <Input
+          value={value}
+          onChange={onChange}
+          bg="white"
+          borderWidth="2px"
+          borderColor="#dcdcdc"
+        />
       </FormControl>
     </Box>
   );
@@ -37,10 +43,18 @@ export const GenderInput = ({ isRequired, value, onChange }) => {
         <FormLabel as="legend">Género</FormLabel>
         <RadioGroup value={value} onChange={onChange}>
           <VStack spacing="0" align="stretch">
-            <Radio value="m">Masculino</Radio>
-            <Radio value="f">Femenino</Radio>
-            <Radio value="o">Otro</Radio>
-            <Radio value="n">Prefiero no responder</Radio>
+            <Radio value="m" bg="white" borderWidth="2px" borderColor="#dcdcdc">
+              Masculino
+            </Radio>
+            <Radio value="f" bg="white" borderWidth="2px" borderColor="#dcdcdc">
+              Femenino
+            </Radio>
+            <Radio value="o" bg="white" borderWidth="2px" borderColor="#dcdcdc">
+              Otro
+            </Radio>
+            <Radio value="n" bg="white" borderWidth="2px" borderColor="#dcdcdc">
+              Prefiero no responder
+            </Radio>
           </VStack>
         </RadioGroup>
       </FormControl>
@@ -57,6 +71,9 @@ export const CampusInput = ({ isRequired, value, onChange }) => {
           placeholder="Seleccionar campus"
           value={value}
           onChange={onChange}
+          bg="white"
+          borderWidth="2px"
+          borderColor="#dcdcdc"
         >
           <option value="Isla Teja">Isla Teja</option>
           <option value="Miraflores">Miraflores</option>
@@ -75,6 +92,9 @@ export const DegreeInput = ({ isRequired, value, onChange }) => {
           placeholder="Seleccionar carrera"
           value={value}
           onChange={onChange}
+          bg="white"
+          borderWidth="2px"
+          borderColor="#dcdcdc"
         >
           <option value="Administración Empresas de Turismo">
             Administración Empresas de Turismo
@@ -174,8 +194,12 @@ export const HasCabinInput = ({ isRequired, value, onChange }) => {
         <FormLabel>Tengo cabaña</FormLabel>
         <RadioGroup value={value} onChange={onChange}>
           <VStack spacing="0" align="stretch">
-            <Radio value="s">Sí</Radio>
-            <Radio value="n">No</Radio>
+            <Radio value="s" bg="white" borderWidth="2px" borderColor="#dcdcdc">
+              Sí
+            </Radio>
+            <Radio value="n" bg="white" borderWidth="2px" borderColor="#dcdcdc">
+              No
+            </Radio>
           </VStack>
         </RadioGroup>
       </FormControl>
@@ -188,7 +212,14 @@ export const DescriptionInput = ({ value, onChange }) => {
     <Box>
       <FormControl>
         <FormLabel>Descripción</FormLabel>
-        <Textarea placeholder="..." value={value} onChange={onChange} />
+        <Textarea
+          placeholder="..."
+          value={value}
+          onChange={onChange}
+          bg="white"
+          borderWidth="2px"
+          borderColor="#dcdcdc"
+        />
       </FormControl>
     </Box>
   );
