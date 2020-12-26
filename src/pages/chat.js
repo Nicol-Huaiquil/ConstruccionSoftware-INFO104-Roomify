@@ -108,7 +108,7 @@ export default function Chat() {
   return (
     <>
       {loading ? (
-        <LoadingScreen />
+        <LoadingScreen h="90vh" />
       ) : (
         <Box className="h2 gray1">
           <Box bg="gray.400" minHeight="92vh" paddingBottom="8vh">

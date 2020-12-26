@@ -1,39 +1,21 @@
 import React from "react";
 import {
-  Image,
-  Box,
   Button,
-  IconButton,
-  Spinner,
   Avatar,
-  useToast,
   Drawer,
   DrawerOverlay,
   DrawerContent,
-  HStack,
   VStack,
-  useDisclosure,
   Grid,
   GridItem,
   Text,
 } from "@chakra-ui/react";
-import axios from "axios";
 import { AiFillMessage } from "react-icons/ai";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import { CgLogOut } from "react-icons/cg";
-import {
-  IoMdSettings,
-  IoIosArrowBack,
-  IoIosArrowForward,
-} from "react-icons/io";
+import { IoMdSettings } from "react-icons/io";
 import { MdHelp } from "react-icons/md";
-import { TiThMenu } from "react-icons/ti";
-
-import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { useProfileId } from "../auth";
-import { ProfileDisplay } from "../components/ProfileDisplay";
-import { SquareButton } from "../components/SquareButton";
 
 export const Menu = ({ isOpen, onClose, btnRef, pic, name }) => {
   const { push } = useRouter();

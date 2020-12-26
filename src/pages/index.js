@@ -60,10 +60,12 @@ export default function Home() {
           <HomeTopBar uId={uId} />
 
           <Box id="home" py="6vh">
-            {profiles ? (
+            {profiles[index] ? (
               <ProfileDisplay profile={profiles[index]} />
             ) : (
-              <Text>No hay perfiles para mostrar.</Text>
+              <Text textAlign="center" px="10vw">
+                No hay perfiles que coincidan con la búsqueda.
+              </Text>
             )}
           </Box>
 

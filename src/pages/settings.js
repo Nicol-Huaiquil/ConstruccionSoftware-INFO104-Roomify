@@ -6,7 +6,6 @@ import {
   Select,
   Button,
   VStack,
-  Image,
   Grid,
   GridItem,
   NumberInput,
@@ -33,6 +32,9 @@ export default function Settings() {
   const [loading, setLoading] = useState(true);
   const { push } = useRouter();
 
+  const [minAge, setMinAge] = useState(18);
+  const [maxAge, setMaxAge] = useState(35);
+
   const uId = useProfileId();
   useEffect(() => {
     if (!uId) return;
@@ -43,23 +45,13 @@ export default function Settings() {
       })
       .then(({ data }) => {
         setPreferences(data);
+        setMinAge(data.ageRange[0]);
+        setMaxAge(data.ageRange[1]);
       })
       .finally(() => {
         setLoading(false);
       });
   }, [uId]);
-
-  const [minAge, setMinAge] = useState(preferences.ageRange[0]);
-  const [maxAge, setMaxAge] = useState(preferences.ageRange[1]);
-
-  const encodeImageFileAsURL = (element) => {
-    let file = element.target.files[0];
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      console.log("RESULT", reader.result.toString().split(",")[1]);
-    };
-  };
 
   return (
     <>

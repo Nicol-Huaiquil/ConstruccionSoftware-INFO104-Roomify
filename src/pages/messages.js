@@ -1,16 +1,13 @@
 import {
   Box,
   Text,
-  IconButton,
   Grid,
   GridItem,
   useToast,
   VStack,
   Avatar,
 } from "@chakra-ui/react";
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { ImCross } from "react-icons/im";
 import { useRouter } from "next/router";
 
 import { TopBar } from "../components/TopBar";
@@ -55,7 +52,7 @@ export default function Messages() {
       <TopBar title="Mensajes" route="/" />
 
       {loading ? (
-        <LoadingScreen />
+        <LoadingScreen h="90vh" />
       ) : (
         <Box className="h2 gray1">
           {chats.length === 0 && <Text>No hay chats.</Text>}
