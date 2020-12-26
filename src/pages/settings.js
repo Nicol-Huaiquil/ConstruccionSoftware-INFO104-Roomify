@@ -6,6 +6,7 @@ import {
   Select,
   Button,
   VStack,
+  Image,
   Grid,
   GridItem,
   NumberInput,
@@ -51,10 +52,19 @@ export default function Settings() {
   const [minAge, setMinAge] = useState(preferences.ageRange[0]);
   const [maxAge, setMaxAge] = useState(preferences.ageRange[1]);
 
+  const encodeImageFileAsURL = (element) => {
+    let file = element.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      console.log("RESULT", reader.result.toString().split(",")[1]);
+    };
+  };
+
   return (
     <>
       {loading ? (
-        <LoadingScreen />
+        <LoadingScreen h="90vh" />
       ) : (
         <>
           <TopBar title="Opciones de búsqueda" route="/" />

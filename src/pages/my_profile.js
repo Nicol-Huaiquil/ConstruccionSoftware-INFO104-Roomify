@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, VStack, Text } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
@@ -44,18 +44,20 @@ export default function Settings() {
         <LoadingScreen h="90vh" />
       ) : (
         <Box className="h2 gray1">
-          <ProfileDisplay profile={myProfile} />
-          <Flex py="2.5vh" justifyContent="center">
-            <Button
-              bg="green.300"
-              p="3.5vh"
-              onClick={() => {
-                push("/edit_profile");
-              }}
-            >
-              <Text fontSize="3vh">Editar perfil</Text>
-            </Button>
-          </Flex>
+          <VStack spacing="6vh" py="6vh">
+            <ProfileDisplay profile={myProfile} />
+            <Flex justifyContent="center">
+              <Button
+                bg="green.300"
+                p="3.5vh"
+                onClick={() => {
+                  push("/edit_profile");
+                }}
+              >
+                <Text fontSize="3vh">Editar perfil</Text>
+              </Button>
+            </Flex>
+          </VStack>
         </Box>
       )}
     </>

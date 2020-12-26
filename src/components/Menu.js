@@ -67,8 +67,8 @@ export const Menu = ({ isOpen, onClose, btnRef, pic, name }) => {
                   <Avatar
                     bg="teal.500"
                     m="0.5vh"
-                    width="90px"
-                    height="90px"
+                    width="12vh"
+                    height="12vh"
                     src={pic}
                   />
                   <Text fontSize="3vh">{name}</Text>
@@ -127,7 +127,7 @@ export const Menu = ({ isOpen, onClose, btnRef, pic, name }) => {
                 }}
               >
                 <CgLogOut size="6vh" color="white" />
-                <Text fontSize="xl" color="white" m="1vh">
+                <Text fontSize="2.8vh" color="white" m="1vh">
                   Cerrar sesión
                 </Text>
               </Button>

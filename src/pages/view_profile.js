@@ -1,4 +1,4 @@
-import { Box, VStack } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -55,7 +55,7 @@ export default function ViewProfile() {
       {loading ? (
         <LoadingScreen h="90vh" />
       ) : (
-        <Box className="h2 gray1">
+        <Box className="h2 gray1" py="6vh">
           <ProfileDisplay profile={myProfile} />
         </Box>
       )}

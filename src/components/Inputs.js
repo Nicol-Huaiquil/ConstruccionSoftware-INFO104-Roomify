@@ -10,6 +10,15 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 
+export const ImageInput = ({ onChange }) => {
+  return (
+    <Box>
+      <FormLabel>Foto de perfil</FormLabel>
+      <input type="file" onChange={onChange} />
+    </Box>
+  );
+};
+
 export const NameInput = ({ isRequired, value, onChange }) => {
   return (
     <Box>

@@ -1,4 +1,4 @@
-import { Box, Spinner, VStack, Button } from "@chakra-ui/react";
+import { Box, VStack, Button } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { TopBar } from "../components/TopBar";
 import { LoadingScreen } from "../components/LoadingScreen";
 import {
+  ImageInput,
   NameInput,
   CampusInput,
   GenderInput,
@@ -17,11 +18,12 @@ import { useProfileId } from "../auth";
 
 export default function Settings() {
   const [myProfile, setMyProfile] = useState({
+    pic: "",
     name: "",
     age: 0,
     gender: "",
-    campus: "",
     degree: "",
+    campus: "",
     hasCabin: false,
     description: "",
   });
@@ -50,10 +52,24 @@ export default function Settings() {
       <TopBar title="Editar Perfil" route="/my_profile" />
 
       {loading ? (
-        <LoadingScreen />
+        <LoadingScreen h="90vh" />
       ) : (
         <Box className="h2 gray1" px="4vh" py="3vh">
           <VStack spacing="2vh" align="stretch">
+            <ImageInput
+              onChange={(element) => {
+                let file = element.target.files[0];
+                let reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onloadend = () => {
+                  setMyProfile({
+                    ...myProfile,
+                    pic: reader.result.toString(),
+                  });
+                };
+              }}
+            />
+
             <NameInput
               isRequired={false}
               value={myProfile.name}
@@ -64,7 +80,6 @@ export default function Settings() {
                 });
               }}
             />
-
             <GenderInput
               isRequired={false}
               value={myProfile.gender}
@@ -75,7 +90,6 @@ export default function Settings() {
                 });
               }}
             />
-
             <CampusInput
               isRequired={false}
               value={myProfile.campus}
@@ -86,7 +100,6 @@ export default function Settings() {
                 });
               }}
             />
-
             <DegreeInput
               isRequired={false}
               value={myProfile.degree}
@@ -97,7 +110,6 @@ export default function Settings() {
                 });
               }}
             />
-
             <HasCabinInput
               isRequired={false}
               value={myProfile.hasCabin ? "s" : "n"}
@@ -108,7 +120,6 @@ export default function Settings() {
                 });
               }}
             />
-
             <DescriptionInput
               value={myProfile.description}
               onChange={(ev) => {
@@ -118,7 +129,6 @@ export default function Settings() {
                 });
               }}
             />
-
             <Box display="flex" justifyContent="flex-end">
               <Button
                 colorScheme="green"

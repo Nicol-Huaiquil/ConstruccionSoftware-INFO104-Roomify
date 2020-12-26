@@ -59,7 +59,7 @@ export default function Home() {
         <>
           <HomeTopBar uId={uId} />
 
-          <Box id="home">
+          <Box id="home" py="6vh">
             {profiles ? (
               <ProfileDisplay profile={profiles[index]} />
             ) : (
