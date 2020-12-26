@@ -1,8 +1,8 @@
 import { Box, Spinner } from "@chakra-ui/react";
 
-export const LoadingScreen = () => {
+export const LoadingScreen = ({ h }) => {
   return (
-    <Box className="centeredFlex h2 gray1">
+    <Box className="centeredFlex gray1" h={h}>
       <Spinner />
     </Box>
   );

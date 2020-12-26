@@ -2,7 +2,7 @@ import { Avatar, VStack, Text } from "@chakra-ui/react";
 
 export const ProfileDisplay = ({ profile }) => {
   return (
-    <>
+    <VStack spacing="2.5vh" py="6vh" px="10vw">
       <Avatar bg="teal.500" size="2xl" src={profile.pic} />
       <VStack spacing="0">
         <Text>{profile.name}</Text>
@@ -13,6 +13,6 @@ export const ProfileDisplay = ({ profile }) => {
         <Text>—</Text>
         <Text textAlign="center">{profile.description}</Text>
       </VStack>
-    </>
+    </VStack>
   );
 };

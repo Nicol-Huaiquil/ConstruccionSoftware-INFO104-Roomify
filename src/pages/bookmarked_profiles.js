@@ -48,7 +48,7 @@ export default function Settings() {
       <TopBar title="Perfiles Guardados" route="/" />
 
       {loading ? (
-        <LoadingScreen />
+        <LoadingScreen h="90vh" />
       ) : (
         <Box className="h2 gray1">
           {profiles.length === 0 && <Text>No hay perfiles guardados.</Text>}

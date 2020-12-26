@@ -50,15 +50,13 @@ export default function ViewProfile() {
 
   return (
     <>
-      <TopBar title="" route="/bookmarked_profiles" />
+      <TopBar title="Perfil guardado" route="/bookmarked_profiles" />
 
       {loading ? (
-        <LoadingScreen />
+        <LoadingScreen h="90vh" />
       ) : (
-        <Box className="centeredFlex h2 gray1">
-          <VStack spacing="2.5vh" py="2.5vh" px="10%">
-            <ProfileDisplay profile={myProfile} />
-          </VStack>
+        <Box className="h2 gray1">
+          <ProfileDisplay profile={myProfile} />
         </Box>
       )}
     </>

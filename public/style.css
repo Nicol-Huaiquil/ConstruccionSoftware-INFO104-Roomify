@@ -7,28 +7,13 @@ body {
 /* Pantalla Home */
 
 #home {
-  background-color: #98d6c5; /* cambiar color del fondo */
-  position: absolute;
-  top: 10vh;
-  text-align: center;
-  padding: 6vh 6vh 10vh 6vh;
-  width: 100vw;
-  min-height: 90vh;
+  background-color: #98d6c5;
+  height: 80vh;
+  overflow-y: auto;
 }
 
-#topBar {
-  background-color: #679beb; /* cambiar color de la barra superior */
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  height: 10vh;
-}
-
-#bottomBar {
+#buttonBar {
   background-color: #679beb; /* cambiar color de la barra inferior */
-  position: fixed;
-  bottom: 0;
-  width: 100vw;
   height: 10vh;
 }
 
